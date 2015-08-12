@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  OnsiteTexts
+//
+//  Created by David Hodge on 8/12/15.
+//  Copyright (c) 2015 Genesis Apps, LLC. All rights reserved.
+//
+
+#ifndef OnsiteTexts_PrefixHeader_pch
+#define OnsiteTexts_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "UIColor+AppStyles.h"
+#import "UIFont+AppStyles.h"
+
+#endif

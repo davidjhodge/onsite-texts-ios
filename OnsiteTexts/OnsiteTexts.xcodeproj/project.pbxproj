@@ -10,11 +10,19 @@
 		6F0F334E228C80FF5642D731 /* libPods-OnsiteTexts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515D611679C6818ED9E558D1 /* libPods-OnsiteTexts.a */; };
 		70A779331B7B91670036DD52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779321B7B91670036DD52 /* main.m */; };
 		70A779361B7B91670036DD52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779351B7B91670036DD52 /* AppDelegate.m */; };
-		70A779391B7B91670036DD52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779381B7B91670036DD52 /* ViewController.m */; };
 		70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A7793A1B7B91670036DD52 /* Main.storyboard */; };
 		70A7793E1B7B91670036DD52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70A7793D1B7B91670036DD52 /* Images.xcassets */; };
 		70A779411B7B91670036DD52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70A7793F1B7B91670036DD52 /* LaunchScreen.xib */; };
 		70A7794D1B7B91670036DD52 /* OnsiteTextsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7794C1B7B91670036DD52 /* OnsiteTextsTests.m */; };
+		70A779581B7B93020036DD52 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779571B7B93020036DD52 /* HomeViewController.m */; };
+		70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7795A1B7B93160036DD52 /* LocationPickerViewController.m */; };
+		70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7795D1B7B93470036DD52 /* ContactPickerViewController.m */; };
+		70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779611B7B94BF0036DD52 /* UIColor+AppStyles.m */; };
+		70A7796A1B7B98ED0036DD52 /* UIFont+AppStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779691B7B98ED0036DD52 /* UIFont+AppStyles.m */; };
+		70A779701B7B996F0036DD52 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796C1B7B996F0036DD52 /* OpenSans-Bold.ttf */; };
+		70A779711B7B996F0036DD52 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796D1B7B996F0036DD52 /* OpenSans-Light.ttf */; };
+		70A779721B7B996F0036DD52 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796E1B7B996F0036DD52 /* OpenSans-Regular.ttf */; };
+		70A779731B7B996F0036DD52 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796F1B7B996F0036DD52 /* OpenSans-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +44,27 @@
 		70A779321B7B91670036DD52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70A779341B7B91670036DD52 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		70A779351B7B91670036DD52 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		70A779371B7B91670036DD52 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		70A779381B7B91670036DD52 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		70A7793B1B7B91670036DD52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70A7793D1B7B91670036DD52 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		70A779401B7B91670036DD52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		70A779461B7B91670036DD52 /* OnsiteTextsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnsiteTextsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A7794B1B7B91670036DD52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70A7794C1B7B91670036DD52 /* OnsiteTextsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnsiteTextsTests.m; sourceTree = "<group>"; };
+		70A779561B7B93020036DD52 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		70A779571B7B93020036DD52 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		70A779591B7B93160036DD52 /* LocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerViewController.h; sourceTree = "<group>"; };
+		70A7795A1B7B93160036DD52 /* LocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerViewController.m; sourceTree = "<group>"; };
+		70A7795C1B7B93470036DD52 /* ContactPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactPickerViewController.h; sourceTree = "<group>"; };
+		70A7795D1B7B93470036DD52 /* ContactPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactPickerViewController.m; sourceTree = "<group>"; };
+		70A779601B7B94BF0036DD52 /* UIColor+AppStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppStyles.h"; sourceTree = "<group>"; };
+		70A779611B7B94BF0036DD52 /* UIColor+AppStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppStyles.m"; sourceTree = "<group>"; };
+		70A779661B7B97CF0036DD52 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		70A779681B7B98ED0036DD52 /* UIFont+AppStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AppStyles.h"; sourceTree = "<group>"; };
+		70A779691B7B98ED0036DD52 /* UIFont+AppStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AppStyles.m"; sourceTree = "<group>"; };
+		70A7796C1B7B996F0036DD52 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		70A7796D1B7B996F0036DD52 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		70A7796E1B7B996F0036DD52 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		70A7796F1B7B996F0036DD52 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +120,10 @@
 			children = (
 				70A779341B7B91670036DD52 /* AppDelegate.h */,
 				70A779351B7B91670036DD52 /* AppDelegate.m */,
-				70A779371B7B91670036DD52 /* ViewController.h */,
-				70A779381B7B91670036DD52 /* ViewController.m */,
 				70A7793A1B7B91670036DD52 /* Main.storyboard */,
 				70A7793D1B7B91670036DD52 /* Images.xcassets */,
+				70A779631B7B95290036DD52 /* App Styles */,
+				70A7795F1B7B935F0036DD52 /* View Controllers */,
 				70A7793F1B7B91670036DD52 /* LaunchScreen.xib */,
 				70A779301B7B91670036DD52 /* Supporting Files */,
 			);
@@ -114,6 +135,7 @@
 			children = (
 				70A779311B7B91670036DD52 /* Info.plist */,
 				70A779321B7B91670036DD52 /* main.m */,
+				70A779661B7B97CF0036DD52 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -133,6 +155,74 @@
 				70A7794B1B7B91670036DD52 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70A7795F1B7B935F0036DD52 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				70A779641B7B95390036DD52 /* Home */,
+				70A779651B7B954A0036DD52 /* Create New */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		70A779631B7B95290036DD52 /* App Styles */ = {
+			isa = PBXGroup;
+			children = (
+				70A779671B7B98D30036DD52 /* UIColor+AppStyles */,
+				70A7796B1B7B98F50036DD52 /* UIFont+AppStyles */,
+			);
+			name = "App Styles";
+			sourceTree = "<group>";
+		};
+		70A779641B7B95390036DD52 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				70A779561B7B93020036DD52 /* HomeViewController.h */,
+				70A779571B7B93020036DD52 /* HomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		70A779651B7B954A0036DD52 /* Create New */ = {
+			isa = PBXGroup;
+			children = (
+				70A779591B7B93160036DD52 /* LocationPickerViewController.h */,
+				70A7795A1B7B93160036DD52 /* LocationPickerViewController.m */,
+				70A7795C1B7B93470036DD52 /* ContactPickerViewController.h */,
+				70A7795D1B7B93470036DD52 /* ContactPickerViewController.m */,
+			);
+			name = "Create New";
+			sourceTree = "<group>";
+		};
+		70A779671B7B98D30036DD52 /* UIColor+AppStyles */ = {
+			isa = PBXGroup;
+			children = (
+				70A779601B7B94BF0036DD52 /* UIColor+AppStyles.h */,
+				70A779611B7B94BF0036DD52 /* UIColor+AppStyles.m */,
+			);
+			name = "UIColor+AppStyles";
+			sourceTree = "<group>";
+		};
+		70A7796B1B7B98F50036DD52 /* UIFont+AppStyles */ = {
+			isa = PBXGroup;
+			children = (
+				70A779681B7B98ED0036DD52 /* UIFont+AppStyles.h */,
+				70A779691B7B98ED0036DD52 /* UIFont+AppStyles.m */,
+				70A779741B7B99730036DD52 /* OpenSans */,
+			);
+			name = "UIFont+AppStyles";
+			sourceTree = "<group>";
+		};
+		70A779741B7B99730036DD52 /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				70A7796C1B7B996F0036DD52 /* OpenSans-Bold.ttf */,
+				70A7796D1B7B996F0036DD52 /* OpenSans-Light.ttf */,
+				70A7796E1B7B996F0036DD52 /* OpenSans-Regular.ttf */,
+				70A7796F1B7B996F0036DD52 /* OpenSans-Semibold.ttf */,
+			);
+			name = OpenSans;
 			sourceTree = "<group>";
 		};
 		7D8910113947951954ABE1E0 /* Frameworks */ = {
@@ -227,6 +317,10 @@
 			files = (
 				70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */,
 				70A779411B7B91670036DD52 /* LaunchScreen.xib in Resources */,
+				70A779701B7B996F0036DD52 /* OpenSans-Bold.ttf in Resources */,
+				70A779711B7B996F0036DD52 /* OpenSans-Light.ttf in Resources */,
+				70A779721B7B996F0036DD52 /* OpenSans-Regular.ttf in Resources */,
+				70A779731B7B996F0036DD52 /* OpenSans-Semibold.ttf in Resources */,
 				70A7793E1B7B91670036DD52 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,9 +372,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70A779391B7B91670036DD52 /* ViewController.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,
+				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
+				70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */,
+				70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */,
+				70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */,
+				70A7796A1B7B98ED0036DD52 /* UIFont+AppStyles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +505,7 @@
 			baseConfigurationReference = 4EF171FF95E2CF3C036D52B8 /* Pods-OnsiteTexts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "/Users/davidhodge/Documents/Github Repos/onsite-texts-ios/OnsiteTexts/OnsiteTexts/PrefixHeader.pch";
 				INFOPLIST_FILE = OnsiteTexts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +517,7 @@
 			baseConfigurationReference = 59EC43A2297C934DE849211F /* Pods-OnsiteTexts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "/Users/davidhodge/Documents/Github Repos/onsite-texts-ios/OnsiteTexts/OnsiteTexts/PrefixHeader.pch";
 				INFOPLIST_FILE = OnsiteTexts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
