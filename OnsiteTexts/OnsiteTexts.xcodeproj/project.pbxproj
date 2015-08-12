@@ -23,6 +23,9 @@
 		70A779711B7B996F0036DD52 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796D1B7B996F0036DD52 /* OpenSans-Light.ttf */; };
 		70A779721B7B996F0036DD52 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796E1B7B996F0036DD52 /* OpenSans-Regular.ttf */; };
 		70A779731B7B996F0036DD52 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A7796F1B7B996F0036DD52 /* OpenSans-Semibold.ttf */; };
+		70A779771B7BF7DD0036DD52 /* AlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779761B7BF7DD0036DD52 /* AlertCell.m */; };
+		70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7797A1B7BFB1B0036DD52 /* Alert.m */; };
+		70A779801B7BFB950036DD52 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7797F1B7BFB950036DD52 /* SessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,12 @@
 		70A7796D1B7B996F0036DD52 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		70A7796E1B7B996F0036DD52 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		70A7796F1B7B996F0036DD52 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		70A779751B7BF7DD0036DD52 /* AlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertCell.h; sourceTree = "<group>"; };
+		70A779761B7BF7DD0036DD52 /* AlertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertCell.m; sourceTree = "<group>"; };
+		70A779791B7BFB1B0036DD52 /* Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alert.h; sourceTree = "<group>"; };
+		70A7797A1B7BFB1B0036DD52 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
+		70A7797E1B7BFB950036DD52 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		70A7797F1B7BFB950036DD52 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +131,7 @@
 				70A779351B7B91670036DD52 /* AppDelegate.m */,
 				70A7793A1B7B91670036DD52 /* Main.storyboard */,
 				70A7793D1B7B91670036DD52 /* Images.xcassets */,
+				70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */,
 				70A779631B7B95290036DD52 /* App Styles */,
 				70A7795F1B7B935F0036DD52 /* View Controllers */,
 				70A7793F1B7B91670036DD52 /* LaunchScreen.xib */,
@@ -180,6 +190,7 @@
 			children = (
 				70A779561B7B93020036DD52 /* HomeViewController.h */,
 				70A779571B7B93020036DD52 /* HomeViewController.m */,
+				70A779781B7BF7E30036DD52 /* Cell */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -223,6 +234,34 @@
 				70A7796F1B7B996F0036DD52 /* OpenSans-Semibold.ttf */,
 			);
 			name = OpenSans;
+			sourceTree = "<group>";
+		};
+		70A779781B7BF7E30036DD52 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				70A779751B7BF7DD0036DD52 /* AlertCell.h */,
+				70A779761B7BF7DD0036DD52 /* AlertCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		70A7797C1B7BFB690036DD52 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				70A779791B7BFB1B0036DD52 /* Alert.h */,
+				70A7797A1B7BFB1B0036DD52 /* Alert.m */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				70A7797C1B7BFB690036DD52 /* Data Model */,
+				70A7797E1B7BFB950036DD52 /* SessionManager.h */,
+				70A7797F1B7BFB950036DD52 /* SessionManager.m */,
+			);
+			name = "Session Manager / Data Layer";
 			sourceTree = "<group>";
 		};
 		7D8910113947951954ABE1E0 /* Frameworks */ = {
@@ -372,12 +411,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
+				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
 				70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */,
 				70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */,
 				70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */,
+				70A779771B7BF7DD0036DD52 /* AlertCell.m in Sources */,
 				70A7796A1B7B98ED0036DD52 /* UIFont+AppStyles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
