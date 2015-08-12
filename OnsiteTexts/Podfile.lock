@@ -1,0 +1,15 @@
+PODS:
+  - APAddressBook (0.1.11):
+    - APAddressBook/Core (= 0.1.11)
+  - APAddressBook/Core (0.1.11)
+  - DZNEmptyDataSet (1.7)
+
+DEPENDENCIES:
+  - APAddressBook
+  - DZNEmptyDataSet
+
+SPEC CHECKSUMS:
+  APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
+  DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
+
+COCOAPODS: 0.38.2
