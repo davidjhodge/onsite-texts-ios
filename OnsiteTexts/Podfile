@@ -6,6 +6,10 @@ target 'OnsiteTexts' do
 pod 'DZNEmptyDataSet'
 pod 'APAddressBook'
 pod 'NSTimer-Blocks'
+pod 'TPKeyboardAvoiding'
+pod 'APAddressBook'
+pod 'THContactPicker'
+pod 'VPPDropDown'
 
 end
 

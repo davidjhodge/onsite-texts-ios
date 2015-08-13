@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@import MapKit;
+
 @interface Alert : NSObject
 
 /**
@@ -16,8 +18,13 @@
 @property (nonatomic, strong) NSString *address;
 
 /**
+ *  The latitude and longitude coordinate of the location.
+ */
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+
+/**
  *  The contacts who will be notified by the alert contained in an array.
  */
-@property (nonatomic, strong) NSArray *contacts;
+@property (nonatomic, strong) NSMutableArray *contacts;
 
 @end

@@ -118,7 +118,7 @@
                                     <constraint firstAttribute="height" constant="1" id="dcb-6w-HTR"/>
                                 </constraints>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ufe-NE-94n">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ufe-NE-94n">
                                 <rect key="frame" x="0.0" y="109" width="600" height="491"/>
                                 <connections>
                                     <outlet property="delegate" destination="Nnz-Rq-omF" id="SLm-k4-eta"/>
@@ -133,7 +133,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="491"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9Pw-kc-hHa">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9Pw-kc-hHa" customClass="TPKeyboardAvoidingTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="491"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <prototypes>
@@ -227,8 +227,50 @@
                     <view key="view" contentMode="scaleToFill" id="rpL-Px-Z97">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ncw-ZY-VEA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="bvG-fp-9gW" detailTextLabel="vVh-JW-93j" style="IBUITableViewCellStyleSubtitle" id="MAg-Pf-goE">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MAg-Pf-goE" id="wNL-xR-PeV">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bvG-fp-9gW">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vVh-JW-93j">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LrT-dG-yeB" id="PCB-uU-WUV"/>
+                                    <outlet property="delegate" destination="LrT-dG-yeB" id="cSp-h7-twf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ncw-ZY-VEA" firstAttribute="top" secondItem="rpL-Px-Z97" secondAttribute="top" id="PHh-oh-fZU"/>
+                            <constraint firstItem="KK9-mn-ikk" firstAttribute="top" secondItem="ncw-ZY-VEA" secondAttribute="bottom" id="XZp-uw-Oln"/>
+                            <constraint firstItem="ncw-ZY-VEA" firstAttribute="leading" secondItem="rpL-Px-Z97" secondAttribute="leading" id="pt5-sI-UfP"/>
+                            <constraint firstAttribute="trailing" secondItem="ncw-ZY-VEA" secondAttribute="trailing" id="uGB-gF-QYF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ncw-ZY-VEA" id="VbY-Z1-abf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qe-cp-30U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

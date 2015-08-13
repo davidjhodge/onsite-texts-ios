@@ -10,10 +10,11 @@
 #import "NSTimer+Blocks.h"
 #import "MapAnnotation.h"
 #import "SessionManager.h"
+#import "ContactPickerViewController.h"
 
 @import MapKit;
 
-@interface LocationPickerViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface LocationPickerViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) IBOutlet MKMapView *mapView;
@@ -59,17 +60,20 @@
     self.tableView.tableFooterView = [UIView new];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognizerActivated:)];
+    longPress.delegate = self;
     [self.mapView addGestureRecognizer:longPress];
+    
+    [self checkLocationPermissions];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    self.geocoder = [[CLGeocoder alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
-    {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,8 +85,14 @@
 {
     [self.mapView removeAnnotations:self.mapView.annotations];
     
+    _currentSelectedLocation = currentSelectedLocation;
     if (self.currentSelectedLocation != nil)
     {
+        if (self.mapView.userLocation.coordinate.longitude == self.currentSelectedLocation.coordinate.longitude && self.mapView.userLocation.coordinate.latitude == self.currentSelectedLocation.coordinate.latitude) {
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+            return;
+        }
+        
         MapAnnotation *annotation = [MapAnnotation locationWithCoordinate:self.currentSelectedLocation.coordinate];
         
         if (self.locationTitle)
@@ -146,6 +156,16 @@
     }
 }
 
+- (void)checkLocationPermissions
+{
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
+    {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+
+    self.mapView.showsUserLocation = YES;
+}
+
 #pragma mark - Actions
 
 - (void)cancel:(id)sender
@@ -167,6 +187,9 @@
 {
     if (self.currentSelectedLocation != nil)
     {
+        if ([SessionManager sharedSession].createdAlert == nil) {
+            [SessionManager sharedSession].createdAlert = [[Alert alloc] init];
+        }
         [SessionManager sharedSession].coordinate = self.currentSelectedLocation.coordinate;
     }
 }
@@ -206,7 +229,7 @@
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     self.searchBar.text = @"";
-    self.searchResults = [@[] mutableCopy];
+    self.searchResults = [[NSMutableArray alloc] init];
     [self hideTable];
     [self.searchBar resignFirstResponder];
 }
@@ -254,7 +277,7 @@
         [self showTable];
         
         //Delay searching for results until 0.5 seconds has passed since the last character the user typed.
-        self.placemarkUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 block:^{
+        self.placemarkUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
         
             MKLocalSearchRequest *searchRequest = [[MKLocalSearchRequest alloc] init];
             searchRequest.naturalLanguageQuery = searchText;
@@ -372,8 +395,9 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     self.userLocation = userLocation;
+    self.currentSelectedLocation = self.userLocation.location;
     
-    if (!self.userLocation)
+    if (!self.isFirstUserUpdate)
     {
         [self.mapView setRegion:MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.1, 0.1)) animated:YES];
         self.isFirstUserUpdate = true;
@@ -391,6 +415,21 @@
     }
 }
 
+//- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+//{
+//    id<MKAnnotation> currentAnnotation = [mapView.annotations lastObject];
+//    if (currentAnnotation != nil)
+//    {
+//        if ([self.mapView viewForAnnotation:currentAnnotation] == nil)
+//        {
+//            [mapView selectAnnotation:currentAnnotation animated:YES];
+//        } else
+//        {
+//            [mapView deselectAnnotation:currentAnnotation animated:YES];
+//        }
+//    }
+//}
+
 #pragma mark - UIGestureRecognizer
 
 - (void)longPressGestureRecognizerActivated:(UILongPressGestureRecognizer *)recognizer
@@ -407,14 +446,28 @@
     }
 }
 
-/*
+#pragma mark - CLLocationManager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.mapView.showsUserLocation = YES;
+    }
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.destinationViewController isKindOfClass:[ContactPickerViewController class]])
+    {
+        [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Location" style:UIBarButtonItemStylePlain target:nil action:nil]];
+    }
 }
-*/
+
 
 @end

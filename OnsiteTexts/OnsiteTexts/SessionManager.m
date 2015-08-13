@@ -8,6 +8,9 @@
 
 #import "SessionManager.h"
 
+#import "APAddressBook/APAddressBook.h"
+#import "APContact.h"
+
 static SessionManager *sharedSession;
 
 @implementation SessionManager
@@ -33,6 +36,39 @@ static SessionManager *sharedSession;
     }
     
     return self;
+}
+
+- (void)getContactsFromAddressBookWithCompletion:(OTCompletionBlock)completion
+{
+    APAddressBook *addressBook = [[APAddressBook alloc] init];
+    addressBook.fieldsMask = APContactFieldFirstName | APContactFieldLastName | APContactFieldPhones | APContactFieldPhonesWithLabels;
+    
+    addressBook.filterBlock = ^BOOL(APContact *contact) {
+            return contact.phones.count > 0;
+    };
+    
+    addressBook.sortDescriptors = @[
+                                    [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
+                                    [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]
+                                    ];
+    
+    [addressBook loadContacts:^(NSArray *contacts, NSError *error) {
+        
+        if (error) {
+            //ERROR
+            if (completion) {
+                completion(NO, error.localizedDescription, nil);
+            }
+        } else {
+            
+            //Success
+            NSMutableArray *contactList = [contacts mutableCopy];
+
+            if (completion) {
+                completion(YES, error.localizedDescription, contactList);
+            }
+        }
+    }];
 }
 
 @end

@@ -4,15 +4,24 @@ PODS:
   - APAddressBook/Core (0.1.11)
   - DZNEmptyDataSet (1.7)
   - NSTimer-Blocks (0.0.1)
+  - THContactPicker (1.1.1)
+  - TPKeyboardAvoiding (1.2.9)
+  - VPPDropDown (0.3.0)
 
 DEPENDENCIES:
   - APAddressBook
   - DZNEmptyDataSet
   - NSTimer-Blocks
+  - THContactPicker
+  - TPKeyboardAvoiding
+  - VPPDropDown
 
 SPEC CHECKSUMS:
   APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
   DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
   NSTimer-Blocks: 88faf9aef5f250ead087f3f67ae642517083bf36
+  THContactPicker: 69a146b4ab9ef39cd2520977acb344fe27a59f81
+  TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
+  VPPDropDown: 46a92110362aee139cdcc51fa0188e84b986410e
 
 COCOAPODS: 0.38.2

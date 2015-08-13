@@ -7,8 +7,17 @@
 //
 
 #import "ContactPickerViewController.h"
+#import "SessionManager.h"
+#import <APAddressBook/APAddressBook.h>
+#import "APContact.h"
+#import "APPhoneWithLabel.h"
 
-@interface ContactPickerViewController ()
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *contacts;
+@property (nonatomic, strong) NSMutableArray *selectedContacts;
 
 @end
 
@@ -21,6 +30,12 @@
     self.title = @"Who to Notify";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+    
+    self.tableView.tableFooterView = [UIView new];
+    
+    self.selectedContacts = [[NSMutableArray alloc] init];
+    
+    [self reloadContacts];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,11 +43,125 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Address Book
+- (void)checkAddressBookAccess
+{
+    switch ([APAddressBook access])
+    {
+        case APAddressBookAccessUnknown:
+            // Application didn't request address book access yet
+            [APAddressBook requestAccess:^(BOOL granted, NSError *error) {
+                
+            }];
+            
+            break;
+            
+        case APAddressBookAccessGranted:
+            // Access granted
+            break;
+            
+        case APAddressBookAccessDenied:
+            // Access denied or restricted by privacy settings
+            break;
+    }
+}
+
+- (void)reloadContacts
+{
+    [[SessionManager sharedSession] getContactsFromAddressBookWithCompletion:^(BOOL success, NSString *errorMessage, NSMutableArray *resultObject) {
+       
+        if (success)
+        {
+            if (resultObject != nil) {
+                self.contacts = resultObject;
+                [self.tableView reloadData];
+            }
+        } else {
+            NSLog(@"Error: %@", errorMessage);
+        }
+    }];
+}
+
+- (void)selectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
+{
+    [self.selectedContacts addObject:contact];
+    
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+}
+
+- (void)deselectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
+{
+    [self.selectedContacts removeObject:contact];
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
+}
+
 #pragma mark - Actions
 
 - (void)done:(id)sender
 {
+    Alert *alert = [[Alert alloc] init];
+    alert.contacts = self.contacts;
+    
+    [SessionManager sharedSession].createdAlert = alert;
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UITableView Data Source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.contacts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    
+    APContact *contact = [self.contacts objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
+    
+    NSMutableString *phoneNumbers = [[NSMutableString alloc] init];
+    for (APPhoneWithLabel *numLabel in contact.phonesWithLabels) {
+        [phoneNumbers appendString:numLabel.phone];
+        
+        if (![numLabel isEqual:contact.phonesWithLabels.lastObject])
+        {
+            [phoneNumbers appendString:@", "];
+        }
+    }
+    cell.detailTextLabel.text = phoneNumbers;
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    APContact *contact = [self.contacts objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([self.selectedContacts containsObject:contact])
+    {
+        //Deselect Contact
+        [self deselectContact:contact fromCell:cell];
+    } else {
+        //Select Contact
+        [self selectContact:contact fromCell:cell];
+    }
 }
 
 /*
