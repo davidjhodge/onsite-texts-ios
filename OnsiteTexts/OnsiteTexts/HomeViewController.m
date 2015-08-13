@@ -12,6 +12,8 @@
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation HomeViewController
@@ -24,11 +26,13 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewAlert:)];
     
+    self.tableView.tableFooterView = [UIView new];
+    
     Alert *alert = [[Alert alloc] init];
     alert.address = @"216 Sweet Gum Rd";
     alert.contacts = @[@"David"];
     
-    self.alerts = @[alert];
+    self.alerts = [@[alert] mutableCopy];
 
 }
 
@@ -67,6 +71,20 @@
     cell.contactsLabel.text = alert.contacts[0]; //Only shows first contact.
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [self.alerts removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - UITableView Delegate

@@ -3,13 +3,16 @@ PODS:
     - APAddressBook/Core (= 0.1.11)
   - APAddressBook/Core (0.1.11)
   - DZNEmptyDataSet (1.7)
+  - NSTimer-Blocks (0.0.1)
 
 DEPENDENCIES:
   - APAddressBook
   - DZNEmptyDataSet
+  - NSTimer-Blocks
 
 SPEC CHECKSUMS:
   APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
   DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
+  NSTimer-Blocks: 88faf9aef5f250ead087f3f67ae642517083bf36
 
 COCOAPODS: 0.38.2

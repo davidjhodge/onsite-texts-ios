@@ -1,5 +1,5 @@
 //
-//  SessionManager.h
+//  MapAnnotation.h
 //  OnsiteTexts
 //
 //  Created by David Hodge on 8/12/15.
@@ -10,10 +10,12 @@
 
 @import MapKit;
 
-@interface SessionManager : NSObject
+@interface MapAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
 
-+(instancetype)sharedSession;
++(instancetype)locationWithCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end

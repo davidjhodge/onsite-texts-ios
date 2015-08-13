@@ -10,6 +10,6 @@
 
 @interface HomeViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *alerts;
+@property (nonatomic, strong) NSMutableArray *alerts;
 
 @end
