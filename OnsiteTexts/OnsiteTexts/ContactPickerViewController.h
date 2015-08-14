@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Alert.h"
 
 @interface ContactPickerViewController : UIViewController
+
+@property (nonatomic, strong) Alert *createdAlert;
 
 @end

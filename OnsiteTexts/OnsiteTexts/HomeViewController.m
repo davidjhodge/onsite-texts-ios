@@ -9,6 +9,9 @@
 #import "HomeViewController.h"
 #import "AlertCell.h"
 #import "Alert.h"
+#import "SessionManager.h"
+
+NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -28,12 +31,9 @@
     
     self.tableView.tableFooterView = [UIView new];
     
-    Alert *alert = [[Alert alloc] init];
-    alert.address = @"216 Sweet Gum Rd";
-    alert.contacts = @[@"David"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertAlert:) name:kAddNewAlertNotification object:nil];
     
-    self.alerts = [@[alert] mutableCopy];
-
+    [self reloadAlerts];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,10 +43,36 @@
 
 #pragma mark - Actions
 
+- (void)reloadAlerts
+{
+    [[SessionManager sharedSession] loadAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
+        
+        if (success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            
+                [self.tableView reloadData];
+
+            });
+        } else {
+            NSLog(@"Error: %@", errorMessage);
+        }
+    }];
+}
+
 - (void)createNewAlert:(id)sender
 {
     //Add New
     [self performSegueWithIdentifier:@"HomeShowLocationPicker" sender:self];
+}
+
+- (void)insertAlert:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:kAddNewAlertNotification])
+    {
+        [self.tableView reloadData];
+    }
+    
+    NSLog(@"Notification Received: %@", notification.name);
 }
 
 #pragma mark - UITableView Data Source
@@ -91,7 +117,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*

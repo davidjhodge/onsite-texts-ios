@@ -10,7 +10,7 @@
 
 @import MapKit;
 
-@interface Alert : NSObject
+@interface Alert : NSObject <NSCoding>
 
 /**
  *  The address of the alert represented as a string.
@@ -21,6 +21,9 @@
  *  The latitude and longitude coordinate of the location.
  */
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
 
 /**
  *  The contacts who will be notified by the alert contained in an array.

@@ -12,14 +12,18 @@
 @import MapKit;
 
 typedef void (^OTCompletionBlock)(BOOL success, NSString *errorMessage, id resultObject);
+typedef void (^OTSimpleCompletionBlock)(BOOL success, NSString *errorMessage);
 
 @interface SessionManager : NSObject
-
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (nonatomic, strong) Alert *createdAlert;
 
 +(instancetype)sharedSession;
 
 - (void)getContactsFromAddressBookWithCompletion:(OTCompletionBlock)completion;
+
+- (void)addNewAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
+- (void)removeAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
+
+-(void)saveAlertsWithCompletion:(OTSimpleCompletionBlock)completion;
+-(void)loadAlertsWithCompletion:(OTSimpleCompletionBlock)completion;
 
 @end

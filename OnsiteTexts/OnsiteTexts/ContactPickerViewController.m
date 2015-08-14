@@ -8,6 +8,8 @@
 
 #import "ContactPickerViewController.h"
 #import "SessionManager.h"
+#import "HomeViewController.h"
+
 #import <APAddressBook/APAddressBook.h>
 #import "APContact.h"
 #import "APPhoneWithLabel.h"
@@ -100,11 +102,14 @@
 
 - (void)done:(id)sender
 {
-    Alert *alert = [[Alert alloc] init];
-    alert.contacts = self.contacts;
-    
-    [SessionManager sharedSession].createdAlert = alert;
-    
+    if (self.createdAlert != nil) {
+        self.createdAlert.contacts = self.contacts;
+        [[SessionManager sharedSession] addNewAlert: self.createdAlert completion:^(BOOL success, NSString *errorMessage) {
+            
+        }];
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewAlertNotification object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

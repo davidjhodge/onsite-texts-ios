@@ -35,6 +35,8 @@
 
 @property (nonatomic) BOOL isFirstUserUpdate;
 
+@property (nonatomic, strong) Alert *createdAlert;
+
 @end
 
 @implementation LocationPickerViewController
@@ -110,7 +112,7 @@
                      return;
                  }
                  
-                 NSString *errorMessage = @"We're having some trouble locating that address.";
+                 NSString *errorMessage = @"Unkown";
                  
                  if (placemarks.count > 0)
                  {
@@ -125,7 +127,9 @@
                          
                          if (street && city && state)
                          {
-                             annotation.subtitle = [NSString stringWithFormat:@"%@, %@ %@", street, city, state];
+                             NSString *address = [NSString stringWithFormat:@"%@, %@ %@", street, city, state];
+                             self.createdAlert.address = address;
+                             annotation.subtitle = address;
                          } else {
                              annotation.title = errorMessage;
                          }
@@ -187,10 +191,8 @@
 {
     if (self.currentSelectedLocation != nil)
     {
-        if ([SessionManager sharedSession].createdAlert == nil) {
-            [SessionManager sharedSession].createdAlert = [[Alert alloc] init];
-        }
-        [SessionManager sharedSession].coordinate = self.currentSelectedLocation.coordinate;
+        self.createdAlert = [[Alert alloc] init];
+        self.createdAlert.coordinate = self.currentSelectedLocation.coordinate;
     }
 }
 
@@ -465,6 +467,9 @@
     
     if ([segue.destinationViewController isKindOfClass:[ContactPickerViewController class]])
     {
+        ContactPickerViewController *contactPickerVC = (ContactPickerViewController *)segue.destinationViewController;
+        contactPickerVC.createdAlert = self.createdAlert;
+        
         [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Location" style:UIBarButtonItemStylePlain target:nil action:nil]];
     }
 }
