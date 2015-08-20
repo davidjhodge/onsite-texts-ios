@@ -28,6 +28,8 @@
 		70A779801B7BFB950036DD52 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7797F1B7BFB950036DD52 /* SessionManager.m */; };
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
 		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
+		70A779961B864C1D0036DD52 /* RegionMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779951B864C1D0036DD52 /* RegionMonitoring.m */; };
+		70A779991B864DD50036DD52 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779981B864DD50036DD52 /* LocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,10 @@
 		70A779821B7C47EC0036DD52 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 		70A7798D1B7ECFD60036DD52 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		70A7798E1B7ECFD60036DD52 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		70A779941B864C1D0036DD52 /* RegionMonitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionMonitoring.h; sourceTree = "<group>"; };
+		70A779951B864C1D0036DD52 /* RegionMonitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionMonitoring.m; sourceTree = "<group>"; };
+		70A779971B864DD50036DD52 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		70A779981B864DD50036DD52 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +143,9 @@
 				70A779351B7B91670036DD52 /* AppDelegate.m */,
 				70A7793A1B7B91670036DD52 /* Main.storyboard */,
 				70A7793D1B7B91670036DD52 /* Images.xcassets */,
+				70A779931B864C020036DD52 /* Helper Classes */,
 				70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */,
+				70A7799A1B864DDE0036DD52 /* LocationManager */,
 				70A779631B7B95290036DD52 /* App Styles */,
 				70A7795F1B7B935F0036DD52 /* View Controllers */,
 				70A7793F1B7B91670036DD52 /* LaunchScreen.xib */,
@@ -272,6 +280,24 @@
 				70A7797F1B7BFB950036DD52 /* SessionManager.m */,
 			);
 			name = "Session Manager / Data Layer";
+			sourceTree = "<group>";
+		};
+		70A779931B864C020036DD52 /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				70A779941B864C1D0036DD52 /* RegionMonitoring.h */,
+				70A779951B864C1D0036DD52 /* RegionMonitoring.m */,
+			);
+			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		70A7799A1B864DDE0036DD52 /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				70A779971B864DD50036DD52 /* LocationManager.h */,
+				70A779981B864DD50036DD52 /* LocationManager.m */,
+			);
+			name = LocationManager;
 			sourceTree = "<group>";
 		};
 		7D8910113947951954ABE1E0 /* Frameworks */ = {
@@ -422,12 +448,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
+				70A779961B864C1D0036DD52 /* RegionMonitoring.m in Sources */,
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,
 				70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
 				70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */,
+				70A779991B864DD50036DD52 /* LocationManager.m in Sources */,
 				70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */,
 				70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */,
 				70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */,
