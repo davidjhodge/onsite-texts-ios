@@ -192,7 +192,10 @@
     if (self.currentSelectedLocation != nil)
     {
         self.createdAlert = [[Alert alloc] init];
-        self.createdAlert.coordinate = self.currentSelectedLocation.coordinate;
+        
+        CLLocationCoordinate2D coordinate = self.currentSelectedLocation.coordinate;
+        self.createdAlert.latitude = coordinate.latitude;
+        self.createdAlert.longitude = coordinate.longitude;
     }
 }
 

@@ -10,6 +10,8 @@
 
 #import "APAddressBook/APAddressBook.h"
 #import "APContact.h"
+#import "APPhoneWithLabel.h"
+#import "Contact.h"
 
 static SessionManager *sharedSession;
 
@@ -73,9 +75,25 @@ static SessionManager *sharedSession;
             }
         } else {
             
-            //Success
-            NSMutableArray *contactList = [contacts mutableCopy];
-
+              //Success
+            NSMutableArray *contactList = [[NSMutableArray alloc] init];
+            for (APContact *contact in [contacts mutableCopy]) {
+                
+                Contact *newContact = [[Contact alloc] init];
+                newContact.firstName = contact.firstName;
+                newContact.lastName = contact.lastName;
+                newContact.phoneNumbers = contact.phones;
+                
+                for (APPhoneWithLabel *num in contact.phonesWithLabels)
+                {
+                    NSMutableArray *phoneNums = [[NSMutableArray alloc] init];
+                    [phoneNums addObject:num.phone];
+                    newContact.phoneNumberLabels = [[NSArray alloc] initWithArray:phoneNums];
+                }
+                                
+                [contactList addObject:newContact];
+            }
+            
             if (completion) {
                 completion(YES, error.localizedDescription, contactList);
             }
@@ -85,7 +103,7 @@ static SessionManager *sharedSession;
 
 - (void)addNewAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion
 {
-    if (CLLocationCoordinate2DIsValid(alert.coordinate) && alert.contacts)
+    if (alert.latitude && alert.longitude && alert.contacts)
     {
         if (self.alerts == nil) {
             self.alerts = [[NSMutableArray alloc] init];
@@ -103,7 +121,7 @@ static SessionManager *sharedSession;
 
 - (void)removeAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion
 {
-    if (CLLocationCoordinate2DIsValid(alert.coordinate) && alert.contacts)
+    if (alert.latitude && alert.longitude && alert.contacts)
     {
         if (self.alerts == nil) {
             self.alerts = [[NSMutableArray alloc] init];
@@ -138,10 +156,10 @@ static SessionManager *sharedSession;
         completion(YES, @"Success");
     } else {
         completion(NO, @"Unable to save alert");
-    }
+  }
 }
 
--(void)loadAlertsWithCompletion:(OTSimpleCompletionBlock)completion
+-(void)loadAlertsWithCompletion:(OTCompletionBlock)completion
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectoryPath = [paths objectAtIndex:0];
@@ -155,18 +173,107 @@ static SessionManager *sharedSession;
             self.alerts = [[NSMutableArray alloc] initWithArray:[savedData objectForKey:@"alerts"]];
             
             if (completion) {
-                completion(YES, @"Success");
+                completion(YES, @"Success", self.alerts);
             }
         } else {
             if (completion) {
-                completion(NO, @"Unable to load alerts");
+                completion(NO, @"Could not load any alerts", nil);
             }
         }
     }
     
     if (completion) {
-        completion(NO, @"Unable to load alerts");
+        completion(NO, @"Unable to load alerts", nil);
     }
+}
+
+- (void)sendTextWithContent:(NSString *)content number:(NSString *)number completion:(OTCompletionBlock)completion {
+    
+    NSURL *url = [NSURL URLWithString:@"http://textbelt.com/text"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30.0];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+
+    NSDictionary *postDict = @{@"number": number ?: @"",
+                               @"message": content ?: @""};
+    
+    NSError *jsonError = nil;
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:postDict options:0 error:&jsonError];
+    
+    [request setHTTPBody:postData];
+    
+    [self sendRequest:request completion:^(BOOL success, NSString *errorMessage, id resultObject) {
+        
+        if (success) {
+            
+            if (completion) {
+                completion(YES, errorMessage, resultObject);
+            }
+        } else {
+            if (completion) {
+                completion(NO, errorMessage, nil);
+            }
+        }
+    }];
+}
+
+- (void)sendRequest:(NSURLRequest *)request completion:(OTCompletionBlock)completion
+{
+    double startTime = [[NSDate date] timeIntervalSince1970];
+    
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSLog(@"%@ returned in %f seconds.", request.URL.absoluteString.lastPathComponent, [[NSDate date] timeIntervalSince1970] - startTime);
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        
+        if (!error) {
+            NSError *jsonError;
+            __block NSDictionary *APIResult = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (httpResponse.statusCode < 200 || httpResponse.statusCode > 299) {
+                    if (completion) {
+                        
+                        completion(NO,!jsonError ? (APIResult[@"message"] ? APIResult[@"message"] : @"The server was unable to complete your request.") : @"The server was unable to complete your request.", APIResult);
+                    }
+                    
+                    return;
+                }
+                
+                if (!jsonError) {
+                    if ([APIResult isKindOfClass:[NSArray class]]) {
+                        APIResult = [(NSArray *)APIResult firstObject];
+                    }
+                    
+                    if ([APIResult[@"status"] intValue] != 0) {
+                        if (completion) {
+                            completion(NO, (APIResult[@"message"] ? APIResult[@"message"] : @"The server returned an invalid response. Please try again later."), APIResult);
+                        }
+                        
+                        return;
+                    }
+                    
+                    if (completion) {
+                        completion(YES, nil, APIResult);
+                    }
+                }
+                else {
+                    if (completion) {
+                        completion(NO, [NSString stringWithFormat:@"The server returned an invalid response. Please try again later. %@", jsonError.localizedDescription], nil);
+                    }
+                }
+                
+            });
+        } else {
+            if (completion) {
+                completion(NO, [NSString stringWithFormat:@"There was an error connecting to the server. Please check your Internet connection."], nil);
+            }
+        }
+        
+    }] resume];
+    
 }
 
 @end

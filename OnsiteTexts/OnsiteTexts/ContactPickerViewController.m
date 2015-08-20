@@ -13,6 +13,7 @@
 #import <APAddressBook/APAddressBook.h>
 #import "APContact.h"
 #import "APPhoneWithLabel.h"
+#import "Contact.h"
 
 @interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -129,15 +130,17 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
-    APContact *contact = [self.contacts objectAtIndex:indexPath.row];
-    
+    //APContact *contact = [self.contacts objectAtIndex:indexPath.row];
+    Contact *contact = [self.contacts objectAtIndex:indexPath.row];
+
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
     
     NSMutableString *phoneNumbers = [[NSMutableString alloc] init];
-    for (APPhoneWithLabel *numLabel in contact.phonesWithLabels) {
-        [phoneNumbers appendString:numLabel.phone];
+    for (NSString *phoneLabel in contact.phoneNumberLabels) {
+        [phoneNumbers appendString:phoneLabel];
         
-        if (![numLabel isEqual:contact.phonesWithLabels.lastObject])
+        NSString *lastLabel = contact.phoneNumberLabels.lastObject;
+        if (![phoneLabel isEqual:lastLabel])
         {
             [phoneNumbers appendString:@", "];
         }

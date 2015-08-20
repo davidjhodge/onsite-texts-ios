@@ -27,6 +27,7 @@
 		70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7797A1B7BFB1B0036DD52 /* Alert.m */; };
 		70A779801B7BFB950036DD52 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7797F1B7BFB950036DD52 /* SessionManager.m */; };
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
+		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		70A7797F1B7BFB950036DD52 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 		70A779811B7C47EC0036DD52 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
 		70A779821B7C47EC0036DD52 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
+		70A7798D1B7ECFD60036DD52 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		70A7798E1B7ECFD60036DD52 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 			children = (
 				70A779791B7BFB1B0036DD52 /* Alert.h */,
 				70A7797A1B7BFB1B0036DD52 /* Alert.m */,
+				70A7798D1B7ECFD60036DD52 /* Contact.h */,
+				70A7798E1B7ECFD60036DD52 /* Contact.m */,
 				70A779811B7C47EC0036DD52 /* MapAnnotation.h */,
 				70A779821B7C47EC0036DD52 /* MapAnnotation.m */,
 			);
@@ -420,6 +425,7 @@
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,
+				70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
 				70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */,
 				70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */,

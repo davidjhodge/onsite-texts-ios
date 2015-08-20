@@ -18,11 +18,13 @@
 @property (nonatomic, strong) NSString *address;
 
 /**
- *  The latitude and longitude coordinate of the location.
+ *  The latitude coordinate of the location.
  */
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-
 @property (nonatomic) CLLocationDegrees latitude;
+
+/**
+ *  The longitude coordinate of the location.
+ */
 @property (nonatomic) CLLocationDegrees longitude;
 
 /**

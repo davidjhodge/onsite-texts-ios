@@ -25,17 +25,25 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.address forKey:@"address"];
-    [aCoder encodeDouble:self.coordinate.latitude forKey:@"latitude"];
-    [aCoder encodeDouble:self.coordinate.latitude forKey:@"longitude"];
+    [aCoder encodeDouble:self.latitude forKey:@"latitude"];
+    [aCoder encodeDouble:self.latitude forKey:@"longitude"];
     [aCoder encodeObject:self.contacts forKey:@"contacts"];
 }
 
-/*
-property (nonatomic, strong) NSString *address;
- 
+- (id)copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    if (copy)
+    {
+        // Copy NSObject subclasses
+        [copy setAddress:[self.address copyWithZone:zone]];
+        [copy setLatitude:self.latitude];
+        [copy setLongitude:self.longitude];
+        [copy setContacts:[self.contacts copyWithZone:zone]];
+    }
+    
+    return copy;
+}
 
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-
-@property (nonatomic, strong) NSMutableArray *contacts;
-*/
 @end

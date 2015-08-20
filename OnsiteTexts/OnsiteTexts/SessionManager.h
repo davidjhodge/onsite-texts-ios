@@ -24,6 +24,8 @@ typedef void (^OTSimpleCompletionBlock)(BOOL success, NSString *errorMessage);
 - (void)removeAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
 
 -(void)saveAlertsWithCompletion:(OTSimpleCompletionBlock)completion;
--(void)loadAlertsWithCompletion:(OTSimpleCompletionBlock)completion;
+-(void)loadAlertsWithCompletion:(OTCompletionBlock)completion;
+
+- (void)sendTextWithContent:(NSString *)content number:(NSString *)number completion:(OTCompletionBlock)completion;
 
 @end
