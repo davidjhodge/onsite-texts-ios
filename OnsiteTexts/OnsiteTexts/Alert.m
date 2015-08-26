@@ -17,6 +17,7 @@
         self.latitude = [decoder decodeDoubleForKey:@"latitude"];
         self.longitude = [decoder decodeDoubleForKey:@"longitude"];
         self.contacts = [decoder decodeObjectForKey:@"contacts"];
+        self.geofenceRegion = [decoder decodeObjectForKey:@"geofenceRegion"];
     }
     
     return self;
@@ -28,6 +29,7 @@
     [aCoder encodeDouble:self.latitude forKey:@"latitude"];
     [aCoder encodeDouble:self.latitude forKey:@"longitude"];
     [aCoder encodeObject:self.contacts forKey:@"contacts"];
+    [aCoder encodeObject:self.geofenceRegion forKey:@"geofenceRegion"];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -41,6 +43,7 @@
         [copy setLatitude:self.latitude];
         [copy setLongitude:self.longitude];
         [copy setContacts:[self.contacts copyWithZone:zone]];
+        [copy setGeofenceRegion:[self.geofenceRegion copyWithZone:zone]];
     }
     
     return copy;

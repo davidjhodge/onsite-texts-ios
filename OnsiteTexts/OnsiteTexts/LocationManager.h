@@ -13,6 +13,7 @@
 @interface LocationManager : NSObject <CLLocationManagerDelegate>
 
 + (instancetype)sharedManager;
+- (CLRegion *)dictionaryToRegion:(NSDictionary *)dictionary;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 

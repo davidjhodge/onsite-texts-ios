@@ -7,6 +7,7 @@
 //
 
 #import "SessionManager.h"
+#import "LocationManager.h"
 
 #import "APAddressBook/APAddressBook.h"
 #import "APContact.h"
@@ -40,10 +41,15 @@ static SessionManager *sharedSession;
     self = [super init];
     
     if (self) {
-
+        [LocationManager sharedManager];
     }
     
     return self;
+}
+
+- (NSMutableArray *)alerts
+{
+    return self.alerts;
 }
 
 /**

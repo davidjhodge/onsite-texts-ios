@@ -28,8 +28,8 @@
 		70A779801B7BFB950036DD52 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7797F1B7BFB950036DD52 /* SessionManager.m */; };
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
 		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
-		70A779961B864C1D0036DD52 /* RegionMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779951B864C1D0036DD52 /* RegionMonitoring.m */; };
 		70A779991B864DD50036DD52 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779981B864DD50036DD52 /* LocationManager.m */; };
+		70A7799C1B87A2310036DD52 /* gcTestLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 70A7799B1B87A2310036DD52 /* gcTestLocation.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,10 +82,9 @@
 		70A779821B7C47EC0036DD52 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 		70A7798D1B7ECFD60036DD52 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		70A7798E1B7ECFD60036DD52 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
-		70A779941B864C1D0036DD52 /* RegionMonitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionMonitoring.h; sourceTree = "<group>"; };
-		70A779951B864C1D0036DD52 /* RegionMonitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionMonitoring.m; sourceTree = "<group>"; };
 		70A779971B864DD50036DD52 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		70A779981B864DD50036DD52 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		70A7799B1B87A2310036DD52 /* gcTestLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = gcTestLocation.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +142,6 @@
 				70A779351B7B91670036DD52 /* AppDelegate.m */,
 				70A7793A1B7B91670036DD52 /* Main.storyboard */,
 				70A7793D1B7B91670036DD52 /* Images.xcassets */,
-				70A779931B864C020036DD52 /* Helper Classes */,
 				70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */,
 				70A7799A1B864DDE0036DD52 /* LocationManager */,
 				70A779631B7B95290036DD52 /* App Styles */,
@@ -157,6 +155,7 @@
 		70A779301B7B91670036DD52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				70A7799B1B87A2310036DD52 /* gcTestLocation.gpx */,
 				70A779311B7B91670036DD52 /* Info.plist */,
 				70A779321B7B91670036DD52 /* main.m */,
 				70A779661B7B97CF0036DD52 /* PrefixHeader.pch */,
@@ -282,15 +281,6 @@
 			name = "Session Manager / Data Layer";
 			sourceTree = "<group>";
 		};
-		70A779931B864C020036DD52 /* Helper Classes */ = {
-			isa = PBXGroup;
-			children = (
-				70A779941B864C1D0036DD52 /* RegionMonitoring.h */,
-				70A779951B864C1D0036DD52 /* RegionMonitoring.m */,
-			);
-			name = "Helper Classes";
-			sourceTree = "<group>";
-		};
 		70A7799A1B864DDE0036DD52 /* LocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +349,11 @@
 				TargetAttributes = {
 					70A7792C1B7B91670036DD52 = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					70A779451B7B91670036DD52 = {
 						CreatedOnToolsVersion = 6.4;
@@ -392,6 +387,7 @@
 			files = (
 				70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */,
 				70A779411B7B91670036DD52 /* LaunchScreen.xib in Resources */,
+				70A7799C1B87A2310036DD52 /* gcTestLocation.gpx in Resources */,
 				70A779701B7B996F0036DD52 /* OpenSans-Bold.ttf in Resources */,
 				70A779711B7B996F0036DD52 /* OpenSans-Light.ttf in Resources */,
 				70A779721B7B996F0036DD52 /* OpenSans-Regular.ttf in Resources */,
@@ -448,7 +444,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
-				70A779961B864C1D0036DD52 /* RegionMonitoring.m in Sources */,
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,

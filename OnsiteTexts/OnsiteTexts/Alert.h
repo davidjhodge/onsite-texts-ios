@@ -32,4 +32,9 @@
  */
 @property (nonatomic, strong) NSMutableArray *contacts;
 
+/**
+ *  The geofence region that will trigger the alert.
+ */
+@property (nonatomic, strong) CLCircularRegion *geofenceRegion;
+
 @end

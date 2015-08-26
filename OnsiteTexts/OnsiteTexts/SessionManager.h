@@ -17,6 +17,7 @@ typedef void (^OTSimpleCompletionBlock)(BOOL success, NSString *errorMessage);
 @interface SessionManager : NSObject
 
 +(instancetype)sharedSession;
+- (NSMutableArray *)alerts;
 
 - (void)getContactsFromAddressBookWithCompletion:(OTCompletionBlock)completion;
 
