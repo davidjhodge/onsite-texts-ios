@@ -10,6 +10,7 @@
 #import "SessionManager.h"
 
 #import "Alert.h"
+#import "Alert+Geofence.h"
 
 static LocationManager *sharedManager;
 
@@ -47,10 +48,10 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
         
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.delegate = self;
-        _locationManager.distanceFilter = 100.0;
+        _locationManager.distanceFilter = 50.0;
         _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         
-        //Load default tracking configs
+        [self promptLocationAuthIfNeeded];
     }
     
     return self;
@@ -60,6 +61,7 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
 
 - (void)startMonitoringLocationForRegion:(CLCircularRegion *)region
 {
+    //Location Permission
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)
     {
         [self.locationManager startUpdatingLocation];
@@ -102,7 +104,22 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
 
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
 {
-    //Send Message
+    NSMutableArray *triggeredAlerts = [[NSMutableArray alloc] init];
+    
+    if ([region isKindOfClass:[CLCircularRegion class]])
+    {
+        CLCircularRegion *circularRegion = (CLCircularRegion *)region;
+        triggeredAlerts = [Alert alertsFromRegion:circularRegion];
+    }
+    
+    if (triggeredAlerts.count <= 0)
+    {
+        return;
+    }
+    else
+    {
+        [[SessionManager sharedSession] sendTextsForAlerts:triggeredAlerts];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
@@ -122,6 +139,7 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    NSLog(@"Location Updated");
     if (locations && locations.count && !didBeganRegionMonitoring)
     {
         didBeganRegionMonitoring = YES;

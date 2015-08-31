@@ -28,5 +28,6 @@ typedef void (^OTSimpleCompletionBlock)(BOOL success, NSString *errorMessage);
 -(void)loadAlertsWithCompletion:(OTCompletionBlock)completion;
 
 - (void)sendTextWithContent:(NSString *)content number:(NSString *)number completion:(OTCompletionBlock)completion;
+- (void)sendTextsForAlerts:(NSMutableArray *)alerts;
 
 @end

@@ -36,6 +36,7 @@
 @property (nonatomic) BOOL isFirstUserUpdate;
 
 @property (nonatomic, strong) Alert *createdAlert;
+@property (nonatomic, strong) NSString *address;
 
 @end
 
@@ -88,9 +89,9 @@
     [self.mapView removeAnnotations:self.mapView.annotations];
     
     _currentSelectedLocation = currentSelectedLocation;
-    if (self.currentSelectedLocation != nil)
+    if (_currentSelectedLocation != nil)
     {
-        if (self.mapView.userLocation.coordinate.longitude == self.currentSelectedLocation.coordinate.longitude && self.mapView.userLocation.coordinate.latitude == self.currentSelectedLocation.coordinate.latitude) {
+        if (self.mapView.userLocation.coordinate.longitude == _currentSelectedLocation.coordinate.longitude && self.mapView.userLocation.coordinate.latitude == _currentSelectedLocation.coordinate.latitude) {
             self.navigationItem.rightBarButtonItem.enabled = YES;
             return;
         }
@@ -104,7 +105,7 @@
             annotation.title = @"Locating...";
             
             //Needs to be Geocoded
-            [self.geocoder reverseGeocodeLocation:self.currentSelectedLocation completionHandler:^(NSArray *placemarks, NSError *error)
+            [self.geocoder reverseGeocodeLocation:_currentSelectedLocation completionHandler:^(NSArray *placemarks, NSError *error)
              {
                  if (error)
                  {
@@ -128,7 +129,7 @@
                          if (street && city && state)
                          {
                              NSString *address = [NSString stringWithFormat:@"%@, %@ %@", street, city, state];
-                             self.createdAlert.address = address;
+                             self.address = address;
                              annotation.subtitle = address;
                          } else {
                              annotation.title = errorMessage;
@@ -189,13 +190,20 @@
 
 - (void)selectCurrentLocation
 {
-    if (self.currentSelectedLocation != nil)
+    if (_currentSelectedLocation != nil)
     {
         self.createdAlert = [[Alert alloc] init];
         
         CLLocationCoordinate2D coordinate = self.currentSelectedLocation.coordinate;
         self.createdAlert.latitude = coordinate.latitude;
         self.createdAlert.longitude = coordinate.longitude;
+        
+        if (!self.address)
+        {
+            self.createdAlert.address = [NSString stringWithFormat:@"%f, %f", self.currentSelectedLocation.coordinate.latitude, self.currentSelectedLocation.coordinate.longitude];
+        } else {
+            self.createdAlert.address = self.address;
+        }
     }
 }
 
@@ -400,7 +408,7 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     self.userLocation = userLocation;
-    self.currentSelectedLocation = self.userLocation.location;
+    //self.currentSelectedLocation = self.userLocation.location;
     
     if (!self.isFirstUserUpdate)
     {

@@ -47,10 +47,15 @@ static SessionManager *sharedSession;
     return self;
 }
 
-//- (NSMutableArray *)alerts
-//{
-//    return self.alerts;
-//}
+- (NSMutableArray *)alerts
+{
+    if (!_alerts)
+    {
+        _alerts = [[NSMutableArray alloc] init];
+    }
+    
+    return _alerts;
+}
 
 /**
  *  Loads contacts from the user's address book with a first name, last name, phone numbers, and phone number labels.
@@ -226,6 +231,39 @@ static SessionManager *sharedSession;
             }
         }
     }];
+}
+
+- (void)sendTextsForAlerts:(NSMutableArray *)alerts
+{
+    if (alerts == nil || alerts.count == 0)
+    {
+        return;
+    }
+    
+    for (int i = 0; i < alerts.count; i++)
+    {
+        if ([[alerts objectAtIndex:i] isKindOfClass:[Alert class]])
+        {
+            Alert *alert = alerts[i];
+            
+            for (Contact *contact in alert.contacts)
+            {
+                NSString *content = [NSString stringWithFormat:@"David has reached %@", alert.address];
+                NSString *phoneNumber = contact.phoneNumbers[0];
+                
+                if (phoneNumber)
+                {
+                    [[SessionManager sharedSession] sendTextWithContent:content number:phoneNumber completion:^(BOOL success, NSString *errorMessage, id resultObject) {
+                        
+                        if (!success)
+                        {
+                            NSLog(@"Error: %@", errorMessage);
+                        }
+                    }];
+                }
+            }
+        }
+    }
 }
 
 - (void)sendRequest:(NSURLRequest *)request completion:(OTCompletionBlock)completion

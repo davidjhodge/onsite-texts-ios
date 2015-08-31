@@ -120,11 +120,10 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 - (void)createNewAlert:(id)sender
 {
     //Add New
-    
-    //TEMP BAD
-    if ([self.tableView numberOfRowsInSection:0] >= 20)
+    if ([[[SessionManager sharedSession] alerts] count] >= 20)
     {
-        //Show Alert
+        [[[UIAlertView alloc] initWithTitle:@"20 is the maximum number of alerts that you can have." message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+        
         NSLog(@"Max number of geofences.");
     } else
     {
@@ -136,10 +135,8 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 {
     if ([notification.name isEqualToString:kAddNewAlertNotification])
     {
-        [self.tableView reloadData];
+        //[self.tableView reloadData];
     }
-    
-    NSLog(@"Notification Received: %@", notification.name);
 }
 
 #pragma mark - UITableView Data Source
@@ -160,13 +157,11 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     
     Alert *alert = [self.alerts objectAtIndex:indexPath.row];
     
-    cell.addressLabel.text = [NSString stringWithFormat:@"%f, %f", alert.latitude, alert.longitude];//alert.address;
+    cell.addressLabel.text = alert.address;
     
     Contact *currentContact = alert.contacts[0]; //Only shows first contact.
     cell.contactsLabel.text = [NSString stringWithFormat:@"%@ %@", currentContact.firstName, currentContact.lastName];
-    
-    [cell.contactsLabel sizeToFit];
-    
+        
     return cell;
 }
 

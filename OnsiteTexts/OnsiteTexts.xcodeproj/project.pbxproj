@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6F0F334E228C80FF5642D731 /* libPods-OnsiteTexts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515D611679C6818ED9E558D1 /* libPods-OnsiteTexts.a */; };
+		705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */; };
+		705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */; };
 		70A779331B7B91670036DD52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779321B7B91670036DD52 /* main.m */; };
 		70A779361B7B91670036DD52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779351B7B91670036DD52 /* AppDelegate.m */; };
 		70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A7793A1B7B91670036DD52 /* Main.storyboard */; };
@@ -46,6 +48,10 @@
 		4EF171FF95E2CF3C036D52B8 /* Pods-OnsiteTexts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnsiteTexts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnsiteTexts/Pods-OnsiteTexts.debug.xcconfig"; sourceTree = "<group>"; };
 		515D611679C6818ED9E558D1 /* libPods-OnsiteTexts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnsiteTexts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59EC43A2297C934DE849211F /* Pods-OnsiteTexts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnsiteTexts.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnsiteTexts/Pods-OnsiteTexts.release.xcconfig"; sourceTree = "<group>"; };
+		705D1DFB1B94F6B1003CE2E9 /* Alert+Geofence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Geofence.h"; sourceTree = "<group>"; };
+		705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Geofence.m"; sourceTree = "<group>"; };
+		705D1DFE1B94F943003CE2E9 /* CLCircularRegion+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLCircularRegion+Comparison.h"; sourceTree = "<group>"; };
+		705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLCircularRegion+Comparison.m"; sourceTree = "<group>"; };
 		70A7792D1B7B91670036DD52 /* OnsiteTexts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnsiteTexts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A779311B7B91670036DD52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70A779321B7B91670036DD52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,11 +121,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		705D1DFA1B8F7592003CE2E9 /* New Group */ = {
+		705D1DFA1B8F7592003CE2E9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				705D1DFB1B94F6B1003CE2E9 /* Alert+Geofence.h */,
+				705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */,
+				705D1E011B94FB7A003CE2E9 /* CLCircularRegion+Comparison */,
 			);
-			name = "New Group";
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		705D1E011B94FB7A003CE2E9 /* CLCircularRegion+Comparison */ = {
+			isa = PBXGroup;
+			children = (
+				705D1DFE1B94F943003CE2E9 /* CLCircularRegion+Comparison.h */,
+				705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */,
+			);
+			name = "CLCircularRegion+Comparison";
 			sourceTree = "<group>";
 		};
 		70A779241B7B91670036DD52 = {
@@ -293,7 +311,7 @@
 			children = (
 				70A779971B864DD50036DD52 /* LocationManager.h */,
 				70A779981B864DD50036DD52 /* LocationManager.m */,
-				705D1DFA1B8F7592003CE2E9 /* New Group */,
+				705D1DFA1B8F7592003CE2E9 /* Categories */,
 			);
 			name = LocationManager;
 			sourceTree = "<group>";
@@ -451,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */,
 				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
@@ -463,6 +482,7 @@
 				70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */,
 				70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */,
 				70A779771B7BF7DD0036DD52 /* AlertCell.m in Sources */,
+				705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */,
 				70A7796A1B7B98ED0036DD52 /* UIFont+AppStyles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

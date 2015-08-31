@@ -22,8 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We're using your location to help you pick a location near you.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We&apos;re using your location to help you pick a location near you.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Light.ttf</string>

@@ -44,7 +44,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-xM-w38">
                                                     <rect key="frame" x="15" y="35" width="537" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="18" id="cR3-k9-UzY"/>
+                                                        <constraint firstAttribute="height" constant="18" id="OC9-pk-YDe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,7 +58,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="qLR-lB-RSY" secondAttribute="trailing" constant="15" id="k3J-lI-Xj6"/>
                                                 <constraint firstItem="qLR-lB-RSY" firstAttribute="top" secondItem="7D8-Lm-SbC" secondAttribute="top" constant="10" id="kY8-eb-9tu"/>
                                                 <constraint firstAttribute="trailing" secondItem="AOt-xM-w38" secondAttribute="trailing" constant="15" id="mfM-Ge-dmV"/>
-                                                <constraint firstAttribute="bottom" secondItem="AOt-xM-w38" secondAttribute="bottom" constant="10" id="rG0-RW-UuR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
