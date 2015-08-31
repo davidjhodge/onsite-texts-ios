@@ -47,10 +47,10 @@ static SessionManager *sharedSession;
     return self;
 }
 
-- (NSMutableArray *)alerts
-{
-    return self.alerts;
-}
+//- (NSMutableArray *)alerts
+//{
+//    return self.alerts;
+//}
 
 /**
  *  Loads contacts from the user's address book with a first name, last name, phone numbers, and phone number labels.
@@ -114,6 +114,12 @@ static SessionManager *sharedSession;
         if (self.alerts == nil) {
             self.alerts = [[NSMutableArray alloc] init];
         }
+        
+        //Create geofence
+        alert.geofenceRegion = [[LocationManager sharedManager] regionWithLatitude:alert.latitude longitude:alert.longitude];
+        
+        [[LocationManager sharedManager] startMonitoringLocationForRegion:alert.geofenceRegion];
+        
         [self.alerts addObject:alert];
         [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
             if (success) {
@@ -129,8 +135,7 @@ static SessionManager *sharedSession;
 {
     if (alert.latitude && alert.longitude && alert.contacts)
     {
-        if (self.alerts == nil) {
-            self.alerts = [[NSMutableArray alloc] init];
+        [[LocationManager sharedManager] stopMonitoringLocationForRegion:alert.geofenceRegion];
         
         [self.alerts removeObject:alert];
         [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
@@ -140,7 +145,6 @@ static SessionManager *sharedSession;
                 completion(success, errorMessage);
             }
         }];
-    }
     }
 }
 

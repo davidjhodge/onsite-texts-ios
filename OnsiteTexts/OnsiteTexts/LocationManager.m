@@ -15,6 +15,8 @@ static LocationManager *sharedManager;
 
 static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeofence";
 
+#define GEOFENCE_RADIUS 200.0
+
 @interface LocationManager() {
     BOOL shouldBeginTrackingAfterUserAllows;
     BOOL didBeganRegionMonitoring;
@@ -56,21 +58,31 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
 
 #pragma mark - Location Manager Control
 
-- (void)startMonitoringLocation
+- (void)startMonitoringLocationForRegion:(CLCircularRegion *)region
 {
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways)
     {
         [self.locationManager startUpdatingLocation];
-        [self.locationManager startMonitoringSignificantLocationChanges];
-        [self.locationManager setPausesLocationUpdatesAutomatically:YES];
+        [self.locationManager startMonitoringForRegion:region];
     } else {
         shouldBeginTrackingAfterUserAllows = YES;
         [self promptLocationAuthIfNeeded];
     }
 }
 
-- (void)stopMonitoringLocation
+- (void)stopMonitoringLocationForRegion:(CLCircularRegion *)geofenceRegion
 {
+    for (CLRegion *currentRegion in [[self.locationManager monitoredRegions] copy])
+    {
+        if ([currentRegion isKindOfClass:[CLCircularRegion class]])
+        {
+            if (currentRegion.identifier == geofenceRegion.identifier)
+            {
+                [self.locationManager stopMonitoringForRegion:geofenceRegion];
+            }
+        }
+    }
+
     [self.locationManager stopUpdatingLocation];
     [self.locationManager stopMonitoringSignificantLocationChanges];
 }
@@ -187,14 +199,13 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
 
 #pragma mark - Region Monitoring
 
-- (CLRegion *)dictionaryToRegion:(NSDictionary *)dictionary
+- (CLCircularRegion *)regionWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude
 {
-    NSString *identifier = dictionary[@"identifier"];
-    CLLocationDegrees latitude = [dictionary[@"latitude"] doubleValue];
-    CLLocationDegrees longitude = [dictionary[@"longitude"] doubleValue];
+    NSString *identifier = [[NSUUID UUID] UUIDString];
     CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
-    CLLocationDistance regionRadius = [dictionary[@"radius"] doubleValue];
     
+    CLLocationDistance regionRadius = GEOFENCE_RADIUS; //200m
+
     if (regionRadius > [LocationManager sharedManager].locationManager.maximumRegionMonitoringDistance)
     {
         regionRadius = [LocationManager sharedManager].locationManager.maximumRegionMonitoringDistance;

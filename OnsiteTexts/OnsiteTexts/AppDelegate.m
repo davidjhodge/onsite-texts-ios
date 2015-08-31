@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SessionManager.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +28,8 @@
                                                            //NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:20.0]
                                                            }];
     [[UITableViewCell appearance] setTintColor:[UIColor PrimaryAppColor]];
+    
+    [SessionManager sharedSession];
     
     return YES;
 }

@@ -104,9 +104,14 @@
 - (void)done:(id)sender
 {
     if (self.createdAlert != nil) {
-        self.createdAlert.contacts = self.contacts;
+        self.createdAlert.contacts = self.selectedContacts;
         [[SessionManager sharedSession] addNewAlert: self.createdAlert completion:^(BOOL success, NSString *errorMessage) {
             
+            if (success) {
+                NSLog(@"%@", errorMessage);
+            } else {
+                NSLog(@"%@", errorMessage);
+            }
         }];
     }
 
@@ -130,7 +135,6 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
-    //APContact *contact = [self.contacts objectAtIndex:indexPath.row];
     Contact *contact = [self.contacts objectAtIndex:indexPath.row];
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];

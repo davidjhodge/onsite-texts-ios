@@ -115,6 +115,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		705D1DFA1B8F7592003CE2E9 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		70A779241B7B91670036DD52 = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +293,7 @@
 			children = (
 				70A779971B864DD50036DD52 /* LocationManager.h */,
 				70A779981B864DD50036DD52 /* LocationManager.m */,
+				705D1DFA1B8F7592003CE2E9 /* New Group */,
 			);
 			name = LocationManager;
 			sourceTree = "<group>";

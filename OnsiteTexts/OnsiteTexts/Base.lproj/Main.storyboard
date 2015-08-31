@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlertCell" rowHeight="60" id="k4e-DW-kAI" customClass="AlertCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlertCell" rowHeight="64" id="k4e-DW-kAI" customClass="AlertCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4e-DW-kAI" id="7D8-Lm-SbC">
@@ -42,14 +42,17 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-xM-w38">
-                                                    <rect key="frame" x="15" y="30" width="537" height="20"/>
+                                                    <rect key="frame" x="15" y="35" width="537" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="cR3-k9-UzY"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="AOt-xM-w38" firstAttribute="top" secondItem="qLR-lB-RSY" secondAttribute="bottom" constant="-1" id="1Us-Kh-SWA"/>
+                                                <constraint firstItem="AOt-xM-w38" firstAttribute="top" secondItem="qLR-lB-RSY" secondAttribute="bottom" constant="4" id="1Us-Kh-SWA"/>
                                                 <constraint firstItem="qLR-lB-RSY" firstAttribute="leading" secondItem="7D8-Lm-SbC" secondAttribute="leading" constant="15" id="h6z-wk-P3S"/>
                                                 <constraint firstItem="AOt-xM-w38" firstAttribute="leading" secondItem="7D8-Lm-SbC" secondAttribute="leading" constant="15" id="hkT-jA-uOS"/>
                                                 <constraint firstAttribute="trailing" secondItem="qLR-lB-RSY" secondAttribute="trailing" constant="15" id="k3J-lI-Xj6"/>

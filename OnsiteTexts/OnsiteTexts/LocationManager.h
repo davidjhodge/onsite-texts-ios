@@ -13,7 +13,10 @@
 @interface LocationManager : NSObject <CLLocationManagerDelegate>
 
 + (instancetype)sharedManager;
-- (CLRegion *)dictionaryToRegion:(NSDictionary *)dictionary;
+- (CLCircularRegion *)regionWithLatitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude;
+
+- (void)startMonitoringLocationForRegion:(CLCircularRegion *)region;
+- (void)stopMonitoringLocationForRegion:(CLCircularRegion *)region;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 

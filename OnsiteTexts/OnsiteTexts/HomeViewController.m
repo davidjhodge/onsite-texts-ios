@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "AlertCell.h"
 #import "Alert.h"
+#import "Contact.h"
 #import "SessionManager.h"
 
 #import "DZNEmptyDataSet/UIScrollView+EmptyDataSet.h"
@@ -46,8 +47,7 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     //TEMP
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Send Text" style:UIBarButtonItemStylePlain target:self action:@selector(sendText:)];
     
-    //[self reloadAlerts];
-    [self.tableView reloadData];
+    [self reloadAlerts];
 }
 
 - (void)viewDidLayoutSubviews
@@ -56,6 +56,11 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     
     [self.view bringSubviewToFront:self.spinny];
     self.spinny.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.tableView.bounds) - 10);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +83,11 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
             
+                if (resultObject == nil)
+                {
+                    self.alerts = [[NSMutableArray alloc] init];
+                }
+                
                 self.alerts = resultObject;
                 [self.tableView reloadData];
 
@@ -110,7 +120,16 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 - (void)createNewAlert:(id)sender
 {
     //Add New
-    [self performSegueWithIdentifier:@"HomeShowLocationPicker" sender:self];
+    
+    //TEMP BAD
+    if ([self.tableView numberOfRowsInSection:0] >= 20)
+    {
+        //Show Alert
+        NSLog(@"Max number of geofences.");
+    } else
+    {
+        [self performSegueWithIdentifier:@"HomeShowLocationPicker" sender:self];
+    }
 }
 
 - (void)insertAlert:(NSNotification *)notification
@@ -141,8 +160,12 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     
     Alert *alert = [self.alerts objectAtIndex:indexPath.row];
     
-    cell.addressLabel.text = alert.address;
-    cell.contactsLabel.text = alert.contacts[0]; //Only shows first contact.
+    cell.addressLabel.text = [NSString stringWithFormat:@"%f, %f", alert.latitude, alert.longitude];//alert.address;
+    
+    Contact *currentContact = alert.contacts[0]; //Only shows first contact.
+    cell.contactsLabel.text = [NSString stringWithFormat:@"%@ %@", currentContact.firstName, currentContact.lastName];
+    
+    [cell.contactsLabel sizeToFit];
     
     return cell;
 }
@@ -156,8 +179,13 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [self.alerts removeObjectAtIndex:indexPath.row];
-        [self.tableView reloadData];
+        Alert *deletedAlert = [self.alerts objectAtIndex:indexPath.row];
+
+        [[SessionManager sharedSession] removeAlert:deletedAlert completion:^(BOOL success, NSString *errorMessage)
+        {
+            [self.alerts removeObject:deletedAlert];
+            [self.tableView reloadData];
+        }];
     }
 }
 
