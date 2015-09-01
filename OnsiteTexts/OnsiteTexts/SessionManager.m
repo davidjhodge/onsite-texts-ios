@@ -248,7 +248,7 @@ static SessionManager *sharedSession;
             
             for (Contact *contact in alert.contacts)
             {
-                NSString *content = [NSString stringWithFormat:@"David has reached %@", alert.address];
+                NSString *content = [NSString stringWithFormat:@"David has arrived at %@", alert.address];
                 NSString *phoneNumber = contact.phoneNumbers[0];
                 
                 if (phoneNumber)

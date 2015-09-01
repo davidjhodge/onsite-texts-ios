@@ -44,9 +44,6 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertAlert:) name:kAddNewAlertNotification object:nil];
     
-    //TEMP
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Send Text" style:UIBarButtonItemStylePlain target:self action:@selector(sendText:)];
-    
     [self reloadAlerts];
 }
 
@@ -103,20 +100,6 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     }];
 }
 
-- (void)sendText:(id)sender
-{
-//    NSString *name = @"David";
-//    NSString *destination = @"1400 Pennsylvania Avenue";
-//    [[SessionManager sharedSession] sendTextWithContent:[NSString stringWithFormat:@"%@ has reached %@", name, destination] number:@"8038078965" completion:^(BOOL success, NSString *errorMessage, id resultObject) {
-//        
-//        if (success) {
-//            NSLog(@"%@", resultObject);
-//        } else {
-//            NSLog(@"Error: %@", errorMessage);
-//        }
-//    }];
-}
-
 - (void)createNewAlert:(id)sender
 {
     //Add New
@@ -135,7 +118,7 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 {
     if ([notification.name isEqualToString:kAddNewAlertNotification])
     {
-        //[self.tableView reloadData];
+        [self reloadAlerts];
     }
 }
 
