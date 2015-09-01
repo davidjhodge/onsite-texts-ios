@@ -30,4 +30,7 @@ typedef void (^OTSimpleCompletionBlock)(BOOL success, NSString *errorMessage);
 - (void)sendTextWithContent:(NSString *)content number:(NSString *)number completion:(OTCompletionBlock)completion;
 - (void)sendTextsForAlerts:(NSMutableArray *)alerts;
 
+- (void)setName:(NSString *)name;
+- (NSString *)name;
+
 @end

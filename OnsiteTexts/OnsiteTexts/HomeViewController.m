@@ -210,20 +210,6 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     return [[NSAttributedString alloc] initWithString:self.errorMessage attributes:attributes];
 }
 
-//- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-//{
-////    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0],
-////                                 NSForegroundColorAttributeName: [UIColor PrimaryAppColor]
-////                                 };
-////    return [[NSAttributedString alloc] initWithString:@"Refresh" attributes:attributes];
-//    return nil;
-//}
-//
-//- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
-//{
-//    [self reloadAlerts];
-//}
-
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
     return -10.0;

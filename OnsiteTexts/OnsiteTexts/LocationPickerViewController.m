@@ -8,9 +8,12 @@
 
 #import "LocationPickerViewController.h"
 #import "NSTimer+Blocks.h"
+#import "NSString+Address.h"
 #import "MapAnnotation.h"
 #import "SessionManager.h"
 #import "ContactPickerViewController.h"
+
+
 
 @import MapKit;
 
@@ -97,6 +100,7 @@
         if (self.locationTitle)
         {
             annotation.title = self.locationTitle;
+            self.address = self.locationTitle;
         } else {
             annotation.title = @"Locating...";
             
@@ -122,9 +126,9 @@
                          NSString *city = currentPlacemark.locality;
                          NSString *state = currentPlacemark.administrativeArea;
                          
-                         if (street && city && state)
+                         if (street || city || state)
                          {
-                             NSString *address = [NSString stringWithFormat:@"%@, %@ %@", street, city, state];
+                             NSString *address = [NSString addressStringFromStreet:street city:city state:state];
                              self.address = address;
                              annotation.subtitle = address;
                          } else {
@@ -413,21 +417,6 @@
         self.currentSelectedLocation = [[CLLocation alloc] initWithLatitude:view.annotation.coordinate.latitude longitude:view.annotation.coordinate.longitude];
     }
 }
-
-//- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-//{
-//    id<MKAnnotation> currentAnnotation = [mapView.annotations lastObject];
-//    if (currentAnnotation != nil)
-//    {
-//        if ([self.mapView viewForAnnotation:currentAnnotation] == nil)
-//        {
-//            [mapView selectAnnotation:currentAnnotation animated:YES];
-//        } else
-//        {
-//            [mapView deselectAnnotation:currentAnnotation animated:YES];
-//        }
-//    }
-//}
 
 #pragma mark - UIGestureRecognizer
 

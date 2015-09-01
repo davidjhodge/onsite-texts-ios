@@ -78,15 +78,12 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
     {
         if ([currentRegion isKindOfClass:[CLCircularRegion class]])
         {
-            if (currentRegion.identifier == geofenceRegion.identifier)
+            if ([currentRegion.identifier isEqualToString:geofenceRegion.identifier])
             {
                 [self.locationManager stopMonitoringForRegion:geofenceRegion];
             }
         }
     }
-
-    [self.locationManager stopUpdatingLocation];
-    [self.locationManager stopMonitoringSignificantLocationChanges];
 }
 
 - (void)removeAllGeofences

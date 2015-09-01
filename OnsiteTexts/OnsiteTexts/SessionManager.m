@@ -19,10 +19,13 @@ static SessionManager *sharedSession;
 @interface SessionManager()
 
 @property (nonatomic, strong) NSMutableArray *alerts;
+@property (nonatomic, strong) NSString *name;
 
 @end
 
 @implementation SessionManager
+
+@synthesize name = _name;
 
 +(instancetype)sharedSession
 {
@@ -55,6 +58,27 @@ static SessionManager *sharedSession;
     }
     
     return _alerts;
+}
+
+- (void)setName:(NSString *)name
+{
+    _name = name;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)name
+{
+    if (_name == nil)
+    {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"])
+        {
+            _name = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
+        }
+    }
+    
+    return _name;
 }
 
 /**
@@ -235,6 +259,10 @@ static SessionManager *sharedSession;
 
 - (void)sendTextsForAlerts:(NSMutableArray *)alerts
 {
+    //TEMP
+    NSLog(@"Texts sent");
+    return;
+    
     if (alerts == nil || alerts.count == 0)
     {
         return;
@@ -248,7 +276,7 @@ static SessionManager *sharedSession;
             
             for (Contact *contact in alert.contacts)
             {
-                NSString *content = [NSString stringWithFormat:@"David has arrived at %@", alert.address];
+                NSString *content = [NSString stringWithFormat:@"%@ has arrived at %@", self.name, alert.address];
                 NSString *phoneNumber = contact.phoneNumbers[0];
                 
                 if (phoneNumber)
