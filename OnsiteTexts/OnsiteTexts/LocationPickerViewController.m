@@ -14,7 +14,7 @@
 
 @import MapKit;
 
-@interface LocationPickerViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
+@interface LocationPickerViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic) IBOutlet MKMapView *mapView;
@@ -24,7 +24,6 @@
 
 @property (nonatomic, strong) NSMutableArray *searchResults;
 @property (nonatomic, strong) CLGeocoder *geocoder;
-@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @property (nonatomic, strong) NSTimer *placemarkUpdateTimer;
 @property (nonatomic, strong) MKUserLocation *userLocation;
@@ -66,12 +65,9 @@
     longPress.delegate = self;
     [self.mapView addGestureRecognizer:longPress];
     
-    [self checkLocationPermissions];
-    
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    
     self.geocoder = [[CLGeocoder alloc] init];
+    
+    self.mapView.showsUserLocation = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -159,16 +155,6 @@
     } else {
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
-}
-
-- (void)checkLocationPermissions
-{
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined)
-    {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-
-    self.mapView.showsUserLocation = YES;
 }
 
 #pragma mark - Actions
@@ -458,16 +444,6 @@
         self.currentSelectedLocation = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     }
 }
-
-#pragma mark - CLLocationManager Delegate
-
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        self.mapView.showsUserLocation = YES;
-    }
-}
-
 
 #pragma mark - Navigation
 

@@ -10,6 +10,8 @@
 		6F0F334E228C80FF5642D731 /* libPods-OnsiteTexts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515D611679C6818ED9E558D1 /* libPods-OnsiteTexts.a */; };
 		705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */; };
 		705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */; };
+		708810711B9608DF00EF743F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810701B9608DF00EF743F /* DetailViewController.m */; };
+		708810761B9618C100EF743F /* NSString+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810751B9618C100EF743F /* NSString+Array.m */; };
 		70A779331B7B91670036DD52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779321B7B91670036DD52 /* main.m */; };
 		70A779361B7B91670036DD52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779351B7B91670036DD52 /* AppDelegate.m */; };
 		70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A7793A1B7B91670036DD52 /* Main.storyboard */; };
@@ -52,6 +54,10 @@
 		705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Geofence.m"; sourceTree = "<group>"; };
 		705D1DFE1B94F943003CE2E9 /* CLCircularRegion+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLCircularRegion+Comparison.h"; sourceTree = "<group>"; };
 		705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLCircularRegion+Comparison.m"; sourceTree = "<group>"; };
+		7088106F1B9608DF00EF743F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		708810701B9608DF00EF743F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		708810741B9618C100EF743F /* NSString+Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Array.h"; sourceTree = "<group>"; };
+		708810751B9618C100EF743F /* NSString+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Array.m"; sourceTree = "<group>"; };
 		70A7792D1B7B91670036DD52 /* OnsiteTexts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnsiteTexts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A779311B7B91670036DD52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70A779321B7B91670036DD52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,9 +130,9 @@
 		705D1DFA1B8F7592003CE2E9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				705D1DFB1B94F6B1003CE2E9 /* Alert+Geofence.h */,
-				705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */,
+				708810731B96189600EF743F /* Alert+Geofence */,
 				705D1E011B94FB7A003CE2E9 /* CLCircularRegion+Comparison */,
+				708810771B9619FD00EF743F /* NSString+Array */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -138,6 +144,33 @@
 				705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */,
 			);
 			name = "CLCircularRegion+Comparison";
+			sourceTree = "<group>";
+		};
+		708810721B9608E400EF743F /* Detail View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7088106F1B9608DF00EF743F /* DetailViewController.h */,
+				708810701B9608DF00EF743F /* DetailViewController.m */,
+			);
+			name = "Detail View Controller";
+			sourceTree = "<group>";
+		};
+		708810731B96189600EF743F /* Alert+Geofence */ = {
+			isa = PBXGroup;
+			children = (
+				705D1DFB1B94F6B1003CE2E9 /* Alert+Geofence.h */,
+				705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */,
+			);
+			name = "Alert+Geofence";
+			sourceTree = "<group>";
+		};
+		708810771B9619FD00EF743F /* NSString+Array */ = {
+			isa = PBXGroup;
+			children = (
+				708810741B9618C100EF743F /* NSString+Array.h */,
+				708810751B9618C100EF743F /* NSString+Array.m */,
+			);
+			name = "NSString+Array";
 			sourceTree = "<group>";
 		};
 		70A779241B7B91670036DD52 = {
@@ -169,6 +202,7 @@
 				70A7793D1B7B91670036DD52 /* Images.xcassets */,
 				70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */,
 				70A7799A1B864DDE0036DD52 /* LocationManager */,
+				705D1DFA1B8F7592003CE2E9 /* Categories */,
 				70A779631B7B95290036DD52 /* App Styles */,
 				70A7795F1B7B935F0036DD52 /* View Controllers */,
 				70A7793F1B7B91670036DD52 /* LaunchScreen.xib */,
@@ -209,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				70A779641B7B95390036DD52 /* Home */,
+				708810721B9608E400EF743F /* Detail View Controller */,
 				70A779651B7B954A0036DD52 /* Create New */,
 			);
 			name = "View Controllers";
@@ -311,7 +346,6 @@
 			children = (
 				70A779971B864DD50036DD52 /* LocationManager.h */,
 				70A779981B864DD50036DD52 /* LocationManager.m */,
-				705D1DFA1B8F7592003CE2E9 /* Categories */,
 			);
 			name = LocationManager;
 			sourceTree = "<group>";
@@ -473,8 +507,10 @@
 				705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */,
 				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
+				708810711B9608DF00EF743F /* DetailViewController.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,
+				708810761B9618C100EF743F /* NSString+Array.m in Sources */,
 				70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
 				70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */,

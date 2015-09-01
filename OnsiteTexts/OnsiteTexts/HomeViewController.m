@@ -7,7 +7,9 @@
 //
 
 #import "HomeViewController.h"
+#import "DetailViewController.h"
 #import "AlertCell.h"
+
 #import "Alert.h"
 #import "Contact.h"
 #import "SessionManager.h"
@@ -34,6 +36,7 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     self.title = @"OnsiteTexts";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewAlert:)];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
     
     self.tableView.tableFooterView = [UIView new];
     self.tableView.emptyDataSetDelegate = self;
@@ -178,6 +181,8 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self performSegueWithIdentifier:@"HomeShowDetail" sender:self];
 }
 
 - (void)dealloc
@@ -205,18 +210,19 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     return [[NSAttributedString alloc] initWithString:self.errorMessage attributes:attributes];
 }
 
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0],
-                                 NSForegroundColorAttributeName: [UIColor PrimaryAppColor]
-                                 };
-    return [[NSAttributedString alloc] initWithString:@"Refresh" attributes:attributes];
-}
-
-- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
-{
-    [self reloadAlerts];
-}
+//- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+//{
+////    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0],
+////                                 NSForegroundColorAttributeName: [UIColor PrimaryAppColor]
+////                                 };
+////    return [[NSAttributedString alloc] initWithString:@"Refresh" attributes:attributes];
+//    return nil;
+//}
+//
+//- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
+//{
+//    [self reloadAlerts];
+//}
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
@@ -228,14 +234,26 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     return self.tableView.backgroundColor;
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"HomeShowDetail"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Alert *alert = [self.alerts objectAtIndex:indexPath.row];
+        
+        if ([segue.destinationViewController isKindOfClass:[DetailViewController class]])
+        {
+            DetailViewController *dvc = (DetailViewController *)segue.destinationViewController; //Cast is repetitive
+            dvc.alert = alert;
+        }
+    }
+    
+    
 }
-*/
+
 
 @end
