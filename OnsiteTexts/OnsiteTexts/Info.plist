@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We&apos;re using your location to help you pick a location near you.</string>
+	<string>We're using your location to help you pick a location near you.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Light.ttf</string>
@@ -35,8 +35,6 @@
 	<array>
 		<string>location</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

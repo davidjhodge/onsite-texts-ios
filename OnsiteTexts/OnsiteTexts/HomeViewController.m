@@ -36,6 +36,10 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewAlert:)];
     
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+    
+    self.errorMessage = @"";
     
     self.spinny = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     self.spinny.color = [UIColor grayColor];
@@ -80,9 +84,10 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
             
-                if (resultObject == nil)
+                if (resultObject == nil || resultObject.count == 0)
                 {
                     self.alerts = [[NSMutableArray alloc] init];
+                    self.errorMessage = @"Looks like you don't have any geo-alerts! You must be a secret agent.";
                 }
                 
                 self.alerts = resultObject;
@@ -91,6 +96,7 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
             });
         } else {
             NSLog(@"Error: %@", errorMessage);
+            self.errorMessage = @"Whoops! We had some trouble loading your alerts.";
         }
         
         if ([self.spinny isAnimating]) {

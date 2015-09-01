@@ -179,7 +179,7 @@ static SessionManager *sharedSession;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectoryPath = [paths objectAtIndex:0];
     NSString *filePath = [documentsDirectoryPath stringByAppendingPathComponent:@"appData"];
-    
+        
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSData *data = [NSData dataWithContentsOfFile:filePath];
         NSDictionary *savedData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -192,13 +192,13 @@ static SessionManager *sharedSession;
             }
         } else {
             if (completion) {
-                completion(NO, @"Could not load any alerts", nil);
+                completion(YES, @"Looks like you don't have any geo-alerts! You must be a secret agent.", nil);
             }
         }
-    }
-    
-    if (completion) {
-        completion(NO, @"Unable to load alerts", nil);
+    } else {
+        if (completion) {
+            completion(NO, @"Looks like you don't have any geo-alerts! You must be a secret agent.", nil);
+        }
     }
 }
 

@@ -33,6 +33,7 @@
     self.title = @"Who to Notify";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     self.tableView.tableFooterView = [UIView new];
     
@@ -90,6 +91,8 @@
     [self.selectedContacts addObject:contact];
     
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    if (self.selectedContacts.count > 0) self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 - (void)deselectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
@@ -97,6 +100,8 @@
     [self.selectedContacts removeObject:contact];
     
     cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    if (self.selectedContacts.count == 0) self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 #pragma mark - Actions

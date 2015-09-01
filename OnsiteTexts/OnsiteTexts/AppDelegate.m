@@ -27,6 +27,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
                                                            //NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:20.0]
                                                            }];
+    [[UINavigationBar appearance] setTranslucent:NO];
     [[UITableViewCell appearance] setTintColor:[UIColor PrimaryAppColor]];
     
     [SessionManager sharedSession];

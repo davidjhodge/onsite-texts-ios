@@ -12,7 +12,7 @@
 
 + (UIColor *)PrimaryAppColor
 {
-    return [UIColor colorWithRed:13.0/255.0 green:178.0/255.0 blue:191.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:31.0/255.0 green:190.0/255.0 blue:203.0/255.0 alpha:1.0];
 }
 
 @end
