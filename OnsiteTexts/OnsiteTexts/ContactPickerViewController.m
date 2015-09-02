@@ -43,8 +43,8 @@
     self.searchController.searchBar.delegate = self;
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.searchController.searchBar.tintColor = [UIColor PrimaryAppColor];
-    self.searchController.searchBar.translucent = NO;
     self.searchController.searchBar.placeholder = @"Enter a name";
+    self.searchController.searchBar.translucent = NO;
     self.definesPresentationContext = YES;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
@@ -131,20 +131,26 @@
 
 - (void)done:(id)sender
 {
+    self.searchController.active = NO;
+    
     if (self.createdAlert != nil) {
         self.createdAlert.contacts = self.selectedContacts;
         [[SessionManager sharedSession] addNewAlert: self.createdAlert completion:^(BOOL success, NSString *errorMessage) {
             
             if (success) {
                 NSLog(@"%@", errorMessage);
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kAlertsDidChangeNotification object:nil];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                });
+
             } else {
                 NSLog(@"%@", errorMessage);
             }
         }];
     }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAlertsDidChangeNotification object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableView Data Source
@@ -180,7 +186,21 @@
     
     Contact *contact = [contactArray objectAtIndex:indexPath.row];
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
+    if (!contact.firstName && !contact.lastName)
+    {
+        cell.textLabel.text = @"Unknown";
+    } else {
+        
+        if (!contact.firstName) {
+            contact.firstName = @"";
+        }
+        
+        if (!contact.lastName) {
+            contact.lastName = @"";
+        }
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
+    }
     
     NSMutableString *phoneNumbers = [[NSMutableString alloc] init];
     for (NSString *phoneLabel in contact.phoneNumberLabels) {
@@ -206,7 +226,17 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    APContact *contact = [self.contacts objectAtIndex:indexPath.row];
+    NSArray *contactArray = [[NSMutableArray alloc] init];
+    
+    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+        contactArray = self.contacts;
+    } else {
+        //Search Results
+        contactArray = self.searchResults;
+    }
+    
+    APContact *contact = [contactArray objectAtIndex:indexPath.row];
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     if ([self.selectedContacts containsObject:contact])
@@ -242,6 +272,13 @@
     NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[firstNamePredicate]];
     
     self.searchResults = [self.contacts filteredArrayUsingPredicate:predicate];
+}
+
+#pragma mark - UISearchBar Delegate
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
 }
 
 /*

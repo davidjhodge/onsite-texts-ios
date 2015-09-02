@@ -218,7 +218,7 @@
     if (!self.tableViewContainer.hidden)
     {
         [UIView animateWithDuration:0.1 animations:^{
-            self.tableView.alpha = 0.0;
+            self.tableViewContainer.alpha = 0.0;
             
         } completion:^(BOOL finished) {
             

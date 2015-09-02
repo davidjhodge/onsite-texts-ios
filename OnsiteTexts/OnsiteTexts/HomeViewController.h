@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const kAlertsDidChangeNotification;
-
 @interface HomeViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *alerts;

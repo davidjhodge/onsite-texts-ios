@@ -14,6 +14,8 @@
 #import "APPhoneWithLabel.h"
 #import "Contact.h"
 
+NSString *const kAlertsDidChangeNotification = @"kAlertsDidChangeNotification";
+
 static SessionManager *sharedSession;
 
 @interface SessionManager()
@@ -115,8 +117,21 @@ static SessionManager *sharedSession;
             for (APContact *contact in [contacts mutableCopy]) {
                 
                 Contact *newContact = [[Contact alloc] init];
+                
+//                if (contact.firstName) {
+//                    newContact.firstName = contact.firstName;
+//                } else {
+//                    newContact.firstName = @"";
+//                }
+//                
+//                if (contact.lastName) {
+//                    newContact.lastName = contact.lastName;
+//                } else {
+//                    newContact.lastName = @"";
+//                }
                 newContact.firstName = contact.firstName;
                 newContact.lastName = contact.lastName;
+
                 newContact.phoneNumbers = contact.phones;
                 
                 for (APPhoneWithLabel *num in contact.phonesWithLabels)
@@ -259,10 +274,6 @@ static SessionManager *sharedSession;
 
 - (void)sendTextsForAlerts:(NSMutableArray *)alerts
 {
-    //TEMP
-    NSLog(@"Texts sent");
-    return;
-    
     if (alerts == nil || alerts.count == 0)
     {
         return;
@@ -291,6 +302,16 @@ static SessionManager *sharedSession;
                 }
             }
         }
+        
+        [self removeAlert:alerts[i] completion:^(BOOL success, NSString *errorMessage) {
+        
+            if (success) {
+                NSLog(@"%@", errorMessage);
+                [[NSNotificationCenter defaultCenter] postNotificationName:kAlertsDidChangeNotification object:nil];
+            } else {
+                NSLog(@"Error: %@", errorMessage);
+            }
+        }];
     }
 }
 

@@ -18,14 +18,14 @@
 
 #import "DZNEmptyDataSet/UIScrollView+EmptyDataSet.h"
 
-NSString *const kAlertsDidChangeNotification = @"kAlertsDidChangeNotification";
-
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) UIActivityIndicatorView *spinny;
 @property (nonatomic, strong) NSString *errorMessage;
+
+@property (nonatomic) NSInteger selectedRow;
 
 @end
 
@@ -188,6 +188,7 @@ NSString *const kAlertsDidChangeNotification = @"kAlertsDidChangeNotification";
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    self.selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"HomeShowDetail" sender:self];
 }
 
@@ -244,8 +245,7 @@ NSString *const kAlertsDidChangeNotification = @"kAlertsDidChangeNotification";
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"HomeShowDetail"])
     {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Alert *alert = [self.alerts objectAtIndex:indexPath.row];
+        Alert *alert = [self.alerts objectAtIndex:self.selectedRow];
         
         if ([segue.destinationViewController isKindOfClass:[DetailViewController class]])
         {

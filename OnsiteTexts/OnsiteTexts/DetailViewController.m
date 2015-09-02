@@ -14,7 +14,7 @@
 
 #import "SessionManager.h"
 
-@interface DetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -57,20 +57,26 @@
 
 - (void)showOptions:(id)sender
 {
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler: ^(UIAlertAction *action) {
-    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheet Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.destructiveButtonIndex)
+    {
         [[SessionManager sharedSession] removeAlert:self.alert completion:^(BOOL success, NSString *errorMessage) {
-        
+            
             if (success)
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kAlertsDidChangeNotification object:nil];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                    [self.navigationController popViewControllerAnimated:YES];
                 });
-
+                
             } else {
                 NSLog(@"Error: %@", errorMessage);
                 [self dismissViewControllerAnimated:YES completion:^{
@@ -78,13 +84,7 @@
                 }];
             }
         }];
-    }];
-    
-    [actionSheet addAction:cancelAction];
-    [actionSheet addAction:deleteAction];
-    
-    [self presentViewController:actionSheet animated:YES completion:nil];
-
+    }
 }
 
 #pragma mark - MKMapView Delegate

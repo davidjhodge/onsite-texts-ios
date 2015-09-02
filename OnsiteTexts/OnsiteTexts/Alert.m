@@ -27,7 +27,7 @@
 {
     [aCoder encodeObject:self.address forKey:@"address"];
     [aCoder encodeDouble:self.latitude forKey:@"latitude"];
-    [aCoder encodeDouble:self.latitude forKey:@"longitude"];
+    [aCoder encodeDouble:self.longitude forKey:@"longitude"];
     [aCoder encodeObject:self.contacts forKey:@"contacts"];
     [aCoder encodeObject:self.geofenceRegion forKey:@"geofenceRegion"];
 }
