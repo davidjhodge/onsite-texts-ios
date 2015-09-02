@@ -97,9 +97,7 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
     }
 }
 
-#pragma mark - Location Manager Delegate
-
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+- (void)userEnteredRegion:(CLRegion *)region
 {
     NSMutableArray *triggeredAlerts = [[NSMutableArray alloc] init];
     
@@ -119,6 +117,13 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
     }
 }
 
+#pragma mark - Location Manager Delegate
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+{
+    [self userEnteredRegion:region];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
 {
     NSLog(@"User exited the geofence region.");
@@ -126,12 +131,17 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
 
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region
 {
-    
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager requestStateForRegion:region];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
 {
     //if state is within geofence, you're already at the destination
+    if (state == CLRegionStateInside)
+    {
+        [self userEnteredRegion:region];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const kAddNewAlertNotification;
+extern NSString *const kAlertsDidChangeNotification;
 
 @interface HomeViewController : UIViewController
 

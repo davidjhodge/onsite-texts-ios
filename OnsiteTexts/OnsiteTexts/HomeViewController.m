@@ -14,9 +14,11 @@
 #import "Contact.h"
 #import "SessionManager.h"
 
+#import "NSString+Array.h"
+
 #import "DZNEmptyDataSet/UIScrollView+EmptyDataSet.h"
 
-NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
+NSString *const kAlertsDidChangeNotification = @"kAlertsDidChangeNotification";
 
 @interface HomeViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource>
 
@@ -49,7 +51,7 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     self.spinny.hidesWhenStopped = YES;
     [self.view addSubview:self.spinny];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(insertAlert:) name:kAddNewAlertNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertsChanged:) name:kAlertsDidChangeNotification object:nil];
     
     [self reloadAlerts];
 }
@@ -123,9 +125,9 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     }
 }
 
-- (void)insertAlert:(NSNotification *)notification
+- (void)alertsChanged:(NSNotification *)notification
 {
-    if ([notification.name isEqualToString:kAddNewAlertNotification])
+    if ([notification.name isEqualToString:kAlertsDidChangeNotification])
     {
         [self reloadAlerts];
     }
@@ -151,8 +153,13 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     
     cell.addressLabel.text = alert.address;
     
-    Contact *currentContact = alert.contacts[0]; //Only shows first contact.
-    cell.contactsLabel.text = [NSString stringWithFormat:@"%@ %@", currentContact.firstName, currentContact.lastName];
+    NSMutableArray *contactNames = [[NSMutableArray alloc] init];
+    for (Contact *contact in alert.contacts)
+    {
+        NSString *name = [NSString stringWithFormat:@"%@", contact.firstName];
+        [contactNames addObject:name];
+    }
+    cell.contactsLabel.text = [NSString stringFromComponents:contactNames];
         
     return cell;
 }
@@ -170,8 +177,7 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
 
         [[SessionManager sharedSession] removeAlert:deletedAlert completion:^(BOOL success, NSString *errorMessage)
         {
-            [self.alerts removeObject:deletedAlert];
-            [self.tableView reloadData];
+            [self reloadAlerts];
         }];
     }
 }
@@ -183,6 +189,16 @@ NSString *const kAddNewAlertNotification = @"kAddNewAlertNotification";
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [self performSegueWithIdentifier:@"HomeShowDetail" sender:self];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 0.1;
+    }
+    
+    return 0.0;
 }
 
 - (void)dealloc

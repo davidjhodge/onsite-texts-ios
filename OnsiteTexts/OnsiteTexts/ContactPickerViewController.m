@@ -15,12 +15,15 @@
 #import "APPhoneWithLabel.h"
 #import "Contact.h"
 
-@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *contacts;
 @property (nonatomic, strong) NSMutableArray *selectedContacts;
+
+@property (strong, nonatomic) UISearchController *searchController;
+@property (nonatomic, strong) NSArray *searchResults;
 
 @end
 
@@ -35,11 +38,31 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchController.searchBar.tintColor = [UIColor PrimaryAppColor];
+    self.searchController.searchBar.translucent = NO;
+    self.searchController.searchBar.placeholder = @"Enter a name";
+    self.definesPresentationContext = YES;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar;
     self.tableView.tableFooterView = [UIView new];
     
     self.selectedContacts = [[NSMutableArray alloc] init];
     
     [self reloadContacts];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,7 +143,7 @@
         }];
     }
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAddNewAlertNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAlertsDidChangeNotification object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -133,14 +156,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.contacts.count;
+    if (!self.searchController.active || self.searchController.searchBar.text.length == 0)
+    {
+        return self.contacts.count;
+    } else {
+        //Search Results
+        return self.searchResults.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
-    Contact *contact = [self.contacts objectAtIndex:indexPath.row];
+    NSArray *contactArray = [[NSMutableArray alloc] init];
+    
+    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+        contactArray = self.contacts;
+    } else {
+        //Search Results
+        contactArray = self.searchResults;
+    }
+    
+    Contact *contact = [contactArray objectAtIndex:indexPath.row];
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
     
@@ -179,6 +217,31 @@
         //Select Contact
         [self selectContact:contact fromCell:cell];
     }
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    CGRect searchBarFrame = self.searchController.searchBar.frame;
+    [self.tableView scrollRectToVisible:searchBarFrame animated:YES];
+    return nil;
+}
+
+#pragma mark - UISearchResultsUpdatingDelegate
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *searchString = searchController.searchBar.text;
+    [self filterContentForSearchText:searchString scope:nil];
+    [self.tableView reloadData];
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *firstNamePredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@", searchText];
+//    NSPredicate *lastNamePredicate = [NSPredicate predicateWithFormat:@"lastName contains[c] %@", searchText];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[firstNamePredicate]];
+    
+    self.searchResults = [self.contacts filteredArrayUsingPredicate:predicate];
 }
 
 /*

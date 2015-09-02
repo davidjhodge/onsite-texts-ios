@@ -315,7 +315,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ncw-ZY-VEA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ncw-ZY-VEA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -349,7 +349,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ncw-ZY-VEA" firstAttribute="top" secondItem="rpL-Px-Z97" secondAttribute="top" id="PHh-oh-fZU"/>
+                            <constraint firstItem="ncw-ZY-VEA" firstAttribute="top" secondItem="rpL-Px-Z97" secondAttribute="top" id="XQk-sS-fgf"/>
                             <constraint firstItem="KK9-mn-ikk" firstAttribute="top" secondItem="ncw-ZY-VEA" secondAttribute="bottom" id="XZp-uw-Oln"/>
                             <constraint firstItem="ncw-ZY-VEA" firstAttribute="leading" secondItem="rpL-Px-Z97" secondAttribute="leading" id="pt5-sI-UfP"/>
                             <constraint firstAttribute="trailing" secondItem="ncw-ZY-VEA" secondAttribute="trailing" id="uGB-gF-QYF"/>

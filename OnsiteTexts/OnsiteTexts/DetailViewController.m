@@ -10,6 +10,9 @@
 #import "MapAnnotation.h"
 #import "Contact.h"
 #import "NSString+Array.h"
+#import "HomeViewController.h"
+
+#import "SessionManager.h"
 
 @interface DetailViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -26,8 +29,8 @@
     // Do any additional setup after loading the view.
     
     self.title = @"Alert";
-
-    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 0.0)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"More.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showOptions:)];
 
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.alert.latitude, self.alert.longitude);
     MapAnnotation *annotation = [MapAnnotation locationWithCoordinate:coordinate];
@@ -48,6 +51,40 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Actions
+
+- (void)showOptions:(id)sender
+{
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler: ^(UIAlertAction *action) {
+    
+        [[SessionManager sharedSession] removeAlert:self.alert completion:^(BOOL success, NSString *errorMessage) {
+        
+            if (success)
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kAlertsDidChangeNotification object:nil];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                });
+
+            } else {
+                NSLog(@"Error: %@", errorMessage);
+                [self dismissViewControllerAnimated:YES completion:^{
+                    [[[UIAlertView alloc] initWithTitle:@"Darn! We couldn't delete this alert. Try again." message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                }];
+            }
+        }];
+    }];
+    
+    [actionSheet addAction:cancelAction];
+    [actionSheet addAction:deleteAction];
+    
+    [self presentViewController:actionSheet animated:YES completion:nil];
+
 }
 
 #pragma mark - MKMapView Delegate
@@ -98,6 +135,8 @@
     return cell;
 }
 
+#pragma mark - UITableView Delegate
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0)
@@ -106,6 +145,16 @@
     }
     
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 40.0;
+    }
+    
+    return 0.0;
 }
 
 /*
