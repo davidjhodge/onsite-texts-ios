@@ -8,6 +8,8 @@
 
 #import "AlertCell.h"
 
+const float SWITCH_VIEW_WIDTH = 75;
+
 @implementation AlertCell
 
 - (void)awakeFromNib {
@@ -27,7 +29,7 @@
     CGPoint location = [touch locationInView:self];
     
     //Prevents touch handling in switch region
-    if (location.x < self.bounds.size.width - 75)
+    if (location.x < self.bounds.size.width - SWITCH_VIEW_WIDTH)
     {
         [super touchesBegan:touches withEvent:event];
     }
