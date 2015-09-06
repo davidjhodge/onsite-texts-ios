@@ -118,17 +118,6 @@ static SessionManager *sharedSession;
                 
                 Contact *newContact = [[Contact alloc] init];
                 
-//                if (contact.firstName) {
-//                    newContact.firstName = contact.firstName;
-//                } else {
-//                    newContact.firstName = @"";
-//                }
-//                
-//                if (contact.lastName) {
-//                    newContact.lastName = contact.lastName;
-//                } else {
-//                    newContact.lastName = @"";
-//                }
                 newContact.firstName = contact.firstName;
                 newContact.lastName = contact.lastName;
 
@@ -161,15 +150,67 @@ static SessionManager *sharedSession;
         
         //Create geofence
         alert.geofenceRegion = [[LocationManager sharedManager] regionWithLatitude:alert.latitude longitude:alert.longitude];
+        alert.isActive = YES;
         
         [[LocationManager sharedManager] startMonitoringLocationForRegion:alert.geofenceRegion];
         
         [self.alerts addObject:alert];
         [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
             if (success) {
-                completion(success, errorMessage);
+                if (completion) {
+                    completion(success, errorMessage);
+                }
             } else {
-                completion(success , errorMessage);
+                if (completion) {
+                    completion(success, errorMessage);
+                }
+            }
+        }];
+    }
+}
+
+- (void)enableAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion
+{
+    if (alert.latitude && alert.longitude && alert.contacts)
+    {
+        [[LocationManager sharedManager] startMonitoringLocationForRegion:alert.geofenceRegion];
+        alert.isActive = YES;
+        
+        [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
+            
+            if (success) {
+                
+                if (success) {
+                    if (completion) {
+                        completion(success, errorMessage);
+                    }
+                }
+            } else {
+                if (completion) {
+                    completion(success, errorMessage);
+                }
+            }
+        }];
+    }
+}
+
+- (void)disableAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion
+{
+    if (alert.latitude && alert.longitude && alert.contacts)
+    {
+        [[LocationManager sharedManager] stopMonitoringLocationForRegion:alert.geofenceRegion];
+        alert.isActive = NO;
+        
+        [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
+           
+            if (success) {
+                if (completion) {
+                    completion(success, errorMessage);
+                }
+            } else {
+                if (completion) {
+                    completion(success, errorMessage);
+                }
             }
         }];
     }
@@ -184,9 +225,13 @@ static SessionManager *sharedSession;
         [self.alerts removeObject:alert];
         [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
             if (success) {
-                completion(success, errorMessage);
+                if (completion) {
+                    completion(success, errorMessage);
+                }
             } else {
-                completion(success, errorMessage);
+                if (completion) {
+                    completion(success, errorMessage);
+                }
             }
         }];
     }
@@ -279,6 +324,8 @@ static SessionManager *sharedSession;
         return;
     }
     
+    self.name = [self name];
+    
     for (int i = 0; i < alerts.count; i++)
     {
         if ([[alerts objectAtIndex:i] isKindOfClass:[Alert class]])
@@ -303,7 +350,7 @@ static SessionManager *sharedSession;
             }
         }
         
-        [self removeAlert:alerts[i] completion:^(BOOL success, NSString *errorMessage) {
+        [self disableAlert:alerts[i] completion:^(BOOL success, NSString *errorMessage) {
         
             if (success) {
                 NSLog(@"%@", errorMessage);

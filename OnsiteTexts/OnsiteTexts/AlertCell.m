@@ -20,4 +20,17 @@
     // Configure the view for the selected state
 }
 
+//Custom Touch
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = touches.anyObject;
+    CGPoint location = [touch locationInView:self];
+    
+    //Prevents touch handling in switch region
+    if (location.x < self.bounds.size.width - 75)
+    {
+        [super touchesBegan:touches withEvent:event];
+    }
+}
+
 @end

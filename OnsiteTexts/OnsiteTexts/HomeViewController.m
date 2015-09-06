@@ -160,7 +160,19 @@
         [contactNames addObject:name];
     }
     cell.contactsLabel.text = [NSString stringFromComponents:contactNames];
-        
+    
+    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+    switchView.tag = indexPath.row;
+    
+    if (alert.isActive ) {
+        [switchView setEnabled: YES];
+    } else {
+        [switchView setEnabled: NO];
+    }
+    
+    [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    cell.accessoryView = switchView;
+    
     return cell;
 }
 
@@ -205,6 +217,41 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UISwitch
+
+- (void)switchChanged:(id)sender
+{
+    if ([sender isKindOfClass:[UISwitch class]])
+    {
+        UISwitch *switchView = sender;
+        NSInteger index = switchView.tag;
+        
+        Alert *currentAlert = [self.alerts objectAtIndex:index];
+        
+        if (switchView.enabled)
+        {
+            [[SessionManager sharedSession] enableAlert:currentAlert completion:^(BOOL success, NSString *errorMessage) {
+                if (success) {
+                    NSLog(@"Alert enabled: %@", errorMessage);
+                } else
+                {
+                    NSLog(@"Enable Alert Error: %@", errorMessage);
+                }
+            }];
+        } else
+        {
+            [[SessionManager sharedSession] disableAlert:currentAlert completion:^(BOOL success, NSString *errorMessage) {
+                if (success) {
+                    NSLog(@"Alert disabled: %@", errorMessage);
+                } else
+                {
+                    NSLog(@"Disable Alert Error: %@", errorMessage);
+                }
+            }];
+        }
+    }
 }
 
 #pragma mark - DZNEmptyDataSet

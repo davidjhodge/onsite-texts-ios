@@ -37,4 +37,9 @@
  */
 @property (nonatomic, strong) CLCircularRegion *geofenceRegion;
 
+/**
+ *  Flag that represents the state of the alert (Active/Inactive).
+ */
+@property (nonatomic) BOOL isActive;
+
 @end

@@ -26,6 +26,9 @@ extern NSString *const kAlertsDidChangeNotification;
 - (void)addNewAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
 - (void)removeAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
 
+- (void)enableAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
+- (void)disableAlert:(Alert *)alert completion:(OTSimpleCompletionBlock)completion;
+
 -(void)saveAlertsWithCompletion:(OTSimpleCompletionBlock)completion;
 -(void)loadAlertsWithCompletion:(OTCompletionBlock)completion;
 
