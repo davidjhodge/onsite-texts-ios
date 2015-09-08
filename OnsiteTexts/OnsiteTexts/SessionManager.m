@@ -50,6 +50,8 @@ static SessionManager *sharedSession;
     
     if (self) {
         [LocationManager sharedManager];
+        
+        [self setName:nil];
     }
     
     return self;
@@ -69,8 +71,11 @@ static SessionManager *sharedSession;
 {
     _name = name;
     
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    if (name != nil && name.length > 0)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (NSString *)name

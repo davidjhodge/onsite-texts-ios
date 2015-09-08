@@ -15,4 +15,9 @@
  */
 + (UIColor *)PrimaryAppColor;
 
+/**
+ *  The color of a disabled button on the name entry screen.
+ */
++ (UIColor *)DisabledButtonColor;
+
 @end

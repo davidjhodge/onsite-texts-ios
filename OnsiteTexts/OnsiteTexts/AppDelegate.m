@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SessionManager.h"
+#import "AppStateTransitioner.h"
 
 @interface AppDelegate ()
 
@@ -30,7 +31,21 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UITableViewCell appearance] setTintColor:[UIColor PrimaryAppColor]];
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     [SessionManager sharedSession];
+    [NSUserDefaults standardUserDefaults];
+    
+    NSLog(@"NAME: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"name"]);
+    
+    if ([[SessionManager sharedSession] name] != nil && [[[SessionManager sharedSession] name] length] > 0)
+    {
+        [AppStateTransitioner transitionToMainAppAnimated:NO];
+    } else {
+        [AppStateTransitioner transitionToNameEntryAnimated:NO];
+    }
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

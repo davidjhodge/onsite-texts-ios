@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6F0F334E228C80FF5642D731 /* libPods-OnsiteTexts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 515D611679C6818ED9E558D1 /* libPods-OnsiteTexts.a */; };
+		704921E41B9E70DF0043823B /* AppStateTransitioner.m in Sources */ = {isa = PBXBuildFile; fileRef = 704921E31B9E70DF0043823B /* AppStateTransitioner.m */; };
+		704921E61B9E74280043823B /* NameEntry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 704921E51B9E74280043823B /* NameEntry.storyboard */; };
+		704921EC1B9E75510043823B /* NameEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704921EB1B9E75510043823B /* NameEntryViewController.m */; };
 		705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */; };
 		705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */; };
 		708810711B9608DF00EF743F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810701B9608DF00EF743F /* DetailViewController.m */; };
@@ -52,6 +55,11 @@
 		4EF171FF95E2CF3C036D52B8 /* Pods-OnsiteTexts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnsiteTexts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnsiteTexts/Pods-OnsiteTexts.debug.xcconfig"; sourceTree = "<group>"; };
 		515D611679C6818ED9E558D1 /* libPods-OnsiteTexts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnsiteTexts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59EC43A2297C934DE849211F /* Pods-OnsiteTexts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnsiteTexts.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnsiteTexts/Pods-OnsiteTexts.release.xcconfig"; sourceTree = "<group>"; };
+		704921E21B9E70DF0043823B /* AppStateTransitioner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppStateTransitioner.h; sourceTree = "<group>"; };
+		704921E31B9E70DF0043823B /* AppStateTransitioner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppStateTransitioner.m; sourceTree = "<group>"; };
+		704921E51B9E74280043823B /* NameEntry.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NameEntry.storyboard; sourceTree = "<group>"; };
+		704921EA1B9E75510043823B /* NameEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameEntryViewController.h; sourceTree = "<group>"; };
+		704921EB1B9E75510043823B /* NameEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameEntryViewController.m; sourceTree = "<group>"; };
 		705D1DFB1B94F6B1003CE2E9 /* Alert+Geofence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Geofence.h"; sourceTree = "<group>"; };
 		705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Geofence.m"; sourceTree = "<group>"; };
 		705D1DFE1B94F943003CE2E9 /* CLCircularRegion+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLCircularRegion+Comparison.h"; sourceTree = "<group>"; };
@@ -133,6 +141,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		704921ED1B9E75550043823B /* Name Entry */ = {
+			isa = PBXGroup;
+			children = (
+				704921EA1B9E75510043823B /* NameEntryViewController.h */,
+				704921EB1B9E75510043823B /* NameEntryViewController.m */,
+			);
+			name = "Name Entry";
+			sourceTree = "<group>";
+		};
+		704921EE1B9E79F20043823B /* AppStateTransitioner */ = {
+			isa = PBXGroup;
+			children = (
+				704921E21B9E70DF0043823B /* AppStateTransitioner.h */,
+				704921E31B9E70DF0043823B /* AppStateTransitioner.m */,
+			);
+			name = AppStateTransitioner;
+			sourceTree = "<group>";
+		};
 		705D1DFA1B8F7592003CE2E9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,13 +180,13 @@
 			name = "CLCircularRegion+Comparison";
 			sourceTree = "<group>";
 		};
-		708810721B9608E400EF743F /* Detail View Controller */ = {
+		708810721B9608E400EF743F /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				7088106F1B9608DF00EF743F /* DetailViewController.h */,
 				708810701B9608DF00EF743F /* DetailViewController.m */,
 			);
-			name = "Detail View Controller";
+			name = Detail;
 			sourceTree = "<group>";
 		};
 		708810731B96189600EF743F /* Alert+Geofence */ = {
@@ -225,7 +251,9 @@
 				70A779341B7B91670036DD52 /* AppDelegate.h */,
 				70A779351B7B91670036DD52 /* AppDelegate.m */,
 				70A7793A1B7B91670036DD52 /* Main.storyboard */,
+				704921E51B9E74280043823B /* NameEntry.storyboard */,
 				70A7793D1B7B91670036DD52 /* Images.xcassets */,
+				704921EE1B9E79F20043823B /* AppStateTransitioner */,
 				70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */,
 				70A7799A1B864DDE0036DD52 /* LocationManager */,
 				705D1DFA1B8F7592003CE2E9 /* Categories */,
@@ -268,8 +296,9 @@
 		70A7795F1B7B935F0036DD52 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				704921ED1B9E75550043823B /* Name Entry */,
 				70A779641B7B95390036DD52 /* Home */,
-				708810721B9608E400EF743F /* Detail View Controller */,
+				708810721B9608E400EF743F /* Detail */,
 				70A779651B7B954A0036DD52 /* Create New */,
 			);
 			name = "View Controllers";
@@ -473,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */,
+				704921E61B9E74280043823B /* NameEntry.storyboard in Resources */,
 				70A779411B7B91670036DD52 /* LaunchScreen.xib in Resources */,
 				70A7799C1B87A2310036DD52 /* gcTestLocation.gpx in Resources */,
 				70A779701B7B996F0036DD52 /* OpenSans-Bold.ttf in Resources */,
@@ -538,6 +568,7 @@
 				708810711B9608DF00EF743F /* DetailViewController.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,
+				704921EC1B9E75510043823B /* NameEntryViewController.m in Sources */,
 				708810761B9618C100EF743F /* NSString+Array.m in Sources */,
 				70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
@@ -547,6 +578,7 @@
 				70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */,
 				70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */,
 				70A779771B7BF7DD0036DD52 /* AlertCell.m in Sources */,
+				704921E41B9E70DF0043823B /* AppStateTransitioner.m in Sources */,
 				705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */,
 				70A7796A1B7B98ED0036DD52 /* UIFont+AppStyles.m in Sources */,
 			);
