@@ -140,7 +140,7 @@ static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeof
     //if state is within geofence, you're already at the destination
     if (state == CLRegionStateInside)
     {
-        [self userEnteredRegion:region];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUserAlreadyInsideAlertRegionNotification object:region];
     }
 }
 

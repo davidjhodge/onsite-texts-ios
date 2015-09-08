@@ -14,12 +14,15 @@
 typedef void (^OTCompletionBlock)(BOOL success, NSString *errorMessage, id resultObject);
 typedef void (^OTSimpleCompletionBlock)(BOOL success, NSString *errorMessage);
 
+extern NSString *const kUserAlreadyInsideAlertRegionNotification;
 extern NSString *const kAlertsDidChangeNotification;
 
 @interface SessionManager : NSObject
 
 +(instancetype)sharedSession;
 - (NSMutableArray *)alerts;
+
+- (void)forceRegionEntry:(CLRegion *)region;
 
 - (void)getContactsFromAddressBookWithCompletion:(OTCompletionBlock)completion;
 

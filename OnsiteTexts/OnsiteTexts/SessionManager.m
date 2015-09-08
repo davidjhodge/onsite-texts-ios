@@ -14,6 +14,9 @@
 #import "APPhoneWithLabel.h"
 #import "Contact.h"
 
+#import "Alert+Comparison.h"
+
+NSString *const kUserAlreadyInsideAlertRegionNotification = @"kUserAlreadyInsideAlertRegionNotification";
 NSString *const kAlertsDidChangeNotification = @"kAlertsDidChangeNotification";
 
 static SessionManager *sharedSession;
@@ -81,6 +84,11 @@ static SessionManager *sharedSession;
     }
     
     return _name;
+}
+
+- (void)forceRegionEntry:(CLRegion *)region
+{
+    [[LocationManager sharedManager] userEnteredRegion:region];
 }
 
 /**
@@ -174,7 +182,13 @@ static SessionManager *sharedSession;
     if (alert.latitude && alert.longitude && alert.contacts)
     {
         [[LocationManager sharedManager] startMonitoringLocationForRegion:alert.geofenceRegion];
-        alert.isActive = YES;
+        
+        //Gets reference to the correct alert in Session Manager's alerts
+        Alert *currentAlert = [alert getMatchingAlertfromArray:self.alerts];
+        
+        if (currentAlert == nil) return;
+        
+        currentAlert.isActive = YES;
         
         [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
             
@@ -199,8 +213,14 @@ static SessionManager *sharedSession;
     if (alert.latitude && alert.longitude && alert.contacts)
     {
         [[LocationManager sharedManager] stopMonitoringLocationForRegion:alert.geofenceRegion];
-        alert.isActive = NO;
+
+        //Gets reference to the correct alert in Session Manager's alerts
+        Alert *currentAlert = [alert getMatchingAlertfromArray:self.alerts];
         
+        if (currentAlert == nil) return;
+        
+        currentAlert.isActive = NO;
+
         [self saveAlertsWithCompletion:^(BOOL success, NSString *errorMessage) {
            
             if (success) {
@@ -339,7 +359,10 @@ static SessionManager *sharedSession;
                 
                 if (phoneNumber)
                 {
-                    [[SessionManager sharedSession] sendTextWithContent:content number:phoneNumber completion:^(BOOL success, NSString *errorMessage, id resultObject) {
+                    //Remove phone number formatting
+                    NSString *phoneNumString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
+                    
+                    [[SessionManager sharedSession] sendTextWithContent:content number:phoneNumString completion:^(BOOL success, NSString *errorMessage, id resultObject) {
                         
                         if (!success)
                         {

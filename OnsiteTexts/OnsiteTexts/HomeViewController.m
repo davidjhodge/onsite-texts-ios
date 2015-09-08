@@ -15,6 +15,7 @@
 #import "SessionManager.h"
 
 #import "NSString+Array.h"
+#import "UIAlertView+Blocks.h"
 
 #import "DZNEmptyDataSet/UIScrollView+EmptyDataSet.h"
 
@@ -52,6 +53,7 @@
     [self.view addSubview:self.spinny];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertsChanged:) name:kAlertsDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(confirmAlertActivation:) name:kUserAlreadyInsideAlertRegionNotification object:nil];
     
     [self reloadAlerts];
 }
@@ -92,7 +94,7 @@
                 if (resultObject == nil || resultObject.count == 0)
                 {
                     self.alerts = [[NSMutableArray alloc] init];
-                    self.errorMessage = @"Looks like you don't have any geo-alerts! You must be a secret agent.";
+                    self.errorMessage = @"Looks like you don't have any geotexts! Guess you're laying low for a while.";
                 }
                 
                 self.alerts = resultObject;
@@ -133,6 +135,23 @@
     }
 }
 
+- (void)confirmAlertActivation:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:kUserAlreadyInsideAlertRegionNotification])
+    {
+        [UIAlertView showWithTitle:@"You're already inside the region of this alert. Do you still want to send out the alert?" message:nil cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex != alertView.cancelButtonIndex)
+            {
+                if ([notification.object isKindOfClass:[CLCircularRegion class]])
+                {
+                    CLCircularRegion *region = notification.object;
+                    [[SessionManager sharedSession] forceRegionEntry:region];
+                }
+            }
+        }];
+    }
+}
+
 #pragma mark - UITableView Data Source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -162,12 +181,11 @@
     cell.contactsLabel.text = [NSString stringFromComponents:contactNames];
     
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-    switchView.tag = indexPath.row;
     
-    if (alert.isActive ) {
-        [switchView setEnabled: YES];
+    if (alert.isActive) {
+        [switchView setOn:YES];
     } else {
-        [switchView setEnabled: NO];
+        [switchView setOn:NO];
     }
     
     [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
@@ -226,11 +244,13 @@
     if ([sender isKindOfClass:[UISwitch class]])
     {
         UISwitch *switchView = sender;
-        NSInteger index = switchView.tag;
         
-        Alert *currentAlert = [self.alerts objectAtIndex:index];
+        AlertCell *containerCell = (AlertCell *)[sender superview];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:containerCell];
         
-        if (switchView.enabled)
+        Alert *currentAlert = [self.alerts objectAtIndex:indexPath.row];
+        
+        if (switchView.on)
         {
             [[SessionManager sharedSession] enableAlert:currentAlert completion:^(BOOL success, NSString *errorMessage) {
                 if (success) {
@@ -267,7 +287,7 @@
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14.0],
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0],
                                  NSForegroundColorAttributeName: [UIColor lightGrayColor]
                                  };
     

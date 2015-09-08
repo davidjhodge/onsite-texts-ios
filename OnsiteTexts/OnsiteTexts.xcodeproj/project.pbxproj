@@ -13,6 +13,7 @@
 		708810711B9608DF00EF743F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810701B9608DF00EF743F /* DetailViewController.m */; };
 		708810761B9618C100EF743F /* NSString+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810751B9618C100EF743F /* NSString+Array.m */; };
 		7088107A1B96498B00EF743F /* NSString+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810791B96498B00EF743F /* NSString+Address.m */; };
+		70A274141B9CC0FA00827BC0 /* Alert+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A274131B9CC0FA00827BC0 /* Alert+Comparison.m */; };
 		70A779331B7B91670036DD52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779321B7B91670036DD52 /* main.m */; };
 		70A779361B7B91670036DD52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779351B7B91670036DD52 /* AppDelegate.m */; };
 		70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70A7793A1B7B91670036DD52 /* Main.storyboard */; };
@@ -61,6 +62,8 @@
 		708810751B9618C100EF743F /* NSString+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Array.m"; sourceTree = "<group>"; };
 		708810781B96498B00EF743F /* NSString+Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Address.h"; sourceTree = "<group>"; };
 		708810791B96498B00EF743F /* NSString+Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Address.m"; sourceTree = "<group>"; };
+		70A274121B9CC0FA00827BC0 /* Alert+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Comparison.h"; sourceTree = "<group>"; };
+		70A274131B9CC0FA00827BC0 /* Alert+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Comparison.m"; sourceTree = "<group>"; };
 		70A7792D1B7B91670036DD52 /* OnsiteTexts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnsiteTexts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A779311B7B91670036DD52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70A779321B7B91670036DD52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				708810731B96189600EF743F /* Alert+Geofence */,
+				70A274151B9CC0FE00827BC0 /* Alert+Comparison */,
 				705D1E011B94FB7A003CE2E9 /* CLCircularRegion+Comparison */,
 				708810771B9619FD00EF743F /* NSString+Array */,
 				7088107B1B96498F00EF743F /* NSString+Address */,
@@ -184,6 +188,15 @@
 				708810791B96498B00EF743F /* NSString+Address.m */,
 			);
 			name = "NSString+Address";
+			sourceTree = "<group>";
+		};
+		70A274151B9CC0FE00827BC0 /* Alert+Comparison */ = {
+			isa = PBXGroup;
+			children = (
+				70A274121B9CC0FA00827BC0 /* Alert+Comparison.h */,
+				70A274131B9CC0FA00827BC0 /* Alert+Comparison.m */,
+			);
+			name = "Alert+Comparison";
 			sourceTree = "<group>";
 		};
 		70A779241B7B91670036DD52 = {
@@ -521,6 +534,7 @@
 				705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */,
 				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
+				70A274141B9CC0FA00827BC0 /* Alert+Comparison.m in Sources */,
 				708810711B9608DF00EF743F /* DetailViewController.m in Sources */,
 				70A779361B7B91670036DD52 /* AppDelegate.m in Sources */,
 				70A779331B7B91670036DD52 /* main.m in Sources */,

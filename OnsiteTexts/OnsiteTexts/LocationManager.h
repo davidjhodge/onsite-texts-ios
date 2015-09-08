@@ -18,6 +18,8 @@
 - (void)startMonitoringLocationForRegion:(CLCircularRegion *)region;
 - (void)stopMonitoringLocationForRegion:(CLCircularRegion *)region;
 
+- (void)userEnteredRegion:(CLRegion *)region;
+
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
