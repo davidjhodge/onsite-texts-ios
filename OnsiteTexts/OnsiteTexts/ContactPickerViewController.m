@@ -15,7 +15,9 @@
 #import "APPhoneWithLabel.h"
 #import "Contact.h"
 
-@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+#import "VPPDropDown.h"
+
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating, VPPDropDownDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -109,7 +111,7 @@
     }];
 }
 
-- (void)selectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
+- (void)selectContact:(Contact *)contact withNumber:(NSString *)phoneNumber fromCell:(UITableViewCell *)cell
 {
     [self.selectedContacts addObject:contact];
     
@@ -118,11 +120,20 @@
     if (self.selectedContacts.count > 0) self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
-- (void)deselectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
+- (void)deselectContact:(Contact *)contact withNumber:(NSString *)phoneNumber fromCell:(UITableViewCell *)cell
 {
-    [self.selectedContacts removeObject:contact];
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    if (contact.phoneNumbers.count <= 1)
+    {
+        [self.selectedContacts removeObject:contact];
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        if ([contact.phoneNumbers containsObject:phoneNumber])
+        {
+            [contact.phoneNumbers removeObject:phoneNumber];
+        }
+    }
+
     
     if (self.selectedContacts.count == 0) self.navigationItem.rightBarButtonItem.enabled = NO;
 }
@@ -162,17 +173,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSInteger rows = [VPPDropDown tableView:tableView numberOfExpandedRowsInSection:section];
+    
     if (!self.searchController.active || self.searchController.searchBar.text.length == 0)
     {
-        return self.contacts.count;
+        return self.contacts.count + rows;
     } else {
         //Search Results
-        return self.searchResults.count;
+        return self.searchResults.count + rows;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    //Create dropdown
+//    NSArray *elements = @[[[VPPDropDownElement alloc] initWithTitle:@"1" andObject:nil], [[VPPDropDownElement alloc] initWithTitle:@"2" andObject:nil]];
+    
+//    VPPDropDown *dropDown = [[VPPDropDown alloc] initWithTitle:nil type:VPPDropDownTypeCustom tableView:tableView indexPath:indexPath elements:elements delegate:self];
+
+    //Check for dropdown
+    if ([VPPDropDown tableView:tableView dropdownsContainIndexPath:indexPath])
+    {
+        return [VPPDropDown tableView:tableView cellForRowAtIndexPath:indexPath];
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
     NSArray *contactArray = [[NSMutableArray alloc] init];
@@ -185,36 +210,26 @@
     }
     
     Contact *contact = [contactArray objectAtIndex:indexPath.row];
-
+    
     if (!contact.firstName && !contact.lastName)
     {
         cell.textLabel.text = @"Unknown";
     } else {
         
-        if (!contact.firstName) {
-            contact.firstName = @"";
+        NSString *firstName = contact.firstName;
+        NSString *lastName = contact.lastName;
+        
+        if (!firstName) {
+            firstName = @"";
         }
         
-        if (!contact.lastName) {
-            contact.lastName = @"";
+        if (!lastName) {
+            lastName = @"";
         }
         
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     }
     
-    NSMutableString *phoneNumbers = [[NSMutableString alloc] init];
-    for (NSString *phoneLabel in contact.phoneNumberLabels) {
-        [phoneNumbers appendString:phoneLabel];
-        
-        NSString *lastLabel = contact.phoneNumberLabels.lastObject;
-        if (![phoneLabel isEqual:lastLabel])
-        {
-            [phoneNumbers appendString:@", "];
-        }
-    }
-    cell.detailTextLabel.text = phoneNumbers;
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
@@ -226,6 +241,54 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    //Check for dropdown
+    if ([VPPDropDown tableView:tableView dropdownsContainIndexPath:indexPath])
+    {
+        [VPPDropDown tableView:tableView didSelectRowAtIndexPath:indexPath];
+        return;
+    }
+    
+//    NSArray *contactArray = [[NSMutableArray alloc] init];
+//    
+//    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+//        contactArray = self.contacts;
+//    } else {
+//        //Search Results
+//        contactArray = self.searchResults;
+//    }
+//    
+//    APContact *contact = [contactArray objectAtIndex:indexPath.row];
+//    
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    if ([self.selectedContacts containsObject:contact])
+//    {
+//        //Deselect Contact
+//        [self deselectContact:contact fromCell:cell];
+//    } else {
+//        //Select Contact
+//        [self selectContact:contact fromCell:cell];
+//    }
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    CGRect searchBarFrame = self.searchController.searchBar.frame;
+    [self.tableView scrollRectToVisible:searchBarFrame animated:YES];
+    return nil;
+}
+
+#pragma mark - VPPDropDownDelegate
+
+- (UITableViewCell *)dropDown:(VPPDropDown *)dropDown cellForElement:(VPPDropDownElement *)element atGlobalIndexPath:(NSIndexPath *)globalIndexPath
+{
+    static NSString *identifier = @"ContactDropDownCell";
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
     if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
@@ -235,25 +298,88 @@
         contactArray = self.searchResults;
     }
     
-    APContact *contact = [contactArray objectAtIndex:indexPath.row];
+    NSIndexPath *rootCellIndexPath = [self.tableView indexPathForCell:[self dropDown:dropDown rootCellAtGlobalIndexPath:globalIndexPath]];
+    APContact *contact = [contactArray objectAtIndex:rootCellIndexPath.row];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([self.selectedContacts containsObject:contact])
+    if (!contact.firstName && !contact.lastName)
     {
-        //Deselect Contact
-        [self deselectContact:contact fromCell:cell];
+        cell.textLabel.text = @"Unknown";
+    } else {
+        
+        NSString *firstName = contact.firstName;
+        NSString *lastName = contact.lastName;
+        
+        if (!firstName) {
+            firstName = @"";
+        }
+        
+        if (!lastName) {
+            lastName = @"";
+        }
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    element.title = [contact.phones objectAtIndex:globalIndexPath.row];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    return cell;
+}
+
+- (void)dropDown:(VPPDropDown *)dropDown elementSelected:(VPPDropDownElement *)element atGlobalIndexPath:(NSIndexPath *)globalIndexPath
+{
+    NSArray *contactArray = [[NSMutableArray alloc] init];
+    
+    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+        contactArray = self.contacts;
+    } else {
+        //Search Results
+        contactArray = self.searchResults;
+    }
+    NSIndexPath *rootCellIndexPath = [self.tableView indexPathForCell:[self dropDown:dropDown rootCellAtGlobalIndexPath:globalIndexPath]];
+    APContact *contact = [contactArray objectAtIndex:rootCellIndexPath.row];
+    NSLog(@"%d", rootCellIndexPath.row);
+
+    Contact *selectedContact = [[Contact alloc] init];
+    selectedContact.firstName = contact.firstName;
+    selectedContact.lastName = contact.lastName;
+    selectedContact.phoneNumbers = [[NSMutableArray alloc] init];
+    
+    //Could fail on two contacts with similar names
+    for (Contact *con in self.selectedContacts)
+    {
+        if ([con.firstName isEqualToString:selectedContact.firstName] &&
+            [con.lastName isEqualToString:selectedContact.lastName])
+        {
+            selectedContact = con;
+        }
+    }
+    
+    NSString *selectedPhoneNumber = contact.phones[globalIndexPath.row];
+    
+    UITableViewCell *selectedCell = [self dropDown:dropDown rootCellAtGlobalIndexPath:globalIndexPath];
+    
+    if ([self.selectedContacts containsObject:selectedContact])
+    {
+        [self deselectContact:selectedContact withNumber:selectedPhoneNumber fromCell:selectedCell];
     } else {
         //Select Contact
-        [self selectContact:contact fromCell:cell];
+        [self selectContact:selectedContact withNumber:selectedPhoneNumber fromCell:selectedCell];
     }
 }
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+- (UITableViewCell *)dropDown:(VPPDropDown *)dropDown rootCellAtGlobalIndexPath:(NSIndexPath *)globalIndexPath
 {
-    CGRect searchBarFrame = self.searchController.searchBar.frame;
-    [self.tableView scrollRectToVisible:searchBarFrame animated:YES];
     return nil;
+}
+
+- (CGFloat)dropDown:(VPPDropDown *)dropDown heightForElement:(VPPDropDownElement *)element atIndexPath:(NSIndexPath *)indexPath
+{
+    return 30.0;
 }
 
 #pragma mark - UISearchResultsUpdatingDelegate

@@ -360,20 +360,22 @@ static SessionManager *sharedSession;
             for (Contact *contact in alert.contacts)
             {
                 NSString *content = [NSString stringWithFormat:@"%@ has arrived at %@", self.name, alert.address];
-                NSString *phoneNumber = contact.phoneNumbers[0];
                 
-                if (phoneNumber)
+                for (NSString *phoneNumber in contact.phoneNumbers)
                 {
-                    //Remove phone number formatting
-                    NSString *phoneNumString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
-                    
-                    [[SessionManager sharedSession] sendTextWithContent:content number:phoneNumString completion:^(BOOL success, NSString *errorMessage, id resultObject) {
+                    if (phoneNumber)
+                    {
+                        //Remove phone number formatting
+                        NSString *phoneNumString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
                         
-                        if (!success)
-                        {
-                            NSLog(@"Error: %@", errorMessage);
-                        }
-                    }];
+                        [[SessionManager sharedSession] sendTextWithContent:content number:phoneNumString completion:^(BOOL success, NSString *errorMessage, id resultObject) {
+                            
+                            if (!success)
+                            {
+                                NSLog(@"Error: %@", errorMessage);
+                            }
+                        }];
+                    }
                 }
             }
         }
