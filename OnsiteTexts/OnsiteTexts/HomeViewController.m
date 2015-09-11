@@ -103,7 +103,8 @@
             });
         } else {
             NSLog(@"Error: %@", errorMessage);
-            self.errorMessage = @"Whoops! We had some trouble loading your alerts.";
+            self.alerts = [[NSMutableArray alloc] init];
+            self.errorMessage = @"Looks like you don't have any geotexts! Guess you're laying low for a while.";
         }
         
         if ([self.spinny isAnimating]) {

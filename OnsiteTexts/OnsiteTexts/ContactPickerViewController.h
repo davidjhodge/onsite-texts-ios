@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Alert.h"
 
+extern NSString *const kPhoneNumberSelectedNotification;
+
 @interface ContactPickerViewController : UIViewController
 
 @property (nonatomic, strong) Alert *createdAlert;

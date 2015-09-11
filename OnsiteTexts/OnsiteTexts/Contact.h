@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
-@property (nonatomic, strong) NSArray *phoneNumbers;
-@property (nonatomic, strong) NSArray *phoneNumberLabels;
+@property (nonatomic, strong) NSMutableArray *phoneNumbers;
+@property (nonatomic, strong) NSMutableArray *phoneNumberLabels;
 
 @end

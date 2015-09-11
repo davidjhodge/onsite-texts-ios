@@ -134,13 +134,13 @@ static SessionManager *sharedSession;
                 newContact.firstName = contact.firstName;
                 newContact.lastName = contact.lastName;
 
-                newContact.phoneNumbers = contact.phones;
+                newContact.phoneNumbers = [contact.phones mutableCopy];
                 
                 for (APPhoneWithLabel *num in contact.phonesWithLabels)
                 {
                     NSMutableArray *phoneNums = [[NSMutableArray alloc] init];
                     [phoneNums addObject:num.phone];
-                    newContact.phoneNumberLabels = [[NSArray alloc] initWithArray:phoneNums];
+                    newContact.phoneNumberLabels = [[NSMutableArray alloc] initWithArray:phoneNums];
                 }
                                 
                 [contactList addObject:newContact];

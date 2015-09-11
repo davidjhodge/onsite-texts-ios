@@ -130,7 +130,7 @@
     Contact *contact = [self.alert.contacts objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
-    cell.detailTextLabel.text = [NSString stringFromComponents:[contact.phoneNumberLabels mutableCopy]];
+    cell.detailTextLabel.text = [NSString stringFromComponents:[contact.phoneNumbers mutableCopy]];
     
     return cell;
 }

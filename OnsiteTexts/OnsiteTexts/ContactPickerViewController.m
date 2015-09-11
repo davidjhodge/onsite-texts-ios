@@ -9,11 +9,16 @@
 #import "ContactPickerViewController.h"
 #import "SessionManager.h"
 #import "HomeViewController.h"
+#import "PhoneNumberPickerViewController.h"
 
 #import <APAddressBook/APAddressBook.h>
 #import "APContact.h"
 #import "APPhoneWithLabel.h"
 #import "Contact.h"
+#import "Contact+Comparison.h"
+#import "NSMutableArray+ContainsContact.h"
+
+NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotification";
 
 @interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
 
@@ -53,6 +58,8 @@
     self.tableView.tableFooterView = [UIView new];
     
     self.selectedContacts = [[NSMutableArray alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(phoneNumberAdded:) name:kPhoneNumberSelectedNotification object:nil];
     
     [self reloadContacts];
 }
@@ -109,22 +116,43 @@
     }];
 }
 
-- (void)selectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
+- (void)selectContact:(Contact *)contact withNumber:(NSString *)phoneNumber fromCell:(UITableViewCell *)cell
 {
-    [self.selectedContacts addObject:contact];
-    
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    if (self.selectedContacts.count > 0) self.navigationItem.rightBarButtonItem.enabled = YES;
-}
+    if ([self.selectedContacts containsContact:contact])
+    {
+        Contact *contactRef = [self.selectedContacts contactMatchingContact:contact];
+        if ([contactRef.phoneNumbers containsObject:phoneNumber])
+        {
+            [contactRef.phoneNumbers removeObject:phoneNumber];
+            
+            if (contactRef.phoneNumbers.count == 0)
+            {
+                [self.selectedContacts removeObject:contactRef]
+                ;
+                cell.accessoryType = UITableViewCellAccessoryNone;
 
-- (void)deselectContact:(APContact *)contact fromCell:(UITableViewCell *)cell
-{
-    [self.selectedContacts removeObject:contact];
+            }
+        } else {
+            [contactRef.phoneNumbers addObject:phoneNumber];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    } else {
+        
+        Contact *newContact = [[Contact alloc] init];
+        newContact.firstName = contact.firstName;
+        newContact.lastName = contact.lastName;
+        newContact.phoneNumbers = [[NSMutableArray alloc] initWithArray:@[phoneNumber]];
+        
+        [self.selectedContacts addObject:newContact];
+
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
     
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    if (self.selectedContacts.count == 0) self.navigationItem.rightBarButtonItem.enabled = NO;
+    if (self.selectedContacts.count > 0) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
 }
 
 #pragma mark - Actions
@@ -151,6 +179,29 @@
             }
         }];
     }
+}
+
+#pragma mark - NSNotification
+
+- (void)phoneNumberAdded:(NSNotification *)notification
+{
+    NSDictionary *info = (NSDictionary *)notification.object;
+    NSIndexPath *indexPath = info[@"indexPath"];
+    NSString *phoneNumber = info[@"phoneNumber"];
+    
+    NSArray *contactArray = [[NSMutableArray alloc] init];
+    
+    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+        contactArray = self.contacts;
+    } else {
+        //Search Results
+        contactArray = self.searchResults;
+    }
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    Contact *contact = [contactArray objectAtIndex:indexPath.row];
+    
+    [self selectContact:contact withNumber:phoneNumber fromCell:cell];
 }
 
 #pragma mark - UITableView Data Source
@@ -203,11 +254,11 @@
     }
     
     NSMutableString *phoneNumbers = [[NSMutableString alloc] init];
-    for (NSString *phoneLabel in contact.phoneNumberLabels) {
+    for (NSString *phoneLabel in contact.phoneNumbers) {
         [phoneNumbers appendString:phoneLabel];
         
-        NSString *lastLabel = contact.phoneNumberLabels.lastObject;
-        if (![phoneLabel isEqual:lastLabel])
+        NSString *lastLabel = contact.phoneNumbers.lastObject;
+        if (![phoneLabel isEqualToString:lastLabel])
         {
             [phoneNumbers appendString:@", "];
         }
@@ -235,18 +286,7 @@
         contactArray = self.searchResults;
     }
     
-    APContact *contact = [contactArray objectAtIndex:indexPath.row];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([self.selectedContacts containsObject:contact])
-    {
-        //Deselect Contact
-        [self deselectContact:contact fromCell:cell];
-    } else {
-        //Select Contact
-        [self selectContact:contact fromCell:cell];
-    }
+    [self performSegueWithIdentifier:@"ContactPickerShowPhonePicker" sender:indexPath];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -281,14 +321,48 @@
     searchBar.text = @"";
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"ContactPickerShowPhonePicker"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[UINavigationController class]])
+        {
+            UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+            
+            PhoneNumberPickerViewController *vc = (PhoneNumberPickerViewController *)[navController.viewControllers firstObject];
+            
+            NSArray *contactArray = [[NSMutableArray alloc] init];
+            
+            if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+                contactArray = self.contacts;
+            } else {
+                //Search Results
+                contactArray = self.searchResults;
+            }
+            
+            NSIndexPath *indexPath = (NSIndexPath *)sender;
+            Contact *contact = contactArray[indexPath.row];
+            
+            for (Contact *con in self.selectedContacts)
+            {
+                if ([con.firstName isEqualToString:contact.firstName] && [con.lastName isEqualToString:contact.lastName])
+                {
+                   vc.selectedPhoneNumbers = con.phoneNumbers;
+                }
+            }
+
+            vc.contact = contact;
+            vc.parentIndexPath = indexPath;
+            vc.selectedContacts = self.selectedContacts;
+        }
+    }
 }
-*/
+
 
 @end

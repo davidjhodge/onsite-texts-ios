@@ -13,9 +13,12 @@
 		704921EC1B9E75510043823B /* NameEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704921EB1B9E75510043823B /* NameEntryViewController.m */; };
 		705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */; };
 		705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */; };
+		705E055A1BA349FF00A0A08F /* Contact+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705E05591BA349FF00A0A08F /* Contact+Comparison.m */; settings = {ASSET_TAGS = (); }; };
+		705E055E1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 705E055D1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m */; settings = {ASSET_TAGS = (); }; };
 		708810711B9608DF00EF743F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810701B9608DF00EF743F /* DetailViewController.m */; };
 		708810761B9618C100EF743F /* NSString+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810751B9618C100EF743F /* NSString+Array.m */; };
 		7088107A1B96498B00EF743F /* NSString+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810791B96498B00EF743F /* NSString+Address.m */; };
+		709E6FD61BA129EE00400554 /* PhoneNumberPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 709E6FD51BA129EE00400554 /* PhoneNumberPickerViewController.m */; };
 		70A274141B9CC0FA00827BC0 /* Alert+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A274131B9CC0FA00827BC0 /* Alert+Comparison.m */; };
 		70A779331B7B91670036DD52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779321B7B91670036DD52 /* main.m */; };
 		70A779361B7B91670036DD52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779351B7B91670036DD52 /* AppDelegate.m */; };
@@ -38,7 +41,6 @@
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
 		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
 		70A779991B864DD50036DD52 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779981B864DD50036DD52 /* LocationManager.m */; };
-		70A7799C1B87A2310036DD52 /* gcTestLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 70A7799B1B87A2310036DD52 /* gcTestLocation.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,12 +66,18 @@
 		705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Geofence.m"; sourceTree = "<group>"; };
 		705D1DFE1B94F943003CE2E9 /* CLCircularRegion+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLCircularRegion+Comparison.h"; sourceTree = "<group>"; };
 		705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLCircularRegion+Comparison.m"; sourceTree = "<group>"; };
+		705E05581BA349FF00A0A08F /* Contact+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contact+Comparison.h"; sourceTree = "<group>"; };
+		705E05591BA349FF00A0A08F /* Contact+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Comparison.m"; sourceTree = "<group>"; };
+		705E055C1BA34FB900A0A08F /* NSMutableArray+ContainsContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ContainsContact.h"; sourceTree = "<group>"; };
+		705E055D1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ContainsContact.m"; sourceTree = "<group>"; };
 		7088106F1B9608DF00EF743F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		708810701B9608DF00EF743F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		708810741B9618C100EF743F /* NSString+Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Array.h"; sourceTree = "<group>"; };
 		708810751B9618C100EF743F /* NSString+Array.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Array.m"; sourceTree = "<group>"; };
 		708810781B96498B00EF743F /* NSString+Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Address.h"; sourceTree = "<group>"; };
 		708810791B96498B00EF743F /* NSString+Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Address.m"; sourceTree = "<group>"; };
+		709E6FD41BA129EE00400554 /* PhoneNumberPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberPickerViewController.h; sourceTree = "<group>"; };
+		709E6FD51BA129EE00400554 /* PhoneNumberPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberPickerViewController.m; sourceTree = "<group>"; };
 		70A274121B9CC0FA00827BC0 /* Alert+Comparison.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Comparison.h"; sourceTree = "<group>"; };
 		70A274131B9CC0FA00827BC0 /* Alert+Comparison.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Comparison.m"; sourceTree = "<group>"; };
 		70A7792D1B7B91670036DD52 /* OnsiteTexts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnsiteTexts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +118,6 @@
 		70A7798E1B7ECFD60036DD52 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		70A779971B864DD50036DD52 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		70A779981B864DD50036DD52 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
-		70A7799B1B87A2310036DD52 /* gcTestLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = gcTestLocation.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +174,8 @@
 				705D1E011B94FB7A003CE2E9 /* CLCircularRegion+Comparison */,
 				708810771B9619FD00EF743F /* NSString+Array */,
 				7088107B1B96498F00EF743F /* NSString+Address */,
+				705E055B1BA34A1400A0A08F /* Contact+Comparison */,
+				705E055F1BA34FC400A0A08F /* NSMutableArray+ContainsContact */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -178,6 +187,24 @@
 				705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */,
 			);
 			name = "CLCircularRegion+Comparison";
+			sourceTree = "<group>";
+		};
+		705E055B1BA34A1400A0A08F /* Contact+Comparison */ = {
+			isa = PBXGroup;
+			children = (
+				705E05581BA349FF00A0A08F /* Contact+Comparison.h */,
+				705E05591BA349FF00A0A08F /* Contact+Comparison.m */,
+			);
+			name = "Contact+Comparison";
+			sourceTree = "<group>";
+		};
+		705E055F1BA34FC400A0A08F /* NSMutableArray+ContainsContact */ = {
+			isa = PBXGroup;
+			children = (
+				705E055C1BA34FB900A0A08F /* NSMutableArray+ContainsContact.h */,
+				705E055D1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m */,
+			);
+			name = "NSMutableArray+ContainsContact";
 			sourceTree = "<group>";
 		};
 		708810721B9608E400EF743F /* Detail */ = {
@@ -268,7 +295,6 @@
 		70A779301B7B91670036DD52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				70A7799B1B87A2310036DD52 /* gcTestLocation.gpx */,
 				70A779311B7B91670036DD52 /* Info.plist */,
 				70A779321B7B91670036DD52 /* main.m */,
 				70A779661B7B97CF0036DD52 /* PrefixHeader.pch */,
@@ -330,6 +356,8 @@
 				70A7795A1B7B93160036DD52 /* LocationPickerViewController.m */,
 				70A7795C1B7B93470036DD52 /* ContactPickerViewController.h */,
 				70A7795D1B7B93470036DD52 /* ContactPickerViewController.m */,
+				709E6FD41BA129EE00400554 /* PhoneNumberPickerViewController.h */,
+				709E6FD51BA129EE00400554 /* PhoneNumberPickerViewController.m */,
 			);
 			name = "Create New";
 			sourceTree = "<group>";
@@ -504,7 +532,6 @@
 				70A7793C1B7B91670036DD52 /* Main.storyboard in Resources */,
 				704921E61B9E74280043823B /* NameEntry.storyboard in Resources */,
 				70A779411B7B91670036DD52 /* LaunchScreen.xib in Resources */,
-				70A7799C1B87A2310036DD52 /* gcTestLocation.gpx in Resources */,
 				70A779701B7B996F0036DD52 /* OpenSans-Bold.ttf in Resources */,
 				70A779711B7B996F0036DD52 /* OpenSans-Light.ttf in Resources */,
 				70A779721B7B996F0036DD52 /* OpenSans-Regular.ttf in Resources */,
@@ -561,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7088107A1B96498B00EF743F /* NSString+Address.m in Sources */,
+				705E055A1BA349FF00A0A08F /* Contact+Comparison.m in Sources */,
 				705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */,
 				70A779801B7BFB950036DD52 /* SessionManager.m in Sources */,
 				70A7797B1B7BFB1B0036DD52 /* Alert.m in Sources */,
@@ -570,8 +598,10 @@
 				70A779331B7B91670036DD52 /* main.m in Sources */,
 				704921EC1B9E75510043823B /* NameEntryViewController.m in Sources */,
 				708810761B9618C100EF743F /* NSString+Array.m in Sources */,
+				709E6FD61BA129EE00400554 /* PhoneNumberPickerViewController.m in Sources */,
 				70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
+				705E055E1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m in Sources */,
 				70A779621B7B94BF0036DD52 /* UIColor+AppStyles.m in Sources */,
 				70A779991B864DD50036DD52 /* LocationManager.m in Sources */,
 				70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */,
