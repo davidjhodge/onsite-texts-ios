@@ -4,7 +4,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "736h",
-      "filename" : "iPhone 6 Launch Screen.png",
+      "filename" : "iPhone 6 iOS 8 Launch Screen-1.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "3x"
@@ -21,7 +21,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "667h",
-      "filename" : "iPhone 6 iOS 8 Launch Screen.png",
+      "filename" : "iPhone 6 Launch Screen.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -29,9 +29,9 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "iOS 7 Launch Screen.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "filename" : "iOS 7 Launch Screen.png",
       "scale" : "2x"
     },
     {

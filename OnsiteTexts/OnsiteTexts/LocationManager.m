@@ -16,7 +16,7 @@ static LocationManager *sharedManager;
 
 static NSString *const kLocationManagerTripGeofence = @"kLocationManagerTripGeofence";
 
-#define GEOFENCE_RADIUS 200.0
+#define GEOFENCE_RADIUS 150.0
 
 @interface LocationManager() {
     BOOL shouldBeginTrackingAfterUserAllows;

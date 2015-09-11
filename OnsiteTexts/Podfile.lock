@@ -7,7 +7,6 @@ PODS:
   - THContactPicker (1.1.1)
   - TPKeyboardAvoiding (1.2.9)
   - UIAlertView+Blocks (0.9)
-  - VPPDropDown (0.3.0)
 
 DEPENDENCIES:
   - APAddressBook
@@ -16,7 +15,6 @@ DEPENDENCIES:
   - THContactPicker
   - TPKeyboardAvoiding
   - UIAlertView+Blocks
-  - VPPDropDown
 
 SPEC CHECKSUMS:
   APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
@@ -25,6 +23,5 @@ SPEC CHECKSUMS:
   THContactPicker: 69a146b4ab9ef39cd2520977acb344fe27a59f81
   TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
   UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
-  VPPDropDown: 46a92110362aee139cdcc51fa0188e84b986410e
 
 COCOAPODS: 0.38.2

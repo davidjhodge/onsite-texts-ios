@@ -9,7 +9,6 @@ pod 'NSTimer-Blocks'
 pod 'TPKeyboardAvoiding'
 pod 'APAddressBook'
 pod 'THContactPicker'
-pod 'VPPDropDown'
 pod 'UIAlertView+Blocks'
 
 end

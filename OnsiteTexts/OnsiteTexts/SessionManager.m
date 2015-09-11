@@ -359,11 +359,18 @@ static SessionManager *sharedSession;
             
             for (Contact *contact in alert.contacts)
             {
-                NSString *content = [NSString stringWithFormat:@"%@ has arrived at %@", self.name, alert.address];
+                NSString *content = [NSString stringWithFormat:@"%@ is arriving at %@", self.name, alert.address];
                 NSString *phoneNumber = contact.phoneNumbers[0];
                 
                 if (phoneNumber)
                 {
+                    //Fixes US International issue
+                    NSString *intlPrefix = @"+1";
+                    if ([phoneNumber rangeOfString:intlPrefix].location != NSNotFound)
+                    {
+                        phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:intlPrefix withString:@""];
+                    }
+                    
                     //Remove phone number formatting
                     NSString *phoneNumString = [[phoneNumber componentsSeparatedByCharactersInSet:[[NSCharacterSet decimalDigitCharacterSet] invertedSet]] componentsJoinedByString:@""];
                     
