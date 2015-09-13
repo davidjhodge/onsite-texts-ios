@@ -20,7 +20,7 @@
 
 NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotification";
 
-@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -50,7 +50,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     self.searchController.searchBar.tintColor = [UIColor PrimaryAppColor];
     self.searchController.searchBar.placeholder = @"Enter a name";
     self.searchController.searchBar.translucent = NO;
-    self.definesPresentationContext = YES;
+    self.definesPresentationContext = NO;
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
     
@@ -62,14 +62,6 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(phoneNumberAdded:) name:kPhoneNumberSelectedNotification object:nil];
     
     [self reloadContacts];
-}
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    [self.searchController.searchBar sizeToFit];
-    self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,6 +127,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
         } else {
             [contactRef.phoneNumbers addObject:phoneNumber];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
         }
     } else {
         
@@ -146,6 +139,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
         [self.selectedContacts addObject:newContact];
 
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        NSLog(@"%@",cell.textLabel.font.fontName);
     }
     
     if (self.selectedContacts.count > 0) {
@@ -263,6 +257,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
             [phoneNumbers appendString:@", "];
         }
     }
+    
     cell.detailTextLabel.text = phoneNumbers;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -307,11 +302,9 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *firstNamePredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@", searchText];
-//    NSPredicate *lastNamePredicate = [NSPredicate predicateWithFormat:@"lastName contains[c] %@", searchText];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:@[firstNamePredicate]];
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(firstName contains[c] %@) OR (lastName contains[c] %@)", searchText, searchText];
     
-    self.searchResults = [self.contacts filteredArrayUsingPredicate:predicate];
+    self.searchResults = [self.contacts filteredArrayUsingPredicate:namePredicate];
 }
 
 #pragma mark - UISearchBar Delegate
@@ -320,7 +313,6 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 {
     searchBar.text = @"";
 }
-
 
 #pragma mark - Navigation
 

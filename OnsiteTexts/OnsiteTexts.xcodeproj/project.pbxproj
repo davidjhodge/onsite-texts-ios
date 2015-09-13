@@ -41,6 +41,7 @@
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
 		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
 		70A779991B864DD50036DD52 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779981B864DD50036DD52 /* LocationManager.m */; };
+		70FED2821BA5D9A4003234EC /* UIFont+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		70A7798E1B7ECFD60036DD52 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		70A779971B864DD50036DD52 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		70A779981B864DD50036DD52 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		70FED2801BA5D9A4003234EC /* UIFont+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Attributes.h"; sourceTree = "<group>"; };
+		70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Attributes.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,7 @@
 				7088107B1B96498F00EF743F /* NSString+Address */,
 				705E055B1BA34A1400A0A08F /* Contact+Comparison */,
 				705E055F1BA34FC400A0A08F /* NSMutableArray+ContainsContact */,
+				70FED2831BA5D9A7003234EC /* UIFont+Attributes */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -433,6 +437,15 @@
 			name = LocationManager;
 			sourceTree = "<group>";
 		};
+		70FED2831BA5D9A7003234EC /* UIFont+Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				70FED2801BA5D9A4003234EC /* UIFont+Attributes.h */,
+				70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */,
+			);
+			name = "UIFont+Attributes";
+			sourceTree = "<group>";
+		};
 		7D8910113947951954ABE1E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +620,7 @@
 				70A7795B1B7B93160036DD52 /* LocationPickerViewController.m in Sources */,
 				70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */,
 				70A7795E1B7B93470036DD52 /* ContactPickerViewController.m in Sources */,
+				70FED2821BA5D9A4003234EC /* UIFont+Attributes.m in Sources */,
 				70A779771B7BF7DD0036DD52 /* AlertCell.m in Sources */,
 				704921E41B9E70DF0043823B /* AppStateTransitioner.m in Sources */,
 				705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */,
