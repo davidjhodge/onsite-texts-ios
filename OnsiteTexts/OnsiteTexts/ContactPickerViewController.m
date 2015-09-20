@@ -20,14 +20,14 @@
 
 NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotification";
 
-@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *contacts;
 @property (nonatomic, strong) NSMutableArray *selectedContacts;
+@property (nonatomic, strong) NSMutableDictionary *contactDictionary;
 
-@property (strong, nonatomic) UISearchController *searchController;
 @property (nonatomic, strong) NSArray *searchResults;
 
 @end
@@ -43,25 +43,24 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    self.searchController.searchResultsUpdater = self;
-    self.searchController.searchBar.delegate = self;
-    self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    self.searchController.searchBar.tintColor = [UIColor PrimaryAppColor];
-    self.searchController.searchBar.placeholder = @"Enter a name";
-    self.searchController.searchBar.translucent = NO;
-    self.definesPresentationContext = NO;
-    self.searchController.dimsBackgroundDuringPresentation = NO;
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
-    
-    self.tableView.tableHeaderView = self.searchController.searchBar;
     self.tableView.tableFooterView = [UIView new];
+    
+    self.searchDisplayController.searchResultsTableView.rowHeight = 50;
+    self.searchDisplayController.searchResultsTableView.tableFooterView = [UIView new];
+    self.searchDisplayController.searchBar.tintColor = [UIColor PrimaryAppColor];
     
     self.selectedContacts = [[NSMutableArray alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(phoneNumberAdded:) name:kPhoneNumberSelectedNotification object:nil];
-    
+
     [self reloadContacts];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
+//    [self.tableView.tableHeaderView sizeToFit];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,6 +107,21 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     }];
 }
 
+//- (NSMutableDictionary *)indexedDictionaryFromArray:(NSMutableArray *)array
+//{
+//    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+//    
+//    NSArray *keys = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"];
+//    
+//    for (NSString *key in keys)
+//    {
+//        NSMutableArray *array = [[NSMutableArray alloc] init];
+//        [dictionary setValue:array forKey:key];
+//    }
+//    
+//    return dictionary;
+//}
+
 - (void)selectContact:(Contact *)contact withNumber:(NSString *)phoneNumber fromCell:(UITableViewCell *)cell
 {
     if ([self.selectedContacts containsContact:contact])
@@ -153,7 +167,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 
 - (void)done:(id)sender
 {
-    self.searchController.active = NO;
+    self.searchDisplayController.active = NO;
     
     if (self.createdAlert != nil) {
         self.createdAlert.contacts = self.selectedContacts;
@@ -185,7 +199,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
-    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+    if (self.tableView != self.searchDisplayController.searchResultsTableView) {
         contactArray = self.contacts;
     } else {
         //Search Results
@@ -207,7 +221,7 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (!self.searchController.active || self.searchController.searchBar.text.length == 0)
+    if (tableView != self.searchDisplayController.searchResultsTableView)
     {
         return self.contacts.count;
     } else {
@@ -220,9 +234,18 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
     
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
+    }
+    
+    cell.textLabel.font = [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:16.0];
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.detailTextLabel.font = [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:11.0];
+    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
-    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+    if (tableView != self.searchDisplayController.searchResultsTableView) {
         contactArray = self.contacts;
     } else {
         //Search Results
@@ -274,33 +297,33 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
-    if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+    if (tableView != self.searchDisplayController.searchResultsTableView) {
         contactArray = self.contacts;
     } else {
         //Search Results
         contactArray = self.searchResults;
     }
-    
+
     [self performSegueWithIdentifier:@"ContactPickerShowPhonePicker" sender:indexPath];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    CGRect searchBarFrame = self.searchController.searchBar.frame;
+    CGRect searchBarFrame = self.searchDisplayController.searchBar.frame;
     [self.tableView scrollRectToVisible:searchBarFrame animated:YES];
     return nil;
 }
 
-#pragma mark - UISearchResultsUpdatingDelegate
+#pragma mark - UISearchDisplayDelegate
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSString *searchString = searchController.searchBar.text;
-    [self filterContentForSearchText:searchString scope:nil];
-    [self.tableView reloadData];
+    [self filterContentForSearchText:searchString];
+    
+    return YES;
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+- (void)filterContentForSearchText:(NSString*)searchText
 {
     NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"(firstName contains[c] %@) OR (lastName contains[c] %@)", searchText, searchText];
     
@@ -331,12 +354,14 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
             
             NSArray *contactArray = [[NSMutableArray alloc] init];
             
-            if (!self.searchController.active || self.searchController.searchBar.text.length == 0) {
+            if (self.tableView != self.searchDisplayController.searchResultsTableView) {
                 contactArray = self.contacts;
             } else {
                 //Search Results
                 contactArray = self.searchResults;
+//                [self dismissViewControllerAnimated:YES completion:nil];
             }
+            
             
             NSIndexPath *indexPath = (NSIndexPath *)sender;
             Contact *contact = contactArray[indexPath.row];

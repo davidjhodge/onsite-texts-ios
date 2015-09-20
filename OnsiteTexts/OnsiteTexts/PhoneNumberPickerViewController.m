@@ -21,7 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = [NSString stringWithFormat:@"%@ %@", self.contact.firstName, self.contact.lastName];
+    
+    [self setNavigationTitle];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
@@ -31,6 +32,25 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setNavigationTitle
+{
+    if (!self.contact.firstName && !self.contact.lastName)
+    {
+        self.title = @"Unknown";
+    } else {
+        
+        if (!self.contact.firstName) {
+            self.contact.firstName = @"";
+        }
+        
+        if (!self.contact.lastName) {
+            self.contact.lastName = @"";
+        }
+        
+        self.title = [NSString stringWithFormat:@"%@ %@", self.contact.firstName, self.contact.lastName];
+    }
 }
 
 #pragma mark - Action

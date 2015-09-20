@@ -9,7 +9,7 @@
 #import "UIFont+AppStyles.h"
 
 NSString *const kOpenSansStyleLight = @"Light";
-NSString *const kOpenSansStyleRegular = @"Regular";
+NSString *const kOpenSansStyleRegular = @"";
 NSString *const kOpenSansStyleSemibold = @"Semibold";
 NSString *const kOpenSansStyleBold = @"Bold";
 
@@ -17,7 +17,11 @@ NSString *const kOpenSansStyleBold = @"Bold";
 
 + (UIFont *)OpenSansWithStyle:(NSString *)style size:(CGFloat)size
 {
-    UIFont *font = [UIFont fontWithName:[NSString stringWithFormat:@"OpenSans-%@", style] size:size];
+    NSString *fontPrefix = @"OpenSans-";
+    
+    if ([style isEqualToString:kOpenSansStyleRegular]) fontPrefix = @"OpenSans";
+    
+    UIFont *font = [UIFont fontWithName:[NSString stringWithFormat:@"%@%@", fontPrefix, style] size:size];
     
     if (font == nil) {
         font = [UIFont fontWithName:@"OpenSans-Regular" size:size];

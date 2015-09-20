@@ -36,7 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"OnsiteTexts";
+    self.title = @"Notify";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewAlert:)];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];

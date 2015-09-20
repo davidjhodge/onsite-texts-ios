@@ -41,6 +41,7 @@
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
 		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
 		70A779991B864DD50036DD52 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779981B864DD50036DD52 /* LocationManager.m */; };
+		70DB53BB1BAF345B00780CF5 /* CustomSearchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB53BA1BAF345B00780CF5 /* CustomSearchDisplayController.m */; settings = {ASSET_TAGS = (); }; };
 		70FED2821BA5D9A4003234EC /* UIFont+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,8 @@
 		70A7798E1B7ECFD60036DD52 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		70A779971B864DD50036DD52 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		70A779981B864DD50036DD52 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		70DB53B91BAF345B00780CF5 /* CustomSearchDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchDisplayController.h; sourceTree = "<group>"; };
+		70DB53BA1BAF345B00780CF5 /* CustomSearchDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchDisplayController.m; sourceTree = "<group>"; };
 		70FED2801BA5D9A4003234EC /* UIFont+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Attributes.h"; sourceTree = "<group>"; };
 		70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Attributes.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,7 +290,7 @@
 				704921EE1B9E79F20043823B /* AppStateTransitioner */,
 				70A7797D1B7BFB6F0036DD52 /* Session Manager / Data Layer */,
 				70A7799A1B864DDE0036DD52 /* LocationManager */,
-				705D1DFA1B8F7592003CE2E9 /* Categories */,
+				70DB53BD1BAF347200780CF5 /* Uitilities */,
 				70A779631B7B95290036DD52 /* App Styles */,
 				70A7795F1B7B935F0036DD52 /* View Controllers */,
 				70A7793F1B7B91670036DD52 /* LaunchScreen.xib */,
@@ -435,6 +438,24 @@
 				70A779981B864DD50036DD52 /* LocationManager.m */,
 			);
 			name = LocationManager;
+			sourceTree = "<group>";
+		};
+		70DB53BC1BAF346400780CF5 /* CustomSearchDisplayController */ = {
+			isa = PBXGroup;
+			children = (
+				70DB53B91BAF345B00780CF5 /* CustomSearchDisplayController.h */,
+				70DB53BA1BAF345B00780CF5 /* CustomSearchDisplayController.m */,
+			);
+			name = CustomSearchDisplayController;
+			sourceTree = "<group>";
+		};
+		70DB53BD1BAF347200780CF5 /* Uitilities */ = {
+			isa = PBXGroup;
+			children = (
+				705D1DFA1B8F7592003CE2E9 /* Categories */,
+				70DB53BC1BAF346400780CF5 /* CustomSearchDisplayController */,
+			);
+			name = Uitilities;
 			sourceTree = "<group>";
 		};
 		70FED2831BA5D9A7003234EC /* UIFont+Attributes */ = {
@@ -611,6 +632,7 @@
 				70A779331B7B91670036DD52 /* main.m in Sources */,
 				704921EC1B9E75510043823B /* NameEntryViewController.m in Sources */,
 				708810761B9618C100EF743F /* NSString+Array.m in Sources */,
+				70DB53BB1BAF345B00780CF5 /* CustomSearchDisplayController.m in Sources */,
 				709E6FD61BA129EE00400554 /* PhoneNumberPickerViewController.m in Sources */,
 				70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */,
 				70A779581B7B93020036DD52 /* HomeViewController.m in Sources */,
@@ -760,6 +782,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.genesisappsonline.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6edc573b-a501-40aa-9eff-b81342b0f72d";
 			};
 			name = Debug;
 		};
@@ -769,13 +792,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PREFIX_HEADER = "/Users/davidhodge/Documents/Github Repos/onsite-texts-ios/OnsiteTexts/OnsiteTexts/PrefixHeader.pch";
 				INFOPLIST_FILE = OnsiteTexts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.genesisappsonline.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6edc573b-a501-40aa-9eff-b81342b0f72d";
 			};
 			name = Release;
 		};

@@ -21,22 +21,26 @@
     // Override point for customization after application launch.
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
+        
     //Navigation Bar Attributes
     [[UINavigationBar appearance] setBarTintColor:[UIColor PrimaryAppColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                           //NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:20.0]
+                                                           NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:20.0]
                                                            }];
+    
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UITableViewCell appearance] setTintColor:[UIColor PrimaryAppColor]];
+    
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{
+                                                           NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:17.0]
+                                                           } forState:UIControlStateNormal];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:14.0]}];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [SessionManager sharedSession];
     [NSUserDefaults standardUserDefaults];
-    
-    NSLog(@"NAME: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"name"]);
     
     if ([[SessionManager sharedSession] name] != nil && [[[SessionManager sharedSession] name] length] > 0)
     {
