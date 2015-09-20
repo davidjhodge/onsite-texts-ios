@@ -20,7 +20,7 @@
 
 NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotification";
 
-@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -48,6 +48,8 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     self.searchDisplayController.searchResultsTableView.rowHeight = 50;
     self.searchDisplayController.searchResultsTableView.tableFooterView = [UIView new];
     self.searchDisplayController.searchBar.tintColor = [UIColor PrimaryAppColor];
+    
+    self.searchDisplayController.searchBar.delegate = self;
     
     self.selectedContacts = [[NSMutableArray alloc] init];
     
@@ -320,6 +322,19 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 {
     [self filterContentForSearchText:searchString];
     
+    if (self.searchResults.count == 0)
+    {
+        for (UIView *view in self.searchDisplayController.searchResultsTableView.subviews)
+        {
+            if ([view isKindOfClass:[UILabel class]] && [[(UILabel *)view text] isEqualToString:@"No Results"])
+            {
+                UILabel *noResultsLabel = (UILabel *)view;
+                noResultsLabel.font = [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:20.0];
+                noResultsLabel.textColor = [UIColor lightGrayColor];
+            }
+        }
+    }
+    
     return YES;
 }
 
@@ -335,6 +350,31 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     searchBar.text = @"";
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length == 0)
+    {
+        //Hack to remove dimmed view
+        for (UIView *subview in self.searchDisplayController.searchContentsController.view.subviews) {
+            //NSLog(@"%@", NSStringFromClass([subview class]));
+            if ([subview isKindOfClass:NSClassFromString(@"UISearchDisplayControllerContainerView")])
+            {
+                for (UIView *sView in subview.subviews)
+                {
+                    for (UIView *ssView in sView.subviews)
+                    {
+                        if (ssView.alpha < 1.0)
+                        {
+                            ssView.hidden = YES;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }
 
 #pragma mark - Navigation
