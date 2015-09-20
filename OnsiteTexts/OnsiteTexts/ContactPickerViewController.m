@@ -20,7 +20,7 @@
 
 NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotification";
 
-@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
+@interface ContactPickerViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -399,7 +399,6 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
             } else {
                 //Search Results
                 contactArray = self.searchResults;
-//                [self dismissViewControllerAnimated:YES completion:nil];
             }
             
             
