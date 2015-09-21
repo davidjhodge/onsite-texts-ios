@@ -137,12 +137,13 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
             {
                 [self.selectedContacts removeObject:contactRef]
                 ;
-                cell.accessoryType = UITableViewCellAccessoryNone;
-
+//                cell.accessoryType = UITableViewCellAccessoryNone;
+//                searchCell.accessoryType = UITableViewCellAccessoryNone;
             }
         } else {
             [contactRef.phoneNumbers addObject:phoneNumber];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//            searchCell.accessoryType = UITableViewCellAccessoryCheckmark;
 
         }
     } else {
@@ -154,9 +155,12 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
         
         [self.selectedContacts addObject:newContact];
 
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        NSLog(@"%@",cell.textLabel.font.fontName);
+//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        searchCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
+    
+    [self.tableView reloadData];
+    [self.searchDisplayController.searchResultsTableView reloadData];
     
     if (self.selectedContacts.count > 0) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -201,16 +205,18 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
-    if (self.tableView != self.searchDisplayController.searchResultsTableView) {
-        contactArray = self.contacts;
-    } else {
+    if (self.searchDisplayController.isActive && self.searchDisplayController.searchBar.text.length > 0) {
         //Search Results
         contactArray = self.searchResults;
+    } else {
+        contactArray = self.contacts;
     }
     
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    //UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     Contact *contact = [contactArray objectAtIndex:indexPath.row];
     
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+
     [self selectContact:contact withNumber:phoneNumber fromCell:cell];
 }
 
@@ -223,12 +229,11 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView != self.searchDisplayController.searchResultsTableView)
-    {
-        return self.contacts.count;
-    } else {
+    if (self.searchDisplayController.isActive && self.searchDisplayController.searchBar.text.length > 0) {
         //Search Results
         return self.searchResults.count;
+    } else {
+        return self.contacts.count;
     }
 }
 
@@ -247,11 +252,11 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
-    if (tableView != self.searchDisplayController.searchResultsTableView) {
-        contactArray = self.contacts;
-    } else {
+    if (self.searchDisplayController.isActive && self.searchDisplayController.searchBar.text.length > 0) {
         //Search Results
         contactArray = self.searchResults;
+    } else {
+        contactArray = self.contacts;
     }
     
     Contact *contact = [contactArray objectAtIndex:indexPath.row];
@@ -283,10 +288,17 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
         }
     }
     
+    //Explicitly assign checkmarks to active cells
+    if ([self.selectedContacts containsContact:contact])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     cell.detailTextLabel.text = phoneNumbers;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
@@ -299,11 +311,11 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     
     NSArray *contactArray = [[NSMutableArray alloc] init];
     
-    if (tableView != self.searchDisplayController.searchResultsTableView) {
-        contactArray = self.contacts;
-    } else {
+    if (self.searchDisplayController.isActive && self.searchDisplayController.searchBar.text.length > 0) {
         //Search Results
         contactArray = self.searchResults;
+    } else {
+        contactArray = self.contacts;
     }
 
     [self performSegueWithIdentifier:@"ContactPickerShowPhonePicker" sender:indexPath];
@@ -324,6 +336,8 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
     
     if (self.searchResults.count == 0)
     {
+        [self.tableView reloadData];
+        
         for (UIView *view in self.searchDisplayController.searchResultsTableView.subviews)
         {
             if ([view isKindOfClass:[UILabel class]] && [[(UILabel *)view text] isEqualToString:@"No Results"])
@@ -350,30 +364,38 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     searchBar.text = @"";
+
+    [self.tableView reloadData];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length == 0)
     {
-        //Hack to remove dimmed view
-        for (UIView *subview in self.searchDisplayController.searchContentsController.view.subviews) {
-            //NSLog(@"%@", NSStringFromClass([subview class]));
-            if ([subview isKindOfClass:NSClassFromString(@"UISearchDisplayControllerContainerView")])
+        [self removeDimmedView];
+    }
+}
+
+- (void)removeDimmedView
+{
+    //Hack to remove dimmed view -- DOESN'T WORK
+    for (UIView *subview in self.searchDisplayController.searchContentsController.view.subviews) {
+        //NSLog(@"%@", NSStringFromClass([subview class]));
+        if ([subview isKindOfClass:NSClassFromString(@"UISearchDisplayControllerContainerView")])
+        {
+            for (UIView *sView in subview.subviews)
             {
-                for (UIView *sView in subview.subviews)
+                for (UIView *ssView in sView.subviews)
                 {
-                    for (UIView *ssView in sView.subviews)
+                    NSLog(@"ALPHA: %f", ssView.alpha);
+
+                    if ([[[ssView  class] description] isEqualToString:@"_UISearchDisplayControllerDimmingView"])
                     {
-                        if (ssView.alpha < 1.0)
-                        {
-                            ssView.hidden = YES;
-                        }
+                        [ssView setHidden:YES];
                     }
                 }
             }
         }
-
     }
 }
 
@@ -394,13 +416,12 @@ NSString *const kPhoneNumberSelectedNotification = @"kPhoneNumberSelectedNotific
             
             NSArray *contactArray = [[NSMutableArray alloc] init];
             
-            if (self.tableView != self.searchDisplayController.searchResultsTableView) {
-                contactArray = self.contacts;
-            } else {
+            if (self.searchDisplayController.isActive && self.searchDisplayController.searchBar.text.length > 0) {
                 //Search Results
                 contactArray = self.searchResults;
+            } else {
+                contactArray = self.contacts;
             }
-            
             
             NSIndexPath *indexPath = (NSIndexPath *)sender;
             Contact *contact = contactArray[indexPath.row];

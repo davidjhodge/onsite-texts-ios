@@ -338,8 +338,8 @@
     cell.textLabel.attributedText = prediction.attributedFullText;
     
     //Bolden matching text
-    UIFont *regularFont = [UIFont systemFontOfSize:[UIFont labelFontSize]];
-    UIFont *boldFont = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+    UIFont *regularFont = [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:16.0];
+    UIFont *boldFont = [UIFont OpenSansWithStyle:kOpenSansStyleBold size:16.0];
     
     NSMutableAttributedString *bolded = [prediction.attributedFullText mutableCopy];
     [bolded enumerateAttribute:kGMSAutocompleteMatchAttribute
