@@ -12,8 +12,7 @@
 #import "MapAnnotation.h"
 #import "SessionManager.h"
 #import "ContactPickerViewController.h"
-
-
+#import <GoogleMaps/GoogleMaps.h>
 
 @import MapKit;
 
@@ -27,11 +26,11 @@
 
 @property (nonatomic, strong) NSMutableArray *searchResults;
 @property (nonatomic, strong) CLGeocoder *geocoder;
+@property (nonatomic, strong )GMSPlacesClient *placesClient;
 
 @property (nonatomic, strong) NSTimer *placemarkUpdateTimer;
 @property (nonatomic, strong) MKUserLocation *userLocation;
 @property (nonatomic, strong) NSString *locationTitle;
-@property (nonatomic, strong) NSString *locationSubtitle;
 
 @property (nonatomic, strong) CLLocation *currentSelectedLocation;
 
@@ -69,6 +68,7 @@
     [self.mapView addGestureRecognizer:longPress];
     
     self.geocoder = [[CLGeocoder alloc] init];
+    self.placesClient = [[GMSPlacesClient alloc] init];
     
     self.mapView.showsUserLocation = YES;
 }
@@ -130,7 +130,7 @@
                          {
                              NSString *address = [NSString addressStringFromStreet:street city:city state:state];
                              self.address = address;
-                             annotation.subtitle = address;
+                             annotation.title = [NSString stringWithFormat:@"%@, %@", currentPlacemark.name, address];
                          } else {
                              annotation.title = errorMessage;
                          }
@@ -144,11 +144,7 @@
              }];
         }
         
-        annotation.subtitle = @"";
-        if (self.locationSubtitle)
-        {
-            annotation.subtitle = self.locationSubtitle;
-        }
+        annotation.subtitle = nil;
         
         [self.mapView addAnnotation:annotation];
         [self.mapView showAnnotations:@[annotation] animated:YES];
@@ -281,34 +277,32 @@
         
         //Delay searching for results until 0.5 seconds has passed since the last character the user typed.
         self.placemarkUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
-        
-            MKLocalSearchRequest *searchRequest = [[MKLocalSearchRequest alloc] init];
-            searchRequest.naturalLanguageQuery = searchText;
             
+            CLLocationCoordinate2D northeast = CLLocationCoordinate2DMake(self.userLocation.coordinate.latitude + 0.25, self.userLocation.coordinate.longitude + 0.25);
+            CLLocationCoordinate2D southwest = CLLocationCoordinate2DMake(self.userLocation.coordinate.latitude - 0.25, self.userLocation.coordinate.longitude - 0.25);
             
-            if (self.userLocation != nil)
-            {
-                searchRequest.region = MKCoordinateRegionMake(self.userLocation.coordinate, MKCoordinateSpanMake(0.5, 0.5));
-            }
+            GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:northeast coordinate:southwest];
             
-            MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:searchRequest];
-            
-            [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-                
-                if (error == nil)
-                {
-                    if (response != nil)
-                    {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            for (MKMapItem *item in response.mapItems) {
-                                [self.searchResults addObject:item];
-                            }
-                            [self.tableView reloadData];
-                        });
-                    }
-                }
-            }];
+            [_placesClient autocompleteQuery:searchText
+                                      bounds:bounds
+                                      filter:nil
+                                    callback:^(NSArray *results, NSError *error) {
+                                        if (error != nil) {
+                                            NSLog(@"Autocomplete error %@", [error localizedDescription]);
+                                            return;
+                                        }
+                                        
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                        
+                                            for (GMSAutocompletePrediction* result in results) {
+                                                //NSLog(@"Result '%@' with placeID %@", result.attributedFullText.string, result.placeID);
+                                                
+                                                [self.searchResults addObject:result];
+                                            }
+                                            
+                                            [self.tableView reloadData];
+                                        });
+                                    }];
             
             self.placemarkUpdateTimer = nil;
             
@@ -339,20 +333,24 @@
     cell.selectedBackgroundView = [UIView new];
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1];
     
-    MKMapItem *mapItem = [self.searchResults objectAtIndex:indexPath.row];
+    GMSAutocompletePrediction *prediction = [self.searchResults objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = mapItem.placemark.name;
+    cell.textLabel.attributedText = prediction.attributedFullText;
     
-    if (mapItem.placemark.thoroughfare && mapItem.placemark.locality && mapItem.placemark.administrativeArea)
-    {
-        NSString *street = mapItem.placemark.thoroughfare;
-        NSString *city = mapItem.placemark.locality;
-        NSString *state = mapItem.placemark.administrativeArea;
-        
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@ %@", street, city, state];
-    } else {
-        cell.detailTextLabel.text = nil;
-    }
+    //Bolden matching text
+    UIFont *regularFont = [UIFont systemFontOfSize:[UIFont labelFontSize]];
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+    
+    NSMutableAttributedString *bolded = [prediction.attributedFullText mutableCopy];
+    [bolded enumerateAttribute:kGMSAutocompleteMatchAttribute
+                       inRange:NSMakeRange(0, bolded.length)
+                       options:0
+                    usingBlock:^(id value, NSRange range, BOOL *stop) {
+                        UIFont *font = (value == nil) ? regularFont : boldFont;
+                        [bolded addAttribute:NSFontAttributeName value:font range:range];
+                    }];
+    
+    cell.textLabel.attributedText = bolded;
     
     return cell;
 }
@@ -361,11 +359,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MKMapItem *mapItem = [self.searchResults objectAtIndex:indexPath.row];
+    GMSAutocompletePrediction *prediction = [self.searchResults objectAtIndex:indexPath.row];
     
-    self.locationTitle = mapItem.placemark.name;
-    self.locationSubtitle = mapItem.placemark.thoroughfare;
-    self.currentSelectedLocation = mapItem.placemark.location;
+    [_placesClient lookUpPlaceID:prediction.placeID callback:^(GMSPlace *place, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Place Details error %@", [error localizedDescription]);
+            return;
+        }
+        
+        if (place != nil) {
+            NSLog(@"Place name %@", place.name);
+            NSLog(@"Place address %@", place.formattedAddress);
+            NSLog(@"Place placeID %@", place.placeID);
+            NSLog(@"Place attributions %@", place.attributions);
+            
+            self.locationTitle = place.formattedAddress;
+            self.currentSelectedLocation = [[CLLocation alloc] initWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
+            
+        } else {
+            NSLog(@"No place details for %@", prediction.placeID);
+        }
+    }];
     
     [self hideTable];
     [self.searchBar resignFirstResponder];
@@ -413,7 +427,6 @@
     if ([view.annotation isKindOfClass:[MKUserLocation class]])
     {
         self.locationTitle = nil;
-        self.locationSubtitle = nil;
         self.currentSelectedLocation = [[CLLocation alloc] initWithLatitude:view.annotation.coordinate.latitude longitude:view.annotation.coordinate.longitude];
     }
 }
@@ -427,7 +440,6 @@
         CGPoint point = [recognizer locationInView:self.mapView];
         CLLocationCoordinate2D coordinate = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
         
-        self.locationSubtitle = nil;
         self.locationTitle = nil;
         
         self.currentSelectedLocation = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];

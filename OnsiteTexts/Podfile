@@ -10,6 +10,7 @@ pod 'TPKeyboardAvoiding'
 pod 'APAddressBook'
 pod 'THContactPicker'
 pod 'UIAlertView+Blocks'
+pod 'GoogleMaps'
 
 end
 

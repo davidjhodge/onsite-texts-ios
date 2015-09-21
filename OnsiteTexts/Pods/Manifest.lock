@@ -3,6 +3,7 @@ PODS:
     - APAddressBook/Core (= 0.1.11)
   - APAddressBook/Core (0.1.11)
   - DZNEmptyDataSet (1.7)
+  - GoogleMaps (1.10.2)
   - NSTimer-Blocks (0.0.1)
   - THContactPicker (1.1.1)
   - TPKeyboardAvoiding (1.2.9)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - APAddressBook
   - DZNEmptyDataSet
+  - GoogleMaps
   - NSTimer-Blocks
   - THContactPicker
   - TPKeyboardAvoiding
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   APAddressBook: 2c949367b190a993d2cce769a3b20bce8bcf000c
   DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
+  GoogleMaps: 5c92e599b07b0a2a9b367c5dd128edc629bddfea
   NSTimer-Blocks: 88faf9aef5f250ead087f3f67ae642517083bf36
   THContactPicker: 69a146b4ab9ef39cd2520977acb344fe27a59f81
   TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SessionManager.h"
 #import "AppStateTransitioner.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface AppDelegate ()
 
@@ -48,6 +49,8 @@
     } else {
         [AppStateTransitioner transitionToNameEntryAnimated:NO];
     }
+    
+    [GMSServices provideAPIKey:@"AIzaSyB0UJdl1DmZ6eI1M6Ox5nICnK6FWCHkhGA"];
     
     [self.window makeKeyAndVisible];
     

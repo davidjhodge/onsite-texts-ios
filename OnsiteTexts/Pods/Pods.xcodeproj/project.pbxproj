@@ -7,95 +7,95 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0475CB42E42AE9DAEE2FC50DC967B7F8 /* UIScrollView+EmptyDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A25C205A363DE82F8B6060971757B28 /* UIScrollView+EmptyDataSet.h */; };
 		084196FF98DCBED8875A1D593CCC8648 /* THContactViewStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 77F32A44606F0BFDE26B04F265C2C35B /* THContactViewStyle.h */; };
+		0D5E57E7FEE44F98E9686EC43D0744FB /* APAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC028893B4957993C1778E03622877F /* APAddressBook-dummy.m */; };
 		0D8E6AAB9B50E306185788BAC3967302 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1DA0C7C84290453025FF44215800F7 /* TPKeyboardAvoidingTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1B3B4AB93B0E4F5DCDC5A5E55810E05E /* APPhoneWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 586FA9044B608DAD3BFC769612C28470 /* APPhoneWithLabel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		147AAE4E1D4E9616F20F418D17ADBDCC /* APAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC75CC3455B5E156DAF10AD10286089 /* APAddress.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		1B3F9C69CD0FDDEA6E794BBB22601C9A /* THContactViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 270B7D67A993D0F8AC310151D4400657 /* THContactViewStyle.m */; };
 		1C3A408FA0040722E540F8C424CC82B0 /* TPKeyboardAvoidingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D1FE41F8F0B369CA568DA3E335A88DCE /* TPKeyboardAvoidingScrollView.h */; };
 		208899F866957D3F5EAF17FBDE242FF1 /* THContactTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C97B1EAFB343E4CCEE701CF39C49D8C /* THContactTextField.h */; };
 		24455A0F104D2E876F0421161073D494 /* THContactTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C41F3B1E57966FE4555C91588FEF55 /* THContactTextField.m */; };
 		257009F7662B2DF9A9C183098F0C103E /* THContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6CFE927089FA5743656E4905C44B5F1 /* THContactView.m */; };
+		25CA8DB64D30E136D7D55FFDE77C71F0 /* APSocialProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 4038AF83E975E9507AB4F13A10B9355B /* APSocialProfile.h */; };
+		29F54BF5F9C6F8C0BA63BF639050E475 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD306E23DF6F2039863C960E12ADC2E /* UIKit.framework */; };
 		2D2C8BE58893C97717BD6557F46CF254 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
-		2EDDD4E3E8FD532F5E80C23338E761E0 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 056B16C42476AAD60175ED1ED73B1934 /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		305BE1E62E70D4368F3EBB625D5C3827 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C9E8004F0C5A00E538D34E527B197E7 /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3511110D57F7996C6FAC3B3CD1FD0C68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
-		3E16F6E747DA7843BFA8A930312DECAD /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CE5B6AB9C3E5A36EBB895F3B58EDD14 /* AddressBook.framework */; };
-		3E46D1B94F16B40D092427EB658EAFC1 /* APTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E630828C32087FC443EECC3A910E838 /* APTypes.h */; };
-		447650F70233996ED06406FEC0A536AF /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E7F3F08EA36B3F7E5678B94BEC61B /* UIScrollView+EmptyDataSet.m */; };
+		377CB4916A71D0A43C4E558E7E99E563 /* APPhoneWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C730615DE0BB110316EA35F83FBF7CE /* APPhoneWithLabel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4C76141AD51056C374A259279AB5BCEF /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D26E309C4F745BE186F1F2123F34A6C /* TPKeyboardAvoidingCollectionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4D947BF77653283963E2A97CB7F68705 /* TPKeyboardAvoidingTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCAEFDAC20F584E3368B50AF79970962 /* TPKeyboardAvoidingTableView.h */; };
-		56C33B3F224CBE7AC4D0D54E05AE5AB9 /* APSocialProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5471A4E31B697D8BC97D2EF045164F4E /* APSocialProfile.h */; };
-		58970598A795C75620E2B8FA3A10815D /* APAddressBook-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E1BAAF3766E86CD92568F4DD12E31E /* APAddressBook-dummy.m */; };
+		4F451796AC220F6F32309F8E37B27AB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
+		548ED98F441F7E2D4A28B1AC23ECEAF9 /* APAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FE04ED1C2000CC7BA5BBE9E3D2DAEA1 /* APAddress.h */; };
 		5E2B08019E2AF0BADA2883BC7BC20F84 /* THContactPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E18902B122E4544C0C8D0CC2AC8A80 /* THContactPickerView.m */; };
+		5E867A96616C8254515482D470C7DD07 /* DZNEmptyDataSet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFDBDF9C56DB3D1CC074A77A81558FB9 /* DZNEmptyDataSet-dummy.m */; };
 		6B15F0FE4030630C5DC04FDFD19B6296 /* THContactView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C73792025FEF55385AF1A85F109C100 /* THContactView.h */; };
-		70E2FDABE0AFF13BA728C4E303746FFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
-		737C632FBF627F29F97EDED47755D2E6 /* APAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 988ABDCB19893B0BB5B2CDA7BD283262 /* APAddressBook.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		738A6E995DE1B71DE0ACEF808DEB25B7 /* APSocialProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7119A79C270B75AA72130CBDC98507A2 /* APSocialProfile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		79C6DEF21A65E77FEC2FFFAF4F9169BA /* UIScrollView+EmptyDataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DC1F65469AEAF58DCD429EDEF036D4F /* UIScrollView+EmptyDataSet.h */; };
+		6E2073CD29AE5A35EFFE708503BDAF3E /* APContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 622BE0D6F8B7CEE2637ACC61E4E700C2 /* APContact.h */; };
+		722C7A674482400AFC31CCACF0A61087 /* APSocialProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A56A1F6995CA560C8E5E1C2A956104ED /* APSocialProfile.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7A304FD5B084AAE118003445226CD294 /* UIAlertView+Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CD29456D9BA88859B9057244101F43A1 /* UIAlertView+Blocks-dummy.m */; };
 		7BD232502BB801F719022B8A4CD26BB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
-		81FC529BFA2CF1802A9BF9D1C8306C22 /* APAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = A80D04958EC97C9B5CFFB30A136E0DB1 /* APAddressBook.h */; };
-		890A6F4BA4800D2AE1FDD526C3DF2E7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
+		7E1EF7583567480EC146EB57AA19E088 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F7A5C322FD98812953EAFCDB2A0410 /* AddressBook.framework */; };
+		7F7D4B89252B6B9E48C4D54E17CDCA1E /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2992E7860849BF23F60617E6A9DE20AB /* UIScrollView+EmptyDataSet.m */; };
 		8959AA7A54A21E3DA440EFAD991D0EAC /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 14B103AD54E39B7F04897A32D95AF9D7 /* UIScrollView+TPKeyboardAvoidingAdditions.h */; };
+		8A5B1FB5098EBC07C0FAF190E3329FB7 /* APAddressBook.h in Headers */ = {isa = PBXBuildFile; fileRef = F32C3CAA657B92FBBDA1EF6C1382CCB4 /* APAddressBook.h */; };
+		8FBBCDD3734834878A738DB227716F6C /* NSTimer+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D00CB8A12CDC0696C9E3C92408E8659 /* NSTimer+Blocks.h */; };
 		90D2959DEC29047C595B10D4BB0ECBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
+		9527D5037268A8C5BB4699ACCFDFA47D /* APAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F816D9939C4094EA45A16635FFC9B197 /* APAddressBook.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		955D21C3885D6992336E2B9F6528DD9A /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA949A3C75A24199DD28956824A77E5 /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A90E89F605956A5BF594BADFBCFEE7A6 /* APContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E7C235028E5FB8BE848DF8D57A2072 /* APContact.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B504389E310236C41465598BA2FE4A87 /* APAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = CF205397667C0276DCD8D1BD4CCE836C /* APAddress.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B979FD759DB6701D4B9054A668A0898E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
-		B9C13D2DE427F24A87641F63A78666A9 /* APContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FA06A46B3067FD7E0BA197F54DCA343 /* APContact.h */; };
+		A4CF7A0FCD2F4B63B75122F26CBC2E5F /* APTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = AF553307D593EB3D01B1C5408DA50335 /* APTypes.h */; };
+		B840A3736B106B7088E916A030221630 /* APPhoneWithLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 341988BFC81865A37BB15108F9C2DF3A /* APPhoneWithLabel.h */; };
 		C34131DAE8A094F20787C25A3F237667 /* TPKeyboardAvoiding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3105911498516E186FB42CAB98E120D8 /* TPKeyboardAvoiding-dummy.m */; };
 		C3D7E8535A48E0DE939EBF1B6CD46A2F /* THContactPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = A1BD04721773F90A4430ECE392C418F1 /* THContactPickerView.h */; };
-		C634FDC8775B86BE6955D19A7614E7FA /* NSTimer+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = D9AE3A91F0F03DB099663C300AD43FAF /* NSTimer+Blocks.h */; };
-		CAACFDCCA9F209DDE150AC030C0ED259 /* APAddress.h in Headers */ = {isa = PBXBuildFile; fileRef = 884C87E25B0F490310BAA7026FA465A7 /* APAddress.h */; };
 		CB46CD033516CC4354F76118AB51D7A5 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = C962CA6FECD0AD628C4A89D458E6164B /* UIAlertView+Blocks.h */; };
 		CC3B95F538D56A2429508CBF3FD88492 /* TPKeyboardAvoidingCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 02839B696DF98DC4742E28855C4CC595 /* TPKeyboardAvoidingCollectionView.h */; };
-		CCB65B4A76B91BE98650C06FE21B7D07 /* APPhoneWithLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 07FFB34B33B4F2FA744816BDCE57B3E2 /* APPhoneWithLabel.h */; };
 		CFB39F1448F5718CEC32411479C08EE8 /* THContactPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F95E1280A67129295D85605C1A26A /* THContactPicker-dummy.m */; };
+		D06C7C9C6EDD0D42C613B119D21C944F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
 		D17FE55161AB4E88783B147341D2C9C6 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29092582482C20FAA340A0152EA605F3 /* TPKeyboardAvoidingScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D1BA5AC180F66F602056C0A654BB6D8B /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 580D3E733056D9135A6B9EFB7946E2BE /* UIScrollView+TPKeyboardAvoidingAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E903A82C206AC2BBD04E4950F6D3DE7A /* NSTimer-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE5E501954757E08D84A4EBE2F0C8EB /* NSTimer-Blocks-dummy.m */; };
-		EC1C486F5F578FB083787CF7C3833461 /* DZNEmptyDataSet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3614A120AC80B56FC76169A345D37122 /* DZNEmptyDataSet-dummy.m */; };
+		D366187C74916F8CAB2EE5719CBD7E62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */; };
+		D74E3DFCA7635B07BE37AF94D0922422 /* APContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C77F41A7472905C39FFB2A8302619 /* APContact.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E3B59634F531E44D993C9C599787714B /* NSTimer-Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F86C4C2FB9EE21C09F70D3BC1BA114 /* NSTimer-Blocks-dummy.m */; };
 		EEA6F98B3B126BD4770594401CC7680E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C45FA7A2E4B96FAA9B59FF2AB566467 /* CoreGraphics.framework */; };
-		F66D18CFAE440BFC7456A3564DB5D34F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9763ECA1E3D3D9DA07D0D4F081AE6787 /* UIKit.framework */; };
 		FFF732480298A45C6CDAA0871987E319 /* Pods-OnsiteTexts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA57E841E187980776FA3B0EC18FAB0 /* Pods-OnsiteTexts-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0B01A80617100B84927597F701A99D12 /* PBXContainerItemProxy */ = {
+		0EDD9766C71810482C1D90E05B424C27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 293848D181E7AEE3957BC669425B769E;
+			remoteGlobalIDString = 661C778F0B25620A44840C47B5ADC533;
 			remoteInfo = "NSTimer-Blocks";
 		};
-		11C3E2EB4FA1A336112FAC8D928B5F35 /* PBXContainerItemProxy */ = {
+		84393907B1A05B7681DC685DEF794448 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EC63F4680A7FAED182B43C1DB3976B8F;
+			remoteGlobalIDString = 66A0A51F712C1924B301417460548204;
 			remoteInfo = APAddressBook;
 		};
-		43438DFE7519FD91293CD2E47FB04CC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DCE32A0918560A9033A5015EEF5E3695;
-			remoteInfo = THContactPicker;
-		};
-		44D5F12A0D9A6DF9EDF95894DC77C8FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E0763DFC7DAB2A36C6A75852B159FF5C;
-			remoteInfo = DZNEmptyDataSet;
-		};
-		9735899D226534ACF35EAB2CE4C031F3 /* PBXContainerItemProxy */ = {
+		93EB7DBD7D5C59573CFBF6E78C7DF672 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D51604217FD9306BA054A000F88CE4FE;
 			remoteInfo = "UIAlertView+Blocks";
 		};
-		A7F3DE35B28F5349AEC34C658111772D /* PBXContainerItemProxy */ = {
+		CD335463EFDB56F93BC937974BF8BF22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCE32A0918560A9033A5015EEF5E3695;
+			remoteInfo = THContactPicker;
+		};
+		CDDFFD989E0378DFD8C48A960E570735 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 039E4CD1A28422B02F0C9632014B09F0;
+			remoteInfo = DZNEmptyDataSet;
+		};
+		E386C0981712D9EEFFA0C905AD32FD82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -105,79 +105,81 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		002CD448949936F003E32CA1A1228624 /* APAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = APAddressBook.xcconfig; sourceTree = "<group>"; };
 		02839B696DF98DC4742E28855C4CC595 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingCollectionView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		03E18902B122E4544C0C8D0CC2AC8A80 /* THContactPickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = THContactPickerView.m; path = Classes/THContactPickerView.m; sourceTree = "<group>"; };
-		04505BFD21D9F8A64B79B2E1F43F1027 /* THContactPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "THContactPicker-prefix.pch"; sourceTree = "<group>"; };
-		046F1C2334233737CD2A45B3E49D324A /* UIAlertView+Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "UIAlertView+Blocks.xcconfig"; sourceTree = "<group>"; };
-		056B16C42476AAD60175ED1ED73B1934 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
-		07FFB34B33B4F2FA744816BDCE57B3E2 /* APPhoneWithLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APPhoneWithLabel.h; path = Pod/Core/APPhoneWithLabel.h; sourceTree = "<group>"; };
-		0827DCE61C669148A3E9397D2C254454 /* UIAlertView+Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks-prefix.pch"; sourceTree = "<group>"; };
+		04CDAB70DDD2DECB7BC34ACB1DD05843 /* UIAlertView+Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks-prefix.pch"; sourceTree = "<group>"; };
+		0519C6C63F84770D8170148389255DB2 /* THContactPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = THContactPicker.xcconfig; sourceTree = "<group>"; };
+		0673D15C2EB9C9B8DB19BEFF7900D3E9 /* NSTimer-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSTimer-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
+		0B9502A5314B5490888AE3474CA9CA12 /* libAPAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAPAddressBook.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C73792025FEF55385AF1A85F109C100 /* THContactView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = THContactView.h; path = Classes/THContactView.h; sourceTree = "<group>"; };
-		0CE5B6AB9C3E5A36EBB895F3B58EDD14 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
+		0C9E8004F0C5A00E538D34E527B197E7 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		0EC75CC3455B5E156DAF10AD10286089 /* APAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddress.m; path = Pod/Core/APAddress.m; sourceTree = "<group>"; };
+		136A09562DDD736D4C924659978C9C12 /* APAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APAddressBook-prefix.pch"; sourceTree = "<group>"; };
+		1446D2F3EB028E157D7287255636E214 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		14B103AD54E39B7F04897A32D95AF9D7 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		156090936356E2EC692C4E68E29AC4AB /* TPKeyboardAvoiding-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TPKeyboardAvoiding-Private.xcconfig"; sourceTree = "<group>"; };
+		1961DC8A659AA23876DA82E487919143 /* NSTimer-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSTimer-Blocks.xcconfig"; sourceTree = "<group>"; };
+		1C4BC8047D85FA87E8DBDD600AB5EC30 /* libNSTimer-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libNSTimer-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		270B7D67A993D0F8AC310151D4400657 /* THContactViewStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = THContactViewStyle.m; path = Classes/THContactViewStyle.m; sourceTree = "<group>"; };
 		283A2540EC93388EE5356B14E12F48B5 /* libTPKeyboardAvoiding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTPKeyboardAvoiding.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		29092582482C20FAA340A0152EA605F3 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
-		2BE5E501954757E08D84A4EBE2F0C8EB /* NSTimer-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSTimer-Blocks-dummy.m"; sourceTree = "<group>"; };
+		2992E7860849BF23F60617E6A9DE20AB /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		2C97B1EAFB343E4CCEE701CF39C49D8C /* THContactTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = THContactTextField.h; path = Classes/THContactTextField.h; sourceTree = "<group>"; };
 		2DA949A3C75A24199DD28956824A77E5 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
-		2FA06A46B3067FD7E0BA197F54DCA343 /* APContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APContact.h; path = Pod/Core/APContact.h; sourceTree = "<group>"; };
-		30562ACE274A42D24C4534945E2F8440 /* THContactPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = THContactPicker.xcconfig; sourceTree = "<group>"; };
-		30E079C18B06393055B4C02DDA736E8B /* TPKeyboardAvoiding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-prefix.pch"; sourceTree = "<group>"; };
 		3105911498516E186FB42CAB98E120D8 /* TPKeyboardAvoiding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TPKeyboardAvoiding-dummy.m"; sourceTree = "<group>"; };
 		32BEE29E97B5BA5EE8ED36443F440574 /* THContactPicker-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "THContactPicker-Private.xcconfig"; sourceTree = "<group>"; };
-		3614A120AC80B56FC76169A345D37122 /* DZNEmptyDataSet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DZNEmptyDataSet-dummy.m"; sourceTree = "<group>"; };
-		3D7E7F3F08EA36B3F7E5678B94BEC61B /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
-		40185B079F475DB3DAFB10F789BDB1C9 /* TPKeyboardAvoiding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TPKeyboardAvoiding.xcconfig; sourceTree = "<group>"; };
+		341988BFC81865A37BB15108F9C2DF3A /* APPhoneWithLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APPhoneWithLabel.h; path = Pod/Core/APPhoneWithLabel.h; sourceTree = "<group>"; };
+		3C730615DE0BB110316EA35F83FBF7CE /* APPhoneWithLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APPhoneWithLabel.m; path = Pod/Core/APPhoneWithLabel.m; sourceTree = "<group>"; };
+		4038AF83E975E9507AB4F13A10B9355B /* APSocialProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APSocialProfile.h; path = Pod/Core/APSocialProfile.h; sourceTree = "<group>"; };
 		4C1F25677429EB16FFEC4D4EE680DF5A /* libUIAlertView+Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUIAlertView+Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D00CB8A12CDC0696C9E3C92408E8659 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		4E6D93078642DB0FAAFF99F8AEEF0BA7 /* UIAlertView+Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "UIAlertView+Blocks-Private.xcconfig"; sourceTree = "<group>"; };
 		5048ED14F08DDB5BCEDD7F0A9620BA78 /* Pods-OnsiteTexts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OnsiteTexts.debug.xcconfig"; sourceTree = "<group>"; };
-		51E1BAAF3766E86CD92568F4DD12E31E /* APAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "APAddressBook-dummy.m"; sourceTree = "<group>"; };
-		5462F18E63E947E0E00AB649DA8812B7 /* DZNEmptyDataSet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DZNEmptyDataSet-prefix.pch"; sourceTree = "<group>"; };
-		5471A4E31B697D8BC97D2EF045164F4E /* APSocialProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APSocialProfile.h; path = Pod/Core/APSocialProfile.h; sourceTree = "<group>"; };
 		5660586DBCC729D67141EF5CD67D6BED /* Pods-OnsiteTexts-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OnsiteTexts-acknowledgements.markdown"; sourceTree = "<group>"; };
 		580D3E733056D9135A6B9EFB7946E2BE /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TPKeyboardAvoidingAdditions.m"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		586FA9044B608DAD3BFC769612C28470 /* APPhoneWithLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APPhoneWithLabel.m; path = Pod/Core/APPhoneWithLabel.m; sourceTree = "<group>"; };
-		5E38317FDD81D57E04831F582C7AAACD /* APAddressBook-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "APAddressBook-prefix.pch"; sourceTree = "<group>"; };
+		5BA74C4CEF9AC7F295D7F329A3DF4D2C /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5C58172CBF0BA91BFD9E6E47880715 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		622BE0D6F8B7CEE2637ACC61E4E700C2 /* APContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APContact.h; path = Pod/Core/APContact.h; sourceTree = "<group>"; };
 		65155D48ED3DAC7F21F1B12D010DF977 /* Pods-OnsiteTexts-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OnsiteTexts-resources.sh"; sourceTree = "<group>"; };
-		7119A79C270B75AA72130CBDC98507A2 /* APSocialProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APSocialProfile.m; path = Pod/Core/APSocialProfile.m; sourceTree = "<group>"; };
-		7334983BDADC4F9EFF0FD116EA81B123 /* libNSTimer-Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libNSTimer-Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A25C205A363DE82F8B6060971757B28 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		77F32A44606F0BFDE26B04F265C2C35B /* THContactViewStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = THContactViewStyle.h; path = Classes/THContactViewStyle.h; sourceTree = "<group>"; };
-		784EE1F17813C5FE3F8AEEB4D1D9DEBA /* DZNEmptyDataSet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DZNEmptyDataSet.xcconfig; sourceTree = "<group>"; };
 		7C545FD060005B06CEF3530F553278B6 /* Pods-OnsiteTexts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OnsiteTexts.release.xcconfig"; sourceTree = "<group>"; };
-		7E630828C32087FC443EECC3A910E838 /* APTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APTypes.h; path = Pod/Core/APTypes.h; sourceTree = "<group>"; };
-		81E7C235028E5FB8BE848DF8D57A2072 /* APContact.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APContact.m; path = Pod/Core/APContact.m; sourceTree = "<group>"; };
-		85B8C8394C3259B1C0014D3239D3AFCB /* DZNEmptyDataSet-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "DZNEmptyDataSet-Private.xcconfig"; sourceTree = "<group>"; };
-		884C87E25B0F490310BAA7026FA465A7 /* APAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddress.h; path = Pod/Core/APAddress.h; sourceTree = "<group>"; };
+		7F1C77F41A7472905C39FFB2A8302619 /* APContact.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APContact.m; path = Pod/Core/APContact.m; sourceTree = "<group>"; };
+		7FE04ED1C2000CC7BA5BBE9E3D2DAEA1 /* APAddress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddress.h; path = Pod/Core/APAddress.h; sourceTree = "<group>"; };
+		87F7A5C322FD98812953EAFCDB2A0410 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
 		8B7F95E1280A67129295D85605C1A26A /* THContactPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "THContactPicker-dummy.m"; sourceTree = "<group>"; };
 		8D26E309C4F745BE186F1F2123F34A6C /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingCollectionView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
-		9763ECA1E3D3D9DA07D0D4F081AE6787 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		988ABDCB19893B0BB5B2CDA7BD283262 /* APAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddressBook.m; path = Pod/Core/APAddressBook.m; sourceTree = "<group>"; };
 		9C45FA7A2E4B96FAA9B59FF2AB566467 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		9DC1F65469AEAF58DCD429EDEF036D4F /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		9FD2F8F4CA35038BDAB1FE6878E53F4C /* libTHContactPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTHContactPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A132765F477D15F3DDC87C0B3C5AAE86 /* TPKeyboardAvoiding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-prefix.pch"; sourceTree = "<group>"; };
 		A1BD04721773F90A4430ECE392C418F1 /* THContactPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = THContactPickerView.h; path = Classes/THContactPickerView.h; sourceTree = "<group>"; };
-		A80D04958EC97C9B5CFFB30A136E0DB1 /* APAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddressBook.h; path = Pod/Core/APAddressBook.h; sourceTree = "<group>"; };
+		A56A1F6995CA560C8E5E1C2A956104ED /* APSocialProfile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APSocialProfile.m; path = Pod/Core/APSocialProfile.m; sourceTree = "<group>"; };
+		AB49CC1B5DEB264E65847737C817FB8C /* THContactPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "THContactPicker-prefix.pch"; sourceTree = "<group>"; };
+		AF553307D593EB3D01B1C5408DA50335 /* APTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APTypes.h; path = Pod/Core/APTypes.h; sourceTree = "<group>"; };
+		AFD306E23DF6F2039863C960E12ADC2E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		BA1DA0C7C84290453025FF44215800F7 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
-		BA253F4F5F434AE99C9A73894B627B99 /* NSTimer-Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSTimer-Blocks-Private.xcconfig"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BAC028893B4957993C1778E03622877F /* APAddressBook-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "APAddressBook-dummy.m"; sourceTree = "<group>"; };
+		BB46047D290725EA456F1195A6BAA9FF /* UIAlertView+Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "UIAlertView+Blocks.xcconfig"; sourceTree = "<group>"; };
 		BCAEFDAC20F584E3368B50AF79970962 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingTableView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
-		C5841A2217368B9906D2BB02AE0C281C /* NSTimer-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSTimer-Blocks-prefix.pch"; sourceTree = "<group>"; };
+		C4279079AC8C59C6187689B52A7C6297 /* DZNEmptyDataSet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DZNEmptyDataSet.xcconfig; sourceTree = "<group>"; };
 		C6CFE927089FA5743656E4905C44B5F1 /* THContactView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = THContactView.m; path = Classes/THContactView.m; sourceTree = "<group>"; };
 		C962CA6FECD0AD628C4A89D458E6164B /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		CD29456D9BA88859B9057244101F43A1 /* UIAlertView+Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks-dummy.m"; sourceTree = "<group>"; };
-		CF205397667C0276DCD8D1BD4CCE836C /* APAddress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddress.m; path = Pod/Core/APAddress.m; sourceTree = "<group>"; };
+		CF471C4D5D38A2CCA7F07A298BD9713F /* DZNEmptyDataSet-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "DZNEmptyDataSet-Private.xcconfig"; sourceTree = "<group>"; };
 		D1FE41F8F0B369CA568DA3E335A88DCE /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
-		D9AE3A91F0F03DB099663C300AD43FAF /* NSTimer+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
-		DDB395A82DA63A9E0FE1FAEE7DC27E5E /* libAPAddressBook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAPAddressBook.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0AA2D10866F03244D760217E0F8B502 /* APAddressBook.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = APAddressBook.xcconfig; sourceTree = "<group>"; };
+		D316B2251D19FF4FA84D235E884AB7A7 /* DZNEmptyDataSet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DZNEmptyDataSet-prefix.pch"; sourceTree = "<group>"; };
+		D4F86C4C2FB9EE21C09F70D3BC1BA114 /* NSTimer-Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSTimer-Blocks-dummy.m"; sourceTree = "<group>"; };
+		DFDBDF9C56DB3D1CC074A77A81558FB9 /* DZNEmptyDataSet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DZNEmptyDataSet-dummy.m"; sourceTree = "<group>"; };
+		E055B684955E4C79A1B6A45729D70C34 /* TPKeyboardAvoiding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TPKeyboardAvoiding.xcconfig; sourceTree = "<group>"; };
 		E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E6C41F3B1E57966FE4555C91588FEF55 /* THContactTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = THContactTextField.m; path = Classes/THContactTextField.m; sourceTree = "<group>"; };
-		E722C4A420D6253EFFD134F0C0443C55 /* APAddressBook-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "APAddressBook-Private.xcconfig"; sourceTree = "<group>"; };
+		E8CA824D5DA9FDD55EFD9FB585AC3C07 /* APAddressBook-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "APAddressBook-Private.xcconfig"; sourceTree = "<group>"; };
 		ECD4DB1B9BC9B4D4B789FC31B4BD8280 /* Pods-OnsiteTexts-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OnsiteTexts-acknowledgements.plist"; sourceTree = "<group>"; };
-		F072688499932F282EF29A049C2BC3CB /* NSTimer-Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "NSTimer-Blocks.xcconfig"; sourceTree = "<group>"; };
-		F75BCEA8D6053683286B6268BB8DA47F /* libDZNEmptyDataSet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDZNEmptyDataSet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32C3CAA657B92FBBDA1EF6C1382CCB4 /* APAddressBook.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = APAddressBook.h; path = Pod/Core/APAddressBook.h; sourceTree = "<group>"; };
+		F4C315EAFBB6CE6F1BADB0E2503B08BA /* NSTimer-Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSTimer-Blocks-prefix.pch"; sourceTree = "<group>"; };
+		F816D9939C4094EA45A16635FFC9B197 /* APAddressBook.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = APAddressBook.m; path = Pod/Core/APAddressBook.m; sourceTree = "<group>"; };
 		FF648505061DDA1436EB6FC809396BE2 /* libPods-OnsiteTexts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnsiteTexts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA57E841E187980776FA3B0EC18FAB0 /* Pods-OnsiteTexts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OnsiteTexts-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,20 +194,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5EB611C347694EDAC1E5D6F512F8E990 /* Frameworks */ = {
+		571F8A80597084D05C43946CF2CBECA4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				890A6F4BA4800D2AE1FDD526C3DF2E7D /* Foundation.framework in Frameworks */,
-				F66D18CFAE440BFC7456A3564DB5D34F /* UIKit.framework in Frameworks */,
+				4F451796AC220F6F32309F8E37B27AB0 /* Foundation.framework in Frameworks */,
+				29F54BF5F9C6F8C0BA63BF639050E475 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8022160E920BB975C84CE1B656D9C668 /* Frameworks */ = {
+		98F3A463B97C43FC67F2C16D6D079DAC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B979FD759DB6701D4B9054A668A0898E /* Foundation.framework in Frameworks */,
+				D366187C74916F8CAB2EE5719CBD7E62 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,12 +219,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C531D757FCE5C2F1E1BA16906C07FFF5 /* Frameworks */ = {
+		BFA9D0D77FD9D7FA24BC7963FAC55224 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E16F6E747DA7843BFA8A930312DECAD /* AddressBook.framework in Frameworks */,
-				70E2FDABE0AFF13BA728C4E303746FFB /* Foundation.framework in Frameworks */,
+				7E1EF7583567480EC146EB57AA19E088 /* AddressBook.framework in Frameworks */,
+				D06C7C9C6EDD0D42C613B119D21C944F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +255,20 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		11D798079DE55EF3D710F7DE6F819549 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				99AC9C38DD4DD95D5A70209C36B6B583 /* APAddressBook */,
+				C79F4DF78F1BA356A260FA72F34454E4 /* DZNEmptyDataSet */,
+				1E1674EC1669C67A9FC8FDE2B6322F56 /* GoogleMaps */,
+				7DDC34530F142436DB2EE7C7D0031FD9 /* NSTimer-Blocks */,
+				F8E83FD1ED466A12CD1EB3CA63253D87 /* THContactPicker */,
+				8E79F7A46AAAF612B67392775966B969 /* TPKeyboardAvoiding */,
+				5C7E5FBC9D595E1EDDF1E85302825550 /* UIAlertView+Blocks */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,90 +277,79 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1973D5FE557A97B0769DE4117403A5EA /* Support Files */ = {
+		1E1674EC1669C67A9FC8FDE2B6322F56 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				40185B079F475DB3DAFB10F789BDB1C9 /* TPKeyboardAvoiding.xcconfig */,
-				156090936356E2EC692C4E68E29AC4AB /* TPKeyboardAvoiding-Private.xcconfig */,
-				3105911498516E186FB42CAB98E120D8 /* TPKeyboardAvoiding-dummy.m */,
-				30E079C18B06393055B4C02DDA736E8B /* TPKeyboardAvoiding-prefix.pch */,
+				48467CF944DD3859D32CF598B464412B /* Frameworks */,
+				85866161E23F7FBFFB0B54112F4F4635 /* Resources */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		2629B6B309E5C2EC9AB243833DE60731 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				002CD448949936F003E32CA1A1228624 /* APAddressBook.xcconfig */,
+				E8CA824D5DA9FDD55EFD9FB585AC3C07 /* APAddressBook-Private.xcconfig */,
+				BAC028893B4957993C1778E03622877F /* APAddressBook-dummy.m */,
+				136A09562DDD736D4C924659978C9C12 /* APAddressBook-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/TPKeyboardAvoiding";
+			path = "../Target Support Files/APAddressBook";
 			sourceTree = "<group>";
 		};
-		3BAAC7362704E74018188A717D1F3FCD /* Core */ = {
+		48467CF944DD3859D32CF598B464412B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				884C87E25B0F490310BAA7026FA465A7 /* APAddress.h */,
-				CF205397667C0276DCD8D1BD4CCE836C /* APAddress.m */,
-				A80D04958EC97C9B5CFFB30A136E0DB1 /* APAddressBook.h */,
-				988ABDCB19893B0BB5B2CDA7BD283262 /* APAddressBook.m */,
-				2FA06A46B3067FD7E0BA197F54DCA343 /* APContact.h */,
-				81E7C235028E5FB8BE848DF8D57A2072 /* APContact.m */,
-				07FFB34B33B4F2FA744816BDCE57B3E2 /* APPhoneWithLabel.h */,
-				586FA9044B608DAD3BFC769612C28470 /* APPhoneWithLabel.m */,
-				5471A4E31B697D8BC97D2EF045164F4E /* APSocialProfile.h */,
-				7119A79C270B75AA72130CBDC98507A2 /* APSocialProfile.m */,
-				7E630828C32087FC443EECC3A910E838 /* APTypes.h */,
+				1446D2F3EB028E157D7287255636E214 /* GoogleMaps.framework */,
 			);
-			name = Core;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3D44EC2E6D99C3315E3BF378EDAD414D /* Support Files */ = {
+		4E0A7DEE9B6EEDEC419962FAD8481ED3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				30562ACE274A42D24C4534945E2F8440 /* THContactPicker.xcconfig */,
+				0519C6C63F84770D8170148389255DB2 /* THContactPicker.xcconfig */,
 				32BEE29E97B5BA5EE8ED36443F440574 /* THContactPicker-Private.xcconfig */,
 				8B7F95E1280A67129295D85605C1A26A /* THContactPicker-dummy.m */,
-				04505BFD21D9F8A64B79B2E1F43F1027 /* THContactPicker-prefix.pch */,
+				AB49CC1B5DEB264E65847737C817FB8C /* THContactPicker-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/THContactPicker";
 			sourceTree = "<group>";
 		};
-		3E5C393D06A5F80336456DB9B7EF6F03 /* Support Files */ = {
+		4F6A4040C9F6E8B852B4A1EA52E81169 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				784EE1F17813C5FE3F8AEEB4D1D9DEBA /* DZNEmptyDataSet.xcconfig */,
-				85B8C8394C3259B1C0014D3239D3AFCB /* DZNEmptyDataSet-Private.xcconfig */,
-				3614A120AC80B56FC76169A345D37122 /* DZNEmptyDataSet-dummy.m */,
-				5462F18E63E947E0E00AB649DA8812B7 /* DZNEmptyDataSet-prefix.pch */,
+				C4279079AC8C59C6187689B52A7C6297 /* DZNEmptyDataSet.xcconfig */,
+				CF471C4D5D38A2CCA7F07A298BD9713F /* DZNEmptyDataSet-Private.xcconfig */,
+				DFDBDF9C56DB3D1CC074A77A81558FB9 /* DZNEmptyDataSet-dummy.m */,
+				D316B2251D19FF4FA84D235E884AB7A7 /* DZNEmptyDataSet-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/DZNEmptyDataSet";
 			sourceTree = "<group>";
 		};
-		4F04E3C13397B1E7F44BB30A770E6A62 /* DZNEmptyDataSet */ = {
+		53DA7F2077084F1123622C982870AF6D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DC1F65469AEAF58DCD429EDEF036D4F /* UIScrollView+EmptyDataSet.h */,
-				3D7E7F3F08EA36B3F7E5678B94BEC61B /* UIScrollView+EmptyDataSet.m */,
-				3E5C393D06A5F80336456DB9B7EF6F03 /* Support Files */,
+				E055B684955E4C79A1B6A45729D70C34 /* TPKeyboardAvoiding.xcconfig */,
+				156090936356E2EC692C4E68E29AC4AB /* TPKeyboardAvoiding-Private.xcconfig */,
+				3105911498516E186FB42CAB98E120D8 /* TPKeyboardAvoiding-dummy.m */,
+				A132765F477D15F3DDC87C0B3C5AAE86 /* TPKeyboardAvoiding-prefix.pch */,
 			);
-			path = DZNEmptyDataSet;
+			name = "Support Files";
+			path = "../Target Support Files/TPKeyboardAvoiding";
 			sourceTree = "<group>";
 		};
-		676F5FBCAD798ECAB9A0ECCEDBE91889 /* Pods */ = {
+		5C7E5FBC9D595E1EDDF1E85302825550 /* UIAlertView+Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				7B86D0F01961A2FD2C7CF882E24EA07F /* APAddressBook */,
-				4F04E3C13397B1E7F44BB30A770E6A62 /* DZNEmptyDataSet */,
-				A06A2A7E124B26E98D26DAB5BBB4D24E /* NSTimer-Blocks */,
-				B0878CE3A60A353E29C6479C9EE4843E /* THContactPicker */,
-				CEBF0DEDC5009F00E21DCF703ED529EF /* TPKeyboardAvoiding */,
-				DC8AB7E80CC2D26E06183482CFF6F874 /* UIAlertView+Blocks */,
+				C962CA6FECD0AD628C4A89D458E6164B /* UIAlertView+Blocks.h */,
+				2DA949A3C75A24199DD28956824A77E5 /* UIAlertView+Blocks.m */,
+				C20D729B9A11B96B2CA9F4E8B9604045 /* Support Files */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		7B86D0F01961A2FD2C7CF882E24EA07F /* APAddressBook */ = {
-			isa = PBXGroup;
-			children = (
-				3BAAC7362704E74018188A717D1F3FCD /* Core */,
-				EA9D7D6F4F52909B3C5540C878C0D7F7 /* Support Files */,
-			);
-			path = APAddressBook;
+			path = "UIAlertView+Blocks";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -352,10 +357,20 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				676F5FBCAD798ECAB9A0ECCEDBE91889 /* Pods */,
+				11D798079DE55EF3D710F7DE6F819549 /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
 				0CA83F3A51F4F422137F36D038650316 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		7DDC34530F142436DB2EE7C7D0031FD9 /* NSTimer-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				4D00CB8A12CDC0696C9E3C92408E8659 /* NSTimer+Blocks.h */,
+				0C9E8004F0C5A00E538D34E527B197E7 /* NSTimer+Blocks.m */,
+				9C060CB364B7286B102BC611A4BD384C /* Support Files */,
+			);
+			path = "NSTimer-Blocks";
 			sourceTree = "<group>";
 		};
 		8088F9F7E7F8C2D55484047C4101FFB1 /* Pods-OnsiteTexts */ = {
@@ -372,71 +387,15 @@
 			path = "Target Support Files/Pods-OnsiteTexts";
 			sourceTree = "<group>";
 		};
-		82522E6618D40AF5CCE1BFD7AEB8EFC5 /* Support Files */ = {
+		85866161E23F7FBFFB0B54112F4F4635 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F072688499932F282EF29A049C2BC3CB /* NSTimer-Blocks.xcconfig */,
-				BA253F4F5F434AE99C9A73894B627B99 /* NSTimer-Blocks-Private.xcconfig */,
-				2BE5E501954757E08D84A4EBE2F0C8EB /* NSTimer-Blocks-dummy.m */,
-				C5841A2217368B9906D2BB02AE0C281C /* NSTimer-Blocks-prefix.pch */,
+				5E5C58172CBF0BA91BFD9E6E47880715 /* GoogleMaps.bundle */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/NSTimer-Blocks";
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		866D9BEE2853D887F2BF3D3AE90669A7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				046F1C2334233737CD2A45B3E49D324A /* UIAlertView+Blocks.xcconfig */,
-				4E6D93078642DB0FAAFF99F8AEEF0BA7 /* UIAlertView+Blocks-Private.xcconfig */,
-				CD29456D9BA88859B9057244101F43A1 /* UIAlertView+Blocks-dummy.m */,
-				0827DCE61C669148A3E9397D2C254454 /* UIAlertView+Blocks-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/UIAlertView+Blocks";
-			sourceTree = "<group>";
-		};
-		A06A2A7E124B26E98D26DAB5BBB4D24E /* NSTimer-Blocks */ = {
-			isa = PBXGroup;
-			children = (
-				D9AE3A91F0F03DB099663C300AD43FAF /* NSTimer+Blocks.h */,
-				056B16C42476AAD60175ED1ED73B1934 /* NSTimer+Blocks.m */,
-				82522E6618D40AF5CCE1BFD7AEB8EFC5 /* Support Files */,
-			);
-			path = "NSTimer-Blocks";
-			sourceTree = "<group>";
-		};
-		B0878CE3A60A353E29C6479C9EE4843E /* THContactPicker */ = {
-			isa = PBXGroup;
-			children = (
-				A1BD04721773F90A4430ECE392C418F1 /* THContactPickerView.h */,
-				03E18902B122E4544C0C8D0CC2AC8A80 /* THContactPickerView.m */,
-				2C97B1EAFB343E4CCEE701CF39C49D8C /* THContactTextField.h */,
-				E6C41F3B1E57966FE4555C91588FEF55 /* THContactTextField.m */,
-				0C73792025FEF55385AF1A85F109C100 /* THContactView.h */,
-				C6CFE927089FA5743656E4905C44B5F1 /* THContactView.m */,
-				77F32A44606F0BFDE26B04F265C2C35B /* THContactViewStyle.h */,
-				270B7D67A993D0F8AC310151D4400657 /* THContactViewStyle.m */,
-				3D44EC2E6D99C3315E3BF378EDAD414D /* Support Files */,
-			);
-			path = THContactPicker;
-			sourceTree = "<group>";
-		};
-		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DDB395A82DA63A9E0FE1FAEE7DC27E5E /* libAPAddressBook.a */,
-				F75BCEA8D6053683286B6268BB8DA47F /* libDZNEmptyDataSet.a */,
-				7334983BDADC4F9EFF0FD116EA81B123 /* libNSTimer-Blocks.a */,
-				FF648505061DDA1436EB6FC809396BE2 /* libPods-OnsiteTexts.a */,
-				9FD2F8F4CA35038BDAB1FE6878E53F4C /* libTHContactPicker.a */,
-				283A2540EC93388EE5356B14E12F48B5 /* libTPKeyboardAvoiding.a */,
-				4C1F25677429EB16FFEC4D4EE680DF5A /* libUIAlertView+Blocks.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		CEBF0DEDC5009F00E21DCF703ED529EF /* TPKeyboardAvoiding */ = {
+		8E79F7A46AAAF612B67392775966B969 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
 				02839B696DF98DC4742E28855C4CC595 /* TPKeyboardAvoidingCollectionView.h */,
@@ -447,42 +406,111 @@
 				BA1DA0C7C84290453025FF44215800F7 /* TPKeyboardAvoidingTableView.m */,
 				14B103AD54E39B7F04897A32D95AF9D7 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
 				580D3E733056D9135A6B9EFB7946E2BE /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
-				1973D5FE557A97B0769DE4117403A5EA /* Support Files */,
+				53DA7F2077084F1123622C982870AF6D /* Support Files */,
 			);
 			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
-		DC8AB7E80CC2D26E06183482CFF6F874 /* UIAlertView+Blocks */ = {
+		99AC9C38DD4DD95D5A70209C36B6B583 /* APAddressBook */ = {
 			isa = PBXGroup;
 			children = (
-				C962CA6FECD0AD628C4A89D458E6164B /* UIAlertView+Blocks.h */,
-				2DA949A3C75A24199DD28956824A77E5 /* UIAlertView+Blocks.m */,
-				866D9BEE2853D887F2BF3D3AE90669A7 /* Support Files */,
+				C24D8429B1D4446EF6830775FF397F91 /* Core */,
+				2629B6B309E5C2EC9AB243833DE60731 /* Support Files */,
 			);
-			path = "UIAlertView+Blocks";
+			path = APAddressBook;
+			sourceTree = "<group>";
+		};
+		9C060CB364B7286B102BC611A4BD384C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1961DC8A659AA23876DA82E487919143 /* NSTimer-Blocks.xcconfig */,
+				0673D15C2EB9C9B8DB19BEFF7900D3E9 /* NSTimer-Blocks-Private.xcconfig */,
+				D4F86C4C2FB9EE21C09F70D3BC1BA114 /* NSTimer-Blocks-dummy.m */,
+				F4C315EAFBB6CE6F1BADB0E2503B08BA /* NSTimer-Blocks-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NSTimer-Blocks";
+			sourceTree = "<group>";
+		};
+		C20D729B9A11B96B2CA9F4E8B9604045 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB46047D290725EA456F1195A6BAA9FF /* UIAlertView+Blocks.xcconfig */,
+				4E6D93078642DB0FAAFF99F8AEEF0BA7 /* UIAlertView+Blocks-Private.xcconfig */,
+				CD29456D9BA88859B9057244101F43A1 /* UIAlertView+Blocks-dummy.m */,
+				04CDAB70DDD2DECB7BC34ACB1DD05843 /* UIAlertView+Blocks-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/UIAlertView+Blocks";
+			sourceTree = "<group>";
+		};
+		C24D8429B1D4446EF6830775FF397F91 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7FE04ED1C2000CC7BA5BBE9E3D2DAEA1 /* APAddress.h */,
+				0EC75CC3455B5E156DAF10AD10286089 /* APAddress.m */,
+				F32C3CAA657B92FBBDA1EF6C1382CCB4 /* APAddressBook.h */,
+				F816D9939C4094EA45A16635FFC9B197 /* APAddressBook.m */,
+				622BE0D6F8B7CEE2637ACC61E4E700C2 /* APContact.h */,
+				7F1C77F41A7472905C39FFB2A8302619 /* APContact.m */,
+				341988BFC81865A37BB15108F9C2DF3A /* APPhoneWithLabel.h */,
+				3C730615DE0BB110316EA35F83FBF7CE /* APPhoneWithLabel.m */,
+				4038AF83E975E9507AB4F13A10B9355B /* APSocialProfile.h */,
+				A56A1F6995CA560C8E5E1C2A956104ED /* APSocialProfile.m */,
+				AF553307D593EB3D01B1C5408DA50335 /* APTypes.h */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		C79F4DF78F1BA356A260FA72F34454E4 /* DZNEmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				6A25C205A363DE82F8B6060971757B28 /* UIScrollView+EmptyDataSet.h */,
+				2992E7860849BF23F60617E6A9DE20AB /* UIScrollView+EmptyDataSet.m */,
+				4F6A4040C9F6E8B852B4A1EA52E81169 /* Support Files */,
+			);
+			path = DZNEmptyDataSet;
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B9502A5314B5490888AE3474CA9CA12 /* libAPAddressBook.a */,
+				5BA74C4CEF9AC7F295D7F329A3DF4D2C /* libDZNEmptyDataSet.a */,
+				1C4BC8047D85FA87E8DBDD600AB5EC30 /* libNSTimer-Blocks.a */,
+				FF648505061DDA1436EB6FC809396BE2 /* libPods-OnsiteTexts.a */,
+				9FD2F8F4CA35038BDAB1FE6878E53F4C /* libTHContactPicker.a */,
+				283A2540EC93388EE5356B14E12F48B5 /* libTPKeyboardAvoiding.a */,
+				4C1F25677429EB16FFEC4D4EE680DF5A /* libUIAlertView+Blocks.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E1010C1B69C8DC93E6763F920A9C768E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0CE5B6AB9C3E5A36EBB895F3B58EDD14 /* AddressBook.framework */,
+				87F7A5C322FD98812953EAFCDB2A0410 /* AddressBook.framework */,
 				9C45FA7A2E4B96FAA9B59FF2AB566467 /* CoreGraphics.framework */,
 				E1AC64FFDC7426D7138611EF3A67B3C8 /* Foundation.framework */,
-				9763ECA1E3D3D9DA07D0D4F081AE6787 /* UIKit.framework */,
+				AFD306E23DF6F2039863C960E12ADC2E /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		EA9D7D6F4F52909B3C5540C878C0D7F7 /* Support Files */ = {
+		F8E83FD1ED466A12CD1EB3CA63253D87 /* THContactPicker */ = {
 			isa = PBXGroup;
 			children = (
-				E0AA2D10866F03244D760217E0F8B502 /* APAddressBook.xcconfig */,
-				E722C4A420D6253EFFD134F0C0443C55 /* APAddressBook-Private.xcconfig */,
-				51E1BAAF3766E86CD92568F4DD12E31E /* APAddressBook-dummy.m */,
-				5E38317FDD81D57E04831F582C7AAACD /* APAddressBook-prefix.pch */,
+				A1BD04721773F90A4430ECE392C418F1 /* THContactPickerView.h */,
+				03E18902B122E4544C0C8D0CC2AC8A80 /* THContactPickerView.m */,
+				2C97B1EAFB343E4CCEE701CF39C49D8C /* THContactTextField.h */,
+				E6C41F3B1E57966FE4555C91588FEF55 /* THContactTextField.m */,
+				0C73792025FEF55385AF1A85F109C100 /* THContactView.h */,
+				C6CFE927089FA5743656E4905C44B5F1 /* THContactView.m */,
+				77F32A44606F0BFDE26B04F265C2C35B /* THContactViewStyle.h */,
+				270B7D67A993D0F8AC310151D4400657 /* THContactViewStyle.m */,
+				4E0A7DEE9B6EEDEC419962FAD8481ED3 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/APAddressBook";
+			path = THContactPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,24 +527,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		120B399311B12A418C5783C4EC1EC64A /* Headers */ = {
+		4DEA563594BA110553B9A8F5D8102DC7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C634FDC8775B86BE6955D19A7614E7FA /* NSTimer+Blocks.h in Headers */,
+				8FBBCDD3734834878A738DB227716F6C /* NSTimer+Blocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7757A7A55C8C5A96E72267B8660B97D7 /* Headers */ = {
+		A1DAD1D01ACB4A3ACDE45A01444F1CA6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAACFDCCA9F209DDE150AC030C0ED259 /* APAddress.h in Headers */,
-				81FC529BFA2CF1802A9BF9D1C8306C22 /* APAddressBook.h in Headers */,
-				B9C13D2DE427F24A87641F63A78666A9 /* APContact.h in Headers */,
-				CCB65B4A76B91BE98650C06FE21B7D07 /* APPhoneWithLabel.h in Headers */,
-				56C33B3F224CBE7AC4D0D54E05AE5AB9 /* APSocialProfile.h in Headers */,
-				3E46D1B94F16B40D092427EB658EAFC1 /* APTypes.h in Headers */,
+				0475CB42E42AE9DAEE2FC50DC967B7F8 /* UIScrollView+EmptyDataSet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,17 +562,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C0E8A21DD1CCA50604C35F740DF3BB57 /* Headers */ = {
+		DCA0757CCC5FAC0B1C5B70BBC1F13E52 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79C6DEF21A65E77FEC2FFFAF4F9169BA /* UIScrollView+EmptyDataSet.h in Headers */,
+				548ED98F441F7E2D4A28B1AC23ECEAF9 /* APAddress.h in Headers */,
+				8A5B1FB5098EBC07C0FAF190E3329FB7 /* APAddressBook.h in Headers */,
+				6E2073CD29AE5A35EFFE708503BDAF3E /* APContact.h in Headers */,
+				B840A3736B106B7088E916A030221630 /* APPhoneWithLabel.h in Headers */,
+				25CA8DB64D30E136D7D55FFDE77C71F0 /* APSocialProfile.h in Headers */,
+				A4CF7A0FCD2F4B63B75122F26CBC2E5F /* APTypes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		039E4CD1A28422B02F0C9632014B09F0 /* DZNEmptyDataSet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63865AF23FC3475879D21DE20BBFC3D8 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */;
+			buildPhases = (
+				06CB958D883BBA9CEA8965E7D63359FD /* Sources */,
+				571F8A80597084D05C43946CF2CBECA4 /* Frameworks */,
+				A1DAD1D01ACB4A3ACDE45A01444F1CA6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DZNEmptyDataSet;
+			productName = DZNEmptyDataSet;
+			productReference = 5BA74C4CEF9AC7F295D7F329A3DF4D2C /* libDZNEmptyDataSet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		24D0C42B4D1B4BD6635B1A38FA7A0399 /* Pods-OnsiteTexts */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 06B1327C47AB91B2686E3779AD6AAFB6 /* Build configuration list for PBXNativeTarget "Pods-OnsiteTexts" */;
@@ -560,25 +605,25 @@
 			buildRules = (
 			);
 			dependencies = (
-				B6C6E53F2A2B3E67C041BF5A49C2802E /* PBXTargetDependency */,
-				328E40FFFB52661CD1A100C34F6C0284 /* PBXTargetDependency */,
-				505308453F6FCC509E57695987B550F4 /* PBXTargetDependency */,
-				9A63B38A7568F3FBB904F8C41B2A12BE /* PBXTargetDependency */,
-				83D793619D6D71AC7E7299D9E4C63634 /* PBXTargetDependency */,
-				BE19C3B0D1F9B8B89F31773E94E2FA0F /* PBXTargetDependency */,
+				5BD8E7D38ADDF2E6694B8340B2BACFD0 /* PBXTargetDependency */,
+				BC9BA970CE1BE86E5FD637D762D29A3A /* PBXTargetDependency */,
+				88EEBFF47B0A07E71DCBE794DECB82D2 /* PBXTargetDependency */,
+				138350EC1F4D36F1543D792627D97B7E /* PBXTargetDependency */,
+				48C0014F10846023280192836346676B /* PBXTargetDependency */,
+				DCD41DF94D869C4CD544A4F24522695A /* PBXTargetDependency */,
 			);
 			name = "Pods-OnsiteTexts";
 			productName = "Pods-OnsiteTexts";
 			productReference = FF648505061DDA1436EB6FC809396BE2 /* libPods-OnsiteTexts.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		293848D181E7AEE3957BC669425B769E /* NSTimer-Blocks */ = {
+		661C778F0B25620A44840C47B5ADC533 /* NSTimer-Blocks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078F305A27CA67269989DE22AB2492E5 /* Build configuration list for PBXNativeTarget "NSTimer-Blocks" */;
+			buildConfigurationList = 527529CA66F631B32C44C5D566CA6E6E /* Build configuration list for PBXNativeTarget "NSTimer-Blocks" */;
 			buildPhases = (
-				E4A06E74F7A0F58B8D3B9B2EA57A6C18 /* Sources */,
-				8022160E920BB975C84CE1B656D9C668 /* Frameworks */,
-				120B399311B12A418C5783C4EC1EC64A /* Headers */,
+				B84ECC9802CFE22A2C3B582347F870D4 /* Sources */,
+				98F3A463B97C43FC67F2C16D6D079DAC /* Frameworks */,
+				4DEA563594BA110553B9A8F5D8102DC7 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -586,7 +631,24 @@
 			);
 			name = "NSTimer-Blocks";
 			productName = "NSTimer-Blocks";
-			productReference = 7334983BDADC4F9EFF0FD116EA81B123 /* libNSTimer-Blocks.a */;
+			productReference = 1C4BC8047D85FA87E8DBDD600AB5EC30 /* libNSTimer-Blocks.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		66A0A51F712C1924B301417460548204 /* APAddressBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9E76ED9FC2BD823657448128EC37ECC /* Build configuration list for PBXNativeTarget "APAddressBook" */;
+			buildPhases = (
+				22E540CBB2FC51E5A0981E81109F6F3E /* Sources */,
+				BFA9D0D77FD9D7FA24BC7963FAC55224 /* Frameworks */,
+				DCA0757CCC5FAC0B1C5B70BBC1F13E52 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = APAddressBook;
+			productName = APAddressBook;
+			productReference = 0B9502A5314B5490888AE3474CA9CA12 /* libAPAddressBook.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		AF02DE907B5FB497D432BE0E8E56F848 /* TPKeyboardAvoiding */ = {
@@ -640,40 +702,6 @@
 			productReference = 9FD2F8F4CA35038BDAB1FE6878E53F4C /* libTHContactPicker.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		E0763DFC7DAB2A36C6A75852B159FF5C /* DZNEmptyDataSet */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 70A8AD00C4C156FE78BC04035EFF1BA0 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */;
-			buildPhases = (
-				EA83BB3CF592F9EC8464FD2653974011 /* Sources */,
-				5EB611C347694EDAC1E5D6F512F8E990 /* Frameworks */,
-				C0E8A21DD1CCA50604C35F740DF3BB57 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DZNEmptyDataSet;
-			productName = DZNEmptyDataSet;
-			productReference = F75BCEA8D6053683286B6268BB8DA47F /* libDZNEmptyDataSet.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		EC63F4680A7FAED182B43C1DB3976B8F /* APAddressBook */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 56B6A172E4281527B2B88B25E156C516 /* Build configuration list for PBXNativeTarget "APAddressBook" */;
-			buildPhases = (
-				1BCFA5A46A3B0609D1680F3F20A9E4B9 /* Sources */,
-				C531D757FCE5C2F1E1BA16906C07FFF5 /* Frameworks */,
-				7757A7A55C8C5A96E72267B8660B97D7 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = APAddressBook;
-			productName = APAddressBook;
-			productReference = DDB395A82DA63A9E0FE1FAEE7DC27E5E /* libAPAddressBook.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -695,9 +723,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EC63F4680A7FAED182B43C1DB3976B8F /* APAddressBook */,
-				E0763DFC7DAB2A36C6A75852B159FF5C /* DZNEmptyDataSet */,
-				293848D181E7AEE3957BC669425B769E /* NSTimer-Blocks */,
+				66A0A51F712C1924B301417460548204 /* APAddressBook */,
+				039E4CD1A28422B02F0C9632014B09F0 /* DZNEmptyDataSet */,
+				661C778F0B25620A44840C47B5ADC533 /* NSTimer-Blocks */,
 				24D0C42B4D1B4BD6635B1A38FA7A0399 /* Pods-OnsiteTexts */,
 				DCE32A0918560A9033A5015EEF5E3695 /* THContactPicker */,
 				AF02DE907B5FB497D432BE0E8E56F848 /* TPKeyboardAvoiding */,
@@ -707,6 +735,15 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		06CB958D883BBA9CEA8965E7D63359FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E867A96616C8254515482D470C7DD07 /* DZNEmptyDataSet-dummy.m in Sources */,
+				7F7D4B89252B6B9E48C4D54E17CDCA1E /* UIScrollView+EmptyDataSet.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		19634AFBABD245873ACFA7A411830FCE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -719,16 +756,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1BCFA5A46A3B0609D1680F3F20A9E4B9 /* Sources */ = {
+		22E540CBB2FC51E5A0981E81109F6F3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B504389E310236C41465598BA2FE4A87 /* APAddress.m in Sources */,
-				58970598A795C75620E2B8FA3A10815D /* APAddressBook-dummy.m in Sources */,
-				737C632FBF627F29F97EDED47755D2E6 /* APAddressBook.m in Sources */,
-				A90E89F605956A5BF594BADFBCFEE7A6 /* APContact.m in Sources */,
-				1B3B4AB93B0E4F5DCDC5A5E55810E05E /* APPhoneWithLabel.m in Sources */,
-				738A6E995DE1B71DE0ACEF808DEB25B7 /* APSocialProfile.m in Sources */,
+				147AAE4E1D4E9616F20F418D17ADBDCC /* APAddress.m in Sources */,
+				0D5E57E7FEE44F98E9686EC43D0744FB /* APAddressBook-dummy.m in Sources */,
+				9527D5037268A8C5BB4699ACCFDFA47D /* APAddressBook.m in Sources */,
+				D74E3DFCA7635B07BE37AF94D0922422 /* APContact.m in Sources */,
+				377CB4916A71D0A43C4E558E7E99E563 /* APPhoneWithLabel.m in Sources */,
+				722C7A674482400AFC31CCACF0A61087 /* APSocialProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,12 +786,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4A06E74F7A0F58B8D3B9B2EA57A6C18 /* Sources */ = {
+		B84ECC9802CFE22A2C3B582347F870D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EDDD4E3E8FD532F5E80C23338E761E0 /* NSTimer+Blocks.m in Sources */,
-				E903A82C206AC2BBD04E4950F6D3DE7A /* NSTimer-Blocks-dummy.m in Sources */,
+				305BE1E62E70D4368F3EBB625D5C3827 /* NSTimer+Blocks.m in Sources */,
+				E3B59634F531E44D993C9C599787714B /* NSTimer-Blocks-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,60 +807,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA83BB3CF592F9EC8464FD2653974011 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC1C486F5F578FB083787CF7C3833461 /* DZNEmptyDataSet-dummy.m in Sources */,
-				447650F70233996ED06406FEC0A536AF /* UIScrollView+EmptyDataSet.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		328E40FFFB52661CD1A100C34F6C0284 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DZNEmptyDataSet;
-			target = E0763DFC7DAB2A36C6A75852B159FF5C /* DZNEmptyDataSet */;
-			targetProxy = 44D5F12A0D9A6DF9EDF95894DC77C8FA /* PBXContainerItemProxy */;
-		};
-		505308453F6FCC509E57695987B550F4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "NSTimer-Blocks";
-			target = 293848D181E7AEE3957BC669425B769E /* NSTimer-Blocks */;
-			targetProxy = 0B01A80617100B84927597F701A99D12 /* PBXContainerItemProxy */;
-		};
-		83D793619D6D71AC7E7299D9E4C63634 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TPKeyboardAvoiding;
-			target = AF02DE907B5FB497D432BE0E8E56F848 /* TPKeyboardAvoiding */;
-			targetProxy = A7F3DE35B28F5349AEC34C658111772D /* PBXContainerItemProxy */;
-		};
-		9A63B38A7568F3FBB904F8C41B2A12BE /* PBXTargetDependency */ = {
+		138350EC1F4D36F1543D792627D97B7E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = THContactPicker;
 			target = DCE32A0918560A9033A5015EEF5E3695 /* THContactPicker */;
-			targetProxy = 43438DFE7519FD91293CD2E47FB04CC3 /* PBXContainerItemProxy */;
+			targetProxy = CD335463EFDB56F93BC937974BF8BF22 /* PBXContainerItemProxy */;
 		};
-		B6C6E53F2A2B3E67C041BF5A49C2802E /* PBXTargetDependency */ = {
+		48C0014F10846023280192836346676B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TPKeyboardAvoiding;
+			target = AF02DE907B5FB497D432BE0E8E56F848 /* TPKeyboardAvoiding */;
+			targetProxy = E386C0981712D9EEFFA0C905AD32FD82 /* PBXContainerItemProxy */;
+		};
+		5BD8E7D38ADDF2E6694B8340B2BACFD0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = APAddressBook;
-			target = EC63F4680A7FAED182B43C1DB3976B8F /* APAddressBook */;
-			targetProxy = 11C3E2EB4FA1A336112FAC8D928B5F35 /* PBXContainerItemProxy */;
+			target = 66A0A51F712C1924B301417460548204 /* APAddressBook */;
+			targetProxy = 84393907B1A05B7681DC685DEF794448 /* PBXContainerItemProxy */;
 		};
-		BE19C3B0D1F9B8B89F31773E94E2FA0F /* PBXTargetDependency */ = {
+		88EEBFF47B0A07E71DCBE794DECB82D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "NSTimer-Blocks";
+			target = 661C778F0B25620A44840C47B5ADC533 /* NSTimer-Blocks */;
+			targetProxy = 0EDD9766C71810482C1D90E05B424C27 /* PBXContainerItemProxy */;
+		};
+		BC9BA970CE1BE86E5FD637D762D29A3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DZNEmptyDataSet;
+			target = 039E4CD1A28422B02F0C9632014B09F0 /* DZNEmptyDataSet */;
+			targetProxy = CDDFFD989E0378DFD8C48A960E570735 /* PBXContainerItemProxy */;
+		};
+		DCD41DF94D869C4CD544A4F24522695A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "UIAlertView+Blocks";
 			target = D51604217FD9306BA054A000F88CE4FE /* UIAlertView+Blocks */;
-			targetProxy = 9735899D226534ACF35EAB2CE4C031F3 /* PBXContainerItemProxy */;
+			targetProxy = 93EB7DBD7D5C59573CFBF6E78C7DF672 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		202A9C0ABB28C4566DCC1C73A062F89F /* Debug */ = {
+		0750049773362FD3FE00DD23BD738BA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA253F4F5F434AE99C9A73894B627B99 /* NSTimer-Blocks-Private.xcconfig */;
+			baseConfigurationReference = 0673D15C2EB9C9B8DB19BEFF7900D3E9 /* NSTimer-Blocks-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/NSTimer-Blocks/NSTimer-Blocks-prefix.pch";
@@ -853,9 +881,25 @@
 			};
 			name = Release;
 		};
-		443F95D09D947757DA3DEE884AA00F3E /* Release */ = {
+		30255E8DA9060B0B9473DF2223761616 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85B8C8394C3259B1C0014D3239D3AFCB /* DZNEmptyDataSet-Private.xcconfig */;
+			baseConfigurationReference = CF471C4D5D38A2CCA7F07A298BD9713F /* DZNEmptyDataSet-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/DZNEmptyDataSet/DZNEmptyDataSet-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		326336C435CD667518C3E580FE8C12BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF471C4D5D38A2CCA7F07A298BD9713F /* DZNEmptyDataSet-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/DZNEmptyDataSet/DZNEmptyDataSet-prefix.pch";
@@ -884,22 +928,6 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
-		};
-		562CA2C0226C26A6D68640A2B917E3E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E722C4A420D6253EFFD134F0C0443C55 /* APAddressBook-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/APAddressBook/APAddressBook-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
 		};
 		5E571C803AD8C07C0F4006142D686490 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -932,6 +960,38 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
+		};
+		7144F2E3AAE8598B83CE471E399014DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0673D15C2EB9C9B8DB19BEFF7900D3E9 /* NSTimer-Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSTimer-Blocks/NSTimer-Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7408FA21076902D44442A8D84A0BBFB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8CA824D5DA9FDD55EFD9FB585AC3C07 /* APAddressBook-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/APAddressBook/APAddressBook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -971,38 +1031,6 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
-		};
-		B57328CC7389963B10EBD4E5B9D3B036 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85B8C8394C3259B1C0014D3239D3AFCB /* DZNEmptyDataSet-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DZNEmptyDataSet/DZNEmptyDataSet-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		BC315F2BFBFED23A66FC1DB8D48DBFCF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA253F4F5F434AE99C9A73894B627B99 /* NSTimer-Blocks-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/NSTimer-Blocks/NSTimer-Blocks-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
 		};
 		BDDDCC0250CA7547B808E979A12B2CF9 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1068,6 +1096,22 @@
 			};
 			name = Debug;
 		};
+		FAC864A0657B08292B5D20EE9A56DFBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8CA824D5DA9FDD55EFD9FB585AC3C07 /* APAddressBook-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/APAddressBook/APAddressBook-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1102,22 +1146,6 @@
 			};
 			name = Release;
 		};
-		FCF1065907ACA07B6A1C9911E0B58B50 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E722C4A420D6253EFFD134F0C0443C55 /* APAddressBook-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/APAddressBook/APAddressBook-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1126,15 +1154,6 @@
 			buildConfigurations = (
 				DE024FCF2C491DE4632628962B778A22 /* Debug */,
 				BDDDCC0250CA7547B808E979A12B2CF9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		078F305A27CA67269989DE22AB2492E5 /* Build configuration list for PBXNativeTarget "NSTimer-Blocks" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				202A9C0ABB28C4566DCC1C73A062F89F /* Debug */,
-				BC315F2BFBFED23A66FC1DB8D48DBFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1148,11 +1167,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56B6A172E4281527B2B88B25E156C516 /* Build configuration list for PBXNativeTarget "APAddressBook" */ = {
+		527529CA66F631B32C44C5D566CA6E6E /* Build configuration list for PBXNativeTarget "NSTimer-Blocks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				562CA2C0226C26A6D68640A2B917E3E1 /* Debug */,
-				FCF1065907ACA07B6A1C9911E0B58B50 /* Release */,
+				0750049773362FD3FE00DD23BD738BA7 /* Debug */,
+				7144F2E3AAE8598B83CE471E399014DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1166,11 +1185,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		70A8AD00C4C156FE78BC04035EFF1BA0 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */ = {
+		63865AF23FC3475879D21DE20BBFC3D8 /* Build configuration list for PBXNativeTarget "DZNEmptyDataSet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B57328CC7389963B10EBD4E5B9D3B036 /* Debug */,
-				443F95D09D947757DA3DEE884AA00F3E /* Release */,
+				30255E8DA9060B0B9473DF2223761616 /* Debug */,
+				326336C435CD667518C3E580FE8C12BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1180,6 +1199,15 @@
 			buildConfigurations = (
 				5E571C803AD8C07C0F4006142D686490 /* Debug */,
 				25ADC24D427FE662FAEEAF89178CF2B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9E76ED9FC2BD823657448128EC37ECC /* Build configuration list for PBXNativeTarget "APAddressBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC864A0657B08292B5D20EE9A56DFBF /* Debug */,
+				7408FA21076902D44442A8D84A0BBFB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
