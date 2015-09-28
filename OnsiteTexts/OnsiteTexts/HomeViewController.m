@@ -288,16 +288,28 @@
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont systemFontOfSize:17.0],
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:17.0],
                                  NSForegroundColorAttributeName: [UIColor lightGrayColor]
                                  };
     
     return [[NSAttributedString alloc] initWithString:self.errorMessage attributes:attributes];
 }
 
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
+{
+    return [[NSAttributedString alloc] initWithString:@"Create one" attributes:@{NSForegroundColorAttributeName: [UIColor PrimaryAppColor],
+                                                                                 NSFontAttributeName: [UIFont OpenSansWithStyle:kOpenSansStyleRegular size:20.0]
+                                                                                 }];
+}
+
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView
+{
+    [self createNewAlert:self];
+}
+
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return -10.0;
+    return -20.0;
 }
 
 - (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView

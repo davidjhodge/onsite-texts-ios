@@ -13,8 +13,8 @@
 		704921EC1B9E75510043823B /* NameEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704921EB1B9E75510043823B /* NameEntryViewController.m */; };
 		705D1DFD1B94F6B1003CE2E9 /* Alert+Geofence.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFC1B94F6B1003CE2E9 /* Alert+Geofence.m */; };
 		705D1E001B94F943003CE2E9 /* CLCircularRegion+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705D1DFF1B94F943003CE2E9 /* CLCircularRegion+Comparison.m */; };
-		705E055A1BA349FF00A0A08F /* Contact+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705E05591BA349FF00A0A08F /* Contact+Comparison.m */; settings = {ASSET_TAGS = (); }; };
-		705E055E1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 705E055D1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m */; settings = {ASSET_TAGS = (); }; };
+		705E055A1BA349FF00A0A08F /* Contact+Comparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 705E05591BA349FF00A0A08F /* Contact+Comparison.m */; };
+		705E055E1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 705E055D1BA34FB900A0A08F /* NSMutableArray+ContainsContact.m */; };
 		708810711B9608DF00EF743F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810701B9608DF00EF743F /* DetailViewController.m */; };
 		708810761B9618C100EF743F /* NSString+Array.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810751B9618C100EF743F /* NSString+Array.m */; };
 		7088107A1B96498B00EF743F /* NSString+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 708810791B96498B00EF743F /* NSString+Address.m */; };
@@ -41,8 +41,8 @@
 		70A779831B7C47EC0036DD52 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779821B7C47EC0036DD52 /* MapAnnotation.m */; };
 		70A7798F1B7ECFD60036DD52 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A7798E1B7ECFD60036DD52 /* Contact.m */; };
 		70A779991B864DD50036DD52 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A779981B864DD50036DD52 /* LocationManager.m */; };
-		70DB53BB1BAF345B00780CF5 /* CustomSearchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB53BA1BAF345B00780CF5 /* CustomSearchDisplayController.m */; settings = {ASSET_TAGS = (); }; };
-		70FED2821BA5D9A4003234EC /* UIFont+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */; settings = {ASSET_TAGS = (); }; };
+		70DB53BB1BAF345B00780CF5 /* CustomSearchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB53BA1BAF345B00780CF5 /* CustomSearchDisplayController.m */; };
+		70FED2821BA5D9A4003234EC /* UIFont+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 70FED2811BA5D9A4003234EC /* UIFont+Attributes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -487,6 +487,7 @@
 				70A7792A1B7B91670036DD52 /* Frameworks */,
 				70A7792B1B7B91670036DD52 /* Resources */,
 				EE6AF740423E96ED6100E3B7 /* Copy Pods Resources */,
+				70B37D6A1BB0A71700F2E535 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -584,6 +585,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		70B37D6A1BB0A71700F2E535 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 		C04F877D067B42861B24249C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -776,13 +790,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/davidhodge/Documents/Github Repos/onsite-texts-ios/OnsiteTexts/OnsiteTexts/PrefixHeader.pch";
 				INFOPLIST_FILE = OnsiteTexts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.genesisappsonline.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6edc573b-a501-40aa-9eff-b81342b0f72d";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -793,13 +808,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "/Users/davidhodge/Documents/Github Repos/onsite-texts-ios/OnsiteTexts/OnsiteTexts/PrefixHeader.pch";
 				INFOPLIST_FILE = OnsiteTexts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.genesisappsonline.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6edc573b-a501-40aa-9eff-b81342b0f72d";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
